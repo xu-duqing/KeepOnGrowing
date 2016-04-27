@@ -26,7 +26,7 @@ class Root extends React.Component{
                     <Text>增加</Text>
                 </TouchableOpacity>
 
-                <Text style={{margin:20}}>产生的结果是:</Text>
+                <Text style={{margin:20}}>产生的结果是:{this.props.count}</Text>
 
                 <TouchableOpacity onPress={() =>{
                     this.props.dispatch(reduce())
@@ -40,7 +40,7 @@ class Root extends React.Component{
 
 function select(store) {
     return {
-
+        count:store.example.count
     };
 }
 

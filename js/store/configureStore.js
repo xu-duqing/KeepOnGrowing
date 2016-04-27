@@ -4,14 +4,16 @@
 
 "use strict";
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import promise from './promise';
 import createLogger from 'redux-logger';
 import {persistStore, autoRehydrate} from 'redux-persist'
+var {AsyncStorage} = require('react-native');
 
-var isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
+
+var isDebuggingInChrome = __DEV__;
 
 
 var logger = createLogger({
@@ -22,9 +24,10 @@ var logger = createLogger({
 
 var createMyStore = applyMiddleware(thunk,promise,logger)(createStore);
 
-function configureStore(){
+function configureStore(onComplete){
 
     const store = autoRehydrate()(createMyStore)(reducers);
+    persistStore(store, {storage: AsyncStorage}, onComplete);
     if (isDebuggingInChrome){
         window.store = store
     }
