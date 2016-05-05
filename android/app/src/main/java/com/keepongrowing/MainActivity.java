@@ -3,9 +3,12 @@ package com.keepongrowing;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class MainActivity extends ReactActivity {
 
@@ -33,8 +36,15 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected List<ReactPackage> getPackages() {
+
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),new CodePush("g0-MT7iuWOLkjS_Kz2hPmTG7pTvQNJKWkMWZW",this,this.getUseDeveloperSupport())
         );
+    }
+
+    @Nullable
+    @Override
+    protected String getJSBundleFile() {
+        return CodePush.getBundleUrl();
     }
 }

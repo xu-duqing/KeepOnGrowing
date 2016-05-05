@@ -12,12 +12,21 @@ import {
     reduce
 } from './action'
 import { connect } from 'react-redux';
+import codePush from "react-native-code-push";
+const CODE_PUSH_PRODUCTION_KEY = 'g0-MT7iuWOLkjS_Kz2hPmTG7pTvQNJKWkMWZW';
 
 
 class Root extends React.Component{
 
+    componentDidMount() {
+        codePush.sync({
+            updateDialog: false,
+            installMode: codePush.InstallMode.ON_NEXT_RESUME,
+            deploymentKey: CODE_PUSH_PRODUCTION_KEY,
+        })
+    }
+
     render(){
-        console.log(this.props);
         return(
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                 <TouchableOpacity onPress={() =>{
