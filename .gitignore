@@ -34,3 +34,6 @@ my-release-key.keystore
 #
 node_modules/
 npm-debug.log
+
+# ignore cocoaPods  
+ios/Pods
