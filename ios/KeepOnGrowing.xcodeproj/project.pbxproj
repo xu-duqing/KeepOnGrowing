@@ -81,6 +81,76 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		62AABA5D1CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 83CBBA2D1A601D0E00E9B192;
+			remoteInfo = React;
+		};
+		62AABA5F1CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B511DA1A9E6C8500147676;
+			remoteInfo = RCTActionSheet;
+		};
+		62AABA611CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B511DA1A9E6C8500147676;
+			remoteInfo = RCTGeolocation;
+		};
+		62AABA631CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B5115C1A9E6B3D00147676;
+			remoteInfo = RCTImage;
+		};
+		62AABA651CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B511DA1A9E6C8500147676;
+			remoteInfo = RCTLinking;
+		};
+		62AABA671CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B511DA1A9E6C8500147676;
+			remoteInfo = RCTNetwork;
+		};
+		62AABA691CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B511DA1A9E6C8500147676;
+			remoteInfo = RCTSettings;
+		};
+		62AABA6B1CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B5119A1A9E6C1200147676;
+			remoteInfo = RCTText;
+		};
+		62AABA6D1CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 832C817F1AAF6DEF007FA2F7;
+			remoteInfo = RCTVibration;
+		};
+		62AABA6F1CE1709F0082F7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C86DF451ADF2C930047B81A;
+			remoteInfo = RCTWebSocket;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -338,6 +408,16 @@
 			buildRules = (
 			);
 			dependencies = (
+				62AABA5E1CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA601CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA621CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA641CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA661CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA681CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA6A1CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA6C1CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA6E1CE1709F0082F7CD /* PBXTargetDependency */,
+				62AABA701CE1709F0082F7CD /* PBXTargetDependency */,
 			);
 			name = KeepOnGrowing;
 			productName = "Hello World";
@@ -571,6 +651,59 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62AABA5E1CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = React;
+			targetProxy = 62AABA5D1CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA601CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTActionSheet;
+			targetProxy = 62AABA5F1CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA621CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTGeolocation;
+			targetProxy = 62AABA611CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA641CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTImage;
+			targetProxy = 62AABA631CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA661CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTLinking;
+			targetProxy = 62AABA651CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA681CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTNetwork;
+			targetProxy = 62AABA671CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA6A1CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTSettings;
+			targetProxy = 62AABA691CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA6C1CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTText;
+			targetProxy = 62AABA6B1CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA6E1CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTVibration;
+			targetProxy = 62AABA6D1CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+		62AABA701CE1709F0082F7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RCTWebSocket;
+			targetProxy = 62AABA6F1CE1709F0082F7CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {

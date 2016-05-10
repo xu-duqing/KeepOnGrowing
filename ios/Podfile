@@ -15,9 +15,9 @@ target 'KeepOnGrowing' do
 
   # Pods for KeepOnGrowing
 
-  target 'KeepOnGrowingTests' do
-    inherit! :search_paths
+#target 'KeepOnGrowingTests' do
+#inherit! :search_paths
     # Pods for testing
-  end
+    # end
 
 end
