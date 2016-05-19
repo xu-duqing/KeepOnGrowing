@@ -18,19 +18,25 @@ export default class KeepListView extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            keeps:{100001:[1,2,3,5,7,8,9],100002:[1,2,3,5,7,8,9],100003:[1,2,3,5,7,8,9],100004:[1,2,3,5,7,8,9],100005:[1,2,3,5,7,8,9]}
+            keeps:{}
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            keeps:nextProps.data
+        })
     }
 
     renderRow(rowData,sectionID,rowID){
         return(
-            <ListItem />
+            <ListItem data={rowData}/>
         )
     }
 
     renderSectionHeader(sectionData,sectionID){
         return(
-            <SelectHeader />
+            <SelectHeader time={parseInt(sectionID)}/>
         )
     }
 

@@ -12,11 +12,9 @@ export default class KeepListViewItem extends React.Component{
     render(){
         return(
             <View style={styles.itemBox}>
-                <Text>第一次:</Text>
+                <Text>{this.props.data.typeName}:</Text>
                 <View style={{flex:1}}>
-                    <Text>抬头</Text>
-                    <View style={styles.line}/>
-                    <Text>这是一段描述,记录当时的心情</Text>
+                    <Text>{this.props.data.keynote}</Text>
                 </View>
             </View>
         )

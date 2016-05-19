@@ -3,7 +3,8 @@
  */
 
 import example from './example';
+import keep from './keep';
 
 module.exports = {
-  ...example
+  ...keep
 };

@@ -11,10 +11,11 @@ import {Text} from 'KGText';
 export default class KeepListViewHeader extends React.Component{
 
     render(){
+        const date = new Date(this.props.time);
         return(
             <View style={styles.header}>
-                <Text>2016-05-07</Text>
-                <Text>17天</Text>
+                <Text>{date.getFullYear()}-{date.getMonth()}-{date.getDate()}</Text>
+                <Text>0天</Text>
             </View>
         )
     }

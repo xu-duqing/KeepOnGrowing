@@ -4,9 +4,9 @@
 
 "use strict";
 
-import example from './example';
+import keep from './keep';
 import {combineReducers} from 'redux';
 
 module.exports = combineReducers({
-    example
+    keep
 });

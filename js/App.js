@@ -10,7 +10,6 @@ import {
     add,
     reduce
 } from './action'
-import { connect } from 'react-redux';
 import codePush from "react-native-code-push";
 const CODE_PUSH_PRODUCTION_KEY = 'g0-MT7iuWOLkjS_Kz2hPmTG7pTvQNJKWkMWZW';
 
@@ -28,6 +27,8 @@ export default class Root extends React.Component{
     }
 
     render(){
+        console.log(this);
+
         return(
             <View style={{flex:1}}>
                 <StatusBar
