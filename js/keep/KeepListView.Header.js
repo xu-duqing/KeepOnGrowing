@@ -22,6 +22,9 @@ export default class KeepListViewHeader extends React.Component{
 
 const styles = React.StyleSheet.create({
    header:{
-       justifyContent:'space-between'
+       justifyContent:'space-between',
+       flexDirection:'row',
+       padding:11,
+       backgroundColor:'#ccc'
    }
 });
