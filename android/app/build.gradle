@@ -145,5 +145,5 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile 'com.facebook.stetho:stetho:1.0.1'
     compile project(':react-native-code-push')
-
+    compile project(':RNMaterialKit')
 }
