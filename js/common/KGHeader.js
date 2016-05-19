@@ -13,7 +13,13 @@ import {Text} from 'KGText';
 class KGHeaderAndroid extends React.Component{
 
     render(){
-
+        return(
+            <View style={styles.toolbarContainer}>
+                <ToolbarAndroid
+                    style={styles.toolbar}
+                    title="成长日记"/>
+            </View>
+        )
     }
 }
 
@@ -82,6 +88,12 @@ var styles = React.StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    toolbarContainer: {
+        paddingTop: STATUS_BAR_HEIGHT,
+    },
+    toolbar: {
+        height: HEADER_HEIGHT - STATUS_BAR_HEIGHT,
     },
     titleText:{
         color: '#000',

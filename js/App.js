@@ -3,8 +3,7 @@
  */
 import React,{
     View,
-    Text,
-    TouchableOpacity
+    StatusBar
 } from 'react-native'
 
 import {
@@ -31,6 +30,11 @@ export default class Root extends React.Component{
     render(){
         return(
             <View style={{flex:1}}>
+                <StatusBar
+                    translucent={true}
+                    backgroundColor="rgba(0, 0, 0, 0.2)"
+                    barStyle="light-content"
+                />
                 <KeepPage />
             </View>
         )
