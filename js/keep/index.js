@@ -12,6 +12,7 @@ import React,{
 
 import KGHeader from '../common/KGHeader';
 import KeepListView from './KeepListView';
+import FirstKeep from './FirstKeep'
 import {connect} from 'react-redux'
 import {
     MKButton,
@@ -68,15 +69,18 @@ class KeepPage extends React.Component{
                     options: BUTTONS,
                     cancelButtonIndex: CANCEL_INDEX,
                     title:'添加记录'
-                },
-                (buttonIndex) => {
-                    this.setState({ clicked: BUTTONS[buttonIndex] });
-                });
+                },(index) => this.actionClick(index));
         }else {
             //fixme Android选择弹框暂时没有实现, 寻找更好的方案 https://github.com/gowong/material-sheet-fab
         }
     }
 
+    actionClick(index){
+        this.props.navigator.push({
+            component:FirstKeep,
+            name:'FirstKeep'
+        })
+    }
 }
 
 const styles = React.StyleSheet.create({

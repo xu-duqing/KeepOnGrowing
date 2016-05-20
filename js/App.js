@@ -3,7 +3,9 @@
  */
 import React,{
     View,
-    StatusBar
+    StatusBar,
+    Navigator,
+    Platform
 } from 'react-native'
 
 import {
@@ -27,8 +29,6 @@ export default class Root extends React.Component{
     }
 
     render(){
-        console.log(this);
-
         return(
             <View style={{flex:1}}>
                 <StatusBar
@@ -36,9 +36,33 @@ export default class Root extends React.Component{
                     backgroundColor="rgba(0, 0, 0, 0.2)"
                     barStyle="light-content"
                 />
-                <KeepPage />
+                <Navigator
+                    ref={nav => {this.navigator = nav;}}
+                    initialRoute={{name:'home', component:KeepPage,params:{...this.props}}}
+                    configureScene={this.configureScene}
+                    renderScene={this.renderScene}
+                />
             </View>
         )
+    }
+
+    configureScene(){
+        if (Platform.OS === 'android') {
+            return Navigator.SceneConfigs.FloatFromBottomAndroid;
+        }
+        return {...Navigator.SceneConfigs.HorizontalSwipeJump,gestures:null};
+    }
+
+    renderScene(route, navigator){
+        switch (route.name){
+            case 'home':
+                return <KeepPage {...route.params} navigator={navigator}/>;
+            default:
+                var Component = route.component;
+                if (route.component) {
+                    return <Component {...route.params} navigator={navigator}/>
+                }
+        }
     }
 }
 

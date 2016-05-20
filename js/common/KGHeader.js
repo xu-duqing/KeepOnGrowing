@@ -1,5 +1,6 @@
 /**
  * Created by Guang on 16/5/17.
+ * @providesModule KGHeader
  */
 import React,{
     Platform,
