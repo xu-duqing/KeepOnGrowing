@@ -5,7 +5,9 @@
 import React,{
     View,
     Image,
-    Dimensions
+    Dimensions,
+    ActionSheetIOS,
+    Platform
 } from 'react-native';
 
 import KGHeader from '../common/KGHeader';
@@ -21,13 +23,29 @@ import {
 
 import {Text} from 'KGText'
 
+var BUTTONS = [
+    '第一次',
+    '体重',
+    '身长',
+    '取消'
+];
+var CANCEL_INDEX = 3;
+
 class KeepPage extends React.Component{
+
+    // 构造
+      constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {};
+      }
 
     render(){
         const PlainFab = MKButton.coloredFab()
             .withBackgroundColor(MKColor.LightBlue)
             .withOnPress(() => {
-                this.props.dispatch(addFirst())
+                //this.props.dispatch(addFirst());
+                this.showActionSheet()
             })
             .build();
 
@@ -43,6 +61,22 @@ class KeepPage extends React.Component{
             </View>
         )
     }
+
+    showActionSheet() {
+        if (Platform.OS == 'ios'){
+            ActionSheetIOS.showActionSheetWithOptions({
+                    options: BUTTONS,
+                    cancelButtonIndex: CANCEL_INDEX,
+                    title:'添加记录'
+                },
+                (buttonIndex) => {
+                    this.setState({ clicked: BUTTONS[buttonIndex] });
+                });
+        }else {
+            //fixme Android选择弹框暂时没有实现, 寻找更好的方案 https://github.com/gowong/material-sheet-fab
+        }
+    }
+
 }
 
 const styles = React.StyleSheet.create({
