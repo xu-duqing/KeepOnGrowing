@@ -17,7 +17,7 @@ import KGDatePicker from 'KGDatePicker'
 export default class FirstKeep extends React.Component{
 
     // 构造
-      constructor(props) {
+    constructor(props) {
         super(props);
         // 初始状态
         this.state = {
@@ -25,7 +25,19 @@ export default class FirstKeep extends React.Component{
             modalVisible:false
         };
 
-      }
+    }
+
+    renderDatePicker(){
+        if(Platform.OS == 'ios'){
+            return(
+                <KGDatePicker ref={o => this.datePicker = o} date={this.state.date} onPress={(date) =>{
+                    this.setState({
+                        date:date
+                    })
+                }}/>
+            )
+        }
+    }
 
     render(){
 
@@ -47,13 +59,9 @@ export default class FirstKeep extends React.Component{
 
                 </TouchableOpacity>
 
-                {Platform.OS == 'ios'?<KGDatePicker ref={o => this.datePicker = o} date={date} onPress={(date) =>{
-                    this.setState({
-                        date:date
-                    })
-                }}/>:null}
 
 
+                {this.renderDatePicker()}
             </View>
         )
     }
