@@ -46,7 +46,6 @@ class KeepPage extends React.Component{
         const PlainFab = MKButton.coloredFab()
             .withBackgroundColor(MKColor.LightBlue)
             .withOnPress(() => {
-                //this.props.dispatch(addFirst());
                 this.showActionSheet()
             })
             .build();
@@ -88,7 +87,8 @@ class KeepPage extends React.Component{
     actionClick(index){
         this.props.navigator.push({
             component:FirstKeep,
-            name:'FirstKeep'
+            name:'FirstKeep',
+            params:{dispatch:this.props.dispatch}
         })
     }
 }

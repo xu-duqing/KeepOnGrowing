@@ -4,15 +4,10 @@
 
 import {KEEP} from './types';
 
-function addFirst(){
+function addFirst(action:{}){
     return {
         type:KEEP.ADD_FIRST,
-        keep:{
-            time:new Date().getTime(),
-            typeName:'第一次',
-            keynote:'换尿布',
-            note:'这是一段描述,记录当时的心情'
-        }
+        keep:action
     }
 }
 

@@ -13,6 +13,13 @@ import React,{
 import KGHeader from 'KGHeader'
 import {Text} from 'KGText'
 import KGDatePicker from 'KGDatePicker'
+import {
+    MKTextField,
+    MKColor,
+} from 'react-native-material-kit'
+import {
+    addFirst
+} from '../../action'
 
 export default class FirstKeep extends React.Component{
 
@@ -22,9 +29,8 @@ export default class FirstKeep extends React.Component{
         // 初始状态
         this.state = {
             date:new Date(),
-            modalVisible:false
+            title:''
         };
-
     }
 
     renderDatePicker(){
@@ -44,8 +50,17 @@ export default class FirstKeep extends React.Component{
         const date = this.state.date;
         return(
             <View style={{flex: 1}}>
-                <KGHeader title="记录第一次" leftItem={{icon:require('../../common/img/back.png'),onPress:() =>{
-                    this.props.navigator.pop()}}}/>
+                <KGHeader title="记录第一次" leftItem={{title:'取消',icon:require('../../common/img/back.png'),onPress:() =>{
+                    this.props.navigator.pop()}}} rightItem={{title:'完成',onPress:()=>{
+                        //fixme 提交数据
+                        this.props.dispatch(addFirst({
+                            time:this.state.date.getTime(),
+                            typeName:'第一次',
+                            keynote:this.state.title,
+                            note:'这是一段描述,记录当时的心情'
+                        }));
+                        this.props.navigator.pop()
+                    }}}/>
 
                 <TouchableOpacity style={styles.dateBox} onPress={() =>{
                     if (Platform.OS == 'ios'){
@@ -59,7 +74,17 @@ export default class FirstKeep extends React.Component{
 
                 </TouchableOpacity>
 
-
+                <View style={styles.titleField}>
+                    <MKTextField
+                        tintColor={MKColor.Lime}
+                        textInputStyle={{color: MKColor.Orange}}
+                        placeholder='标题'
+                        onTextChange={(e) =>{
+                            this.setState({
+                                title:e
+                            })
+                        }}/>
+                </View>
 
                 {this.renderDatePicker()}
             </View>
@@ -87,6 +112,10 @@ const styles = React.StyleSheet.create({
         padding:11,
         borderWidth:1,
         borderColor:'#ccc'
-
+    },
+    titleField:{
+        marginTop:14,
+        paddingLeft:11,
+        paddingRight:11
     }
 });
