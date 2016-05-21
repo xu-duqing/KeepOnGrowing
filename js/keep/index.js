@@ -52,7 +52,7 @@ class KeepPage extends React.Component{
 
         return(
             <View style={{flex:1}}>
-                <KGHeader/>
+                <KGHeader title='成长日记'/>
                 <KeepListView data={this.props.keep.data}/>
                 <View style={styles.plusBox}>
                     <PlainFab>

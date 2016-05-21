@@ -13,10 +13,9 @@ export default class FirstKeep extends React.Component{
     render(){
         return(
             <View>
-                <KGHeader />
-                <Text>
-                    第一次编辑页面
-                </Text>
+                <KGHeader title="记录第一次" leftItem={{icon:require('../../common/img/back.png'),onPress:() =>{
+                    this.props.navigator.pop()}}}/>
+
             </View>
         )
     }

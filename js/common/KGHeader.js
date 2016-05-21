@@ -6,7 +6,9 @@ import React,{
     Platform,
     View,
     ToolbarAndroid,
-    TouchableOpacity
+    TouchableOpacity,
+    PropTypes,
+    Image
 } from 'react-native'
 
 import {Text} from 'KGText';
@@ -28,19 +30,27 @@ class KGHeaderIOS extends  React.Component{
 
 
     render(){
+        const {title,leftItem,rightItem} = this.props;
         return(
             <View style={styles.header}>
 
-                <View style={styles.rightItem}>
-                    <ItemWrapperIOS />
+                <View style={styles.leftItem}>
+                    <ItemWrapperIOS {...leftItem}/>
                 </View>
 
-                <Text style={styles.titleText}>
-                    成长日记
-                </Text>
+                <View
+                    accessible={true}
+                    accessibilityLabel={title}
+                    accessibilityTraits="header"
+                    style={styles.centerItem}>
+
+                    <Text style={styles.titleText}>
+                        {title}
+                    </Text>
+                </View>
 
                 <View style={styles.rightItem}>
-                    <ItemWrapperIOS />
+                    <ItemWrapperIOS {...rightItem}/>
                 </View>
             </View>
         )
@@ -50,27 +60,45 @@ class KGHeaderIOS extends  React.Component{
 class ItemWrapperIOS extends React.Component{
 
     render(){
-
-        const center =
-            <View>
+        const {title,icon,onPress} = this.props;
+        var center;
+        if (title){
+            center = (
                 <Text>
-                   添加
+                    {title}
                 </Text>
-            </View>;
-        return(
-            <TouchableOpacity
-                style={styles.itemBox}>
-                {center}
-            </TouchableOpacity>
-        )
+            );
+        }else if (icon){
+            center = <Image source={icon} />
+        }
+
+        if (center){
+            return(
+                <TouchableOpacity
+                    onPress={() =>{
+                        onPress && onPress();
+                    }}
+                    style={styles.itemBox}>
+                    {center}
+                </TouchableOpacity>
+            )
+        }
+
+        return null
     }
 }
 
 class KGHeader extends React.Component{
 
+    static propTypes ={
+        title:PropTypes.string,
+        leftItem:PropTypes.object,
+        rightItem:PropTypes.object
+    };
+
     render(){
         if(Platform.OS == 'ios'){
-            return <KGHeaderIOS />
+            return <KGHeaderIOS {...this.props}/>
         }else {
             return <KGHeaderAndroid />
         }
@@ -104,11 +132,17 @@ var styles = React.StyleSheet.create({
     itemBox:{
         padding:11
     },
-    leftItem:{
-
+    centerItem: {
+        flex: 2,
+        alignItems: 'center',
+    },
+    leftItem: {
+        flex: 1,
+        alignItems: 'flex-start',
     },
     rightItem:{
-
+        flex: 1,
+        alignItems: 'flex-end',
     }
 });
 
