@@ -14,6 +14,7 @@ import KGHeader from '../common/KGHeader';
 import KeepListView from './KeepListView';
 import FirstKeep from './FirstKeep'
 import {connect} from 'react-redux'
+import KGActionSheet from '../common/KGActionSheet';
 import {
     MKButton,
     MKColor,
@@ -59,6 +60,14 @@ class KeepPage extends React.Component{
                         <Image pointerEvents="none" source={require('./img/plus_white.png')} />
                     </PlainFab>
                 </View>
+
+                <KGActionSheet
+                    ref={(o) => this.ActionSheet = o}
+                    title="添加记录"
+                    options={BUTTONS}
+                    cancelButtonIndex={CANCEL_INDEX}
+                    onPress={(index) => this.actionClick(index)}
+                />
             </View>
         )
     }
@@ -72,6 +81,7 @@ class KeepPage extends React.Component{
                 },(index) => this.actionClick(index));
         }else {
             //fixme Android选择弹框暂时没有实现, 寻找更好的方案 https://github.com/gowong/material-sheet-fab
+            this.ActionSheet.show();
         }
     }
 

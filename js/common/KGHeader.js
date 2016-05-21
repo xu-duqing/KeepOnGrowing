@@ -16,11 +16,15 @@ import {Text} from 'KGText';
 class KGHeaderAndroid extends React.Component{
 
     render(){
+        const {title,leftItem,rightItem} = this.props;
+
         return(
             <View style={styles.toolbarContainer}>
                 <ToolbarAndroid
                     style={styles.toolbar}
-                    title="成长日记"/>
+                    navIcon={leftItem && leftItem.icon}
+                    onIconClicked={leftItem && leftItem.onPress}
+                    title={title}/>
             </View>
         )
     }
@@ -100,7 +104,7 @@ class KGHeader extends React.Component{
         if(Platform.OS == 'ios'){
             return <KGHeaderIOS {...this.props}/>
         }else {
-            return <KGHeaderAndroid />
+            return <KGHeaderAndroid {...this.props}/>
         }
     }
 }
