@@ -20,7 +20,8 @@ import {
     MKColor,
 } from 'react-native-material-kit'
 import {
-    addFirst
+    addFirst,
+    keepClear
 } from '../action'
 
 import {Text} from 'KGText'
@@ -35,12 +36,12 @@ var CANCEL_INDEX = 3;
 
 class KeepPage extends React.Component{
 
-    // 构造
-      constructor(props) {
+// 构造
+    constructor(props) {
         super(props);
         // 初始状态
         this.state = {};
-      }
+    }
 
     render(){
         const PlainFab = MKButton.coloredFab()
