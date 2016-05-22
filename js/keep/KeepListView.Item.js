@@ -10,11 +10,20 @@ import {Text} from 'KGText';
 export default class KeepListViewItem extends React.Component{
 
     render(){
+        const data = this.props.data;
+        let title ='';
+        if (data.type == 'first'){
+            title = data.keynote
+        }else if (data.type == 'height'){
+            title = data.height
+        }else {
+            title = data.weight
+        }
         return(
             <View style={styles.itemBox}>
-                <Text>{this.props.data.typeName}:</Text>
+                <Text>{data.typeName}:</Text>
                 <View style={{flex:1}}>
-                    <Text>{this.props.data.keynote}</Text>
+                    <Text>{title}</Text>
                 </View>
             </View>
         )

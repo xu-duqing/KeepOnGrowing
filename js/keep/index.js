@@ -13,6 +13,8 @@ import React,{
 import KGHeader from '../common/KGHeader';
 import KeepListView from './KeepListView';
 import FirstKeep from './FirstKeep'
+import HeightKeep from './HeightKeep'
+import WeightKeep from './WeightKeep'
 import {connect} from 'react-redux'
 import KGActionSheet from '../common/KGActionSheet';
 import {
@@ -86,11 +88,33 @@ class KeepPage extends React.Component{
     }
 
     actionClick(index){
-        this.props.navigator.push({
-            component:FirstKeep,
-            name:'FirstKeep',
-            params:{dispatch:this.props.dispatch}
-        })
+        let component;
+        switch (index){
+            case 0:
+                component = {
+                    component:FirstKeep,
+                    name:'FirstKeep',
+                    params:{dispatch:this.props.dispatch}
+                };
+                break;
+            case 1:
+                component = {
+                    component:WeightKeep,
+                    name:'WeightKeep',
+                    params:{dispatch:this.props.dispatch}
+                };
+                break;
+            case 2:
+                component = {
+                    component:HeightKeep,
+                    name:'HeightKeep',
+                    params:{dispatch:this.props.dispatch}
+                };
+                break;
+        }
+
+        if (component)
+            this.props.navigator.push(component)
     }
 }
 

@@ -10,7 +10,7 @@ const initializeState = {
 
 export default function keep(state = initializeState,action){
     switch (action.type){
-        case KEEP.ADD_FIRST:
+        case KEEP.ADD_KEEP:
             return Object.assign({},state,{
                 data:action.keeps
             });

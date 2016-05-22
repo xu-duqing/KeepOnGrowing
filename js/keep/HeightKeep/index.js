@@ -1,5 +1,5 @@
 /**
- * Created by Guang on 16/5/20.
+ * Created by Guang on 16/5/22.
  */
 
 import React,{
@@ -18,10 +18,10 @@ import {
     MKColor,
 } from 'react-native-material-kit'
 import {
-    addFirst
+    addHeight
 } from '../../action'
 
-export default class FirstKeep extends React.Component{
+export default class HeighKeep extends React.Component{
 
     // 构造
     constructor(props) {
@@ -29,7 +29,7 @@ export default class FirstKeep extends React.Component{
         // 初始状态
         this.state = {
             date:new Date(),
-            title:''
+            height:0
         };
     }
 
@@ -50,12 +50,12 @@ export default class FirstKeep extends React.Component{
         const date = this.state.date;
         return(
             <View style={{flex: 1}}>
-                <KGHeader title="记录第一次" leftItem={{title:'取消',icon:require('../../common/img/back.png'),onPress:() =>{
+                <KGHeader title="记录身高" leftItem={{title:'取消',icon:require('../../common/img/back.png'),onPress:() =>{
                     this.props.navigator.pop()}}} rightItem={{title:'完成',icon:require('../img/plus_dark.png'),onPress:()=>{
                         //fixme 提交数据
-                        this.props.dispatch(addFirst({
+                        this.props.dispatch(addHeight({
                             time:this.state.date.getTime(),
-                            keynote:this.state.title,
+                            height:parseFloat(this.state.height),
                             note:'这是一段描述,记录当时的心情'
                         }));
                         this.props.navigator.pop()
@@ -75,14 +75,20 @@ export default class FirstKeep extends React.Component{
 
                 <View style={styles.titleField}>
                     <MKTextField
+                        style={{flex:1,height:36,paddingRight:10}}
                         tintColor={MKColor.Lime}
                         textInputStyle={{color: MKColor.Orange}}
-                        placeholder='标题'
+                        placeholder='身高'
+                        keyboardType="numeric"
                         onTextChange={(e) =>{
                             this.setState({
-                                title:e
+                                height:e
                             })
                         }}/>
+
+                    <Text>
+                        厘米
+                    </Text>
                 </View>
 
                 {this.renderDatePicker()}
@@ -115,6 +121,8 @@ const styles = React.StyleSheet.create({
     titleField:{
         marginTop:14,
         paddingLeft:11,
-        paddingRight:11
+        paddingRight:11,
+        flexDirection:'row',
+        alignItems:'center'
     }
 });

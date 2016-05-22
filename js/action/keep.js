@@ -4,14 +4,40 @@
 
 import {KEEP} from './types';
 
-function addFirst(action:{}){
+function addFirst(keep:{}){
     return (dispatch,getState) =>{
+        keep.typeName ='第一次';
+        keep.type ='first';
         let keeps = getState().keep.data;
-        keeps.push(action);
-        dispatch({
-            type:KEEP.ADD_FIRST,
-            keeps
-        })
+        keeps.push(keep);
+        dispatch(addKeep(keeps))
+    }
+}
+
+function addHeight(keep){
+    return (dispatch,getState) =>{
+        keep.typeName ='身高';
+        keep.type ='height';
+        let keeps = getState().keep.data;
+        keeps.push(keep);
+        dispatch(addKeep(keeps))
+    }
+}
+
+function addWeight(keep){
+    return (dispatch,getState) =>{
+        keep.typeName ='体重';
+        keep.type ='weight';
+        let keeps = getState().keep.data;
+        keeps.push(keep);
+        dispatch(addKeep(keeps))
+    }
+}
+
+function addKeep(keeps){
+    return{
+        type:KEEP.ADD_KEEP,
+        keeps
     }
 }
 
@@ -23,5 +49,7 @@ function keepClear(){
 
 module.exports = {
     addFirst,
-    keepClear
+    keepClear,
+    addHeight,
+    addWeight
 };

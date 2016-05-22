@@ -8,6 +8,6 @@ export const EXAMPLE = {
 };
 
 export const KEEP = {
-    ADD_FIRST : 'ADD_FIRST',
+    ADD_KEEP : 'ADD_KEEP',
     KEEP_CLEAR : 'KEEP_CLEAR'
 };
