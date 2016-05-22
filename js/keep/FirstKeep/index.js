@@ -51,7 +51,7 @@ export default class FirstKeep extends React.Component{
         return(
             <View style={{flex: 1}}>
                 <KGHeader title="记录第一次" leftItem={{title:'取消',icon:require('../../common/img/back.png'),onPress:() =>{
-                    this.props.navigator.pop()}}} rightItem={{title:'完成',onPress:()=>{
+                    this.props.navigator.pop()}}} rightItem={{title:'完成',icon:require('../img/plus_dark.png'),onPress:()=>{
                         //fixme 提交数据
                         this.props.dispatch(addFirst({
                             time:this.state.date.getTime(),

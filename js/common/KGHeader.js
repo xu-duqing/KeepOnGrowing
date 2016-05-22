@@ -15,8 +15,26 @@ import {Text} from 'KGText';
 
 class KGHeaderAndroid extends React.Component{
 
+    handleActionSelected(position: number) {
+        let items =  [];
+        if (this.props.rightItem) {
+            items = [this.props.rightItem, ...items];
+        }
+        const item = items[position];
+        item && item.onPress && item.onPress();
+    }
+
     render(){
-        const {title,leftItem,rightItem} = this.props;
+        const {leftItem,rightItem} = this.props;
+        let actions = [];
+        if (rightItem) {
+            const {title, icon, layout} = rightItem;
+            actions.push({
+                icon: layout !== 'title' ? icon : undefined,
+                title: title,
+                show: 'always',
+            });
+        }
 
         return(
             <View style={styles.toolbarContainer}>
@@ -24,7 +42,9 @@ class KGHeaderAndroid extends React.Component{
                     style={styles.toolbar}
                     navIcon={leftItem && leftItem.icon}
                     onIconClicked={leftItem && leftItem.onPress}
-                    title={title}/>
+                    title={this.props.title}
+                    actions={actions}
+                    onActionSelected={this.handleActionSelected.bind(this)}/>
             </View>
         )
     }
