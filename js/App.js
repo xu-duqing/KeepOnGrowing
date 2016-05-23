@@ -13,7 +13,6 @@ import {
     reduce
 } from './action'
 import codePush from "react-native-code-push";
-const CODE_PUSH_PRODUCTION_KEY = 'g0-MT7iuWOLkjS_Kz2hPmTG7pTvQNJKWkMWZW';
 
 import KeepPage from './keep'
 
@@ -24,7 +23,6 @@ export default class Root extends React.Component{
         codePush.sync({
             updateDialog: false,
             installMode: codePush.InstallMode.ON_NEXT_RESUME,
-            deploymentKey: CODE_PUSH_PRODUCTION_KEY,
         })
     }
 
