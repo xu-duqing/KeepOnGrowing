@@ -37,7 +37,7 @@ class KGHeaderAndroid extends React.Component{
         }
 
         return(
-            <View style={styles.toolbarContainer}>
+            <View style={[styles.toolbarContainer,this.props.style]}>
                 <ToolbarAndroid
                     style={styles.toolbar}
                     navIcon={leftItem && leftItem.icon}
@@ -56,7 +56,7 @@ class KGHeaderIOS extends  React.Component{
     render(){
         const {title,leftItem,rightItem} = this.props;
         return(
-            <View style={styles.header}>
+            <View style={[styles.header,this.props.style]}>
 
                 <View style={styles.leftItem}>
                     <ItemWrapperIOS {...leftItem}/>
@@ -112,22 +112,8 @@ class ItemWrapperIOS extends React.Component{
     }
 }
 
-class KGHeader extends React.Component{
 
-    static propTypes ={
-        title:PropTypes.string,
-        leftItem:PropTypes.object,
-        rightItem:PropTypes.object
-    };
-
-    render(){
-        if(Platform.OS == 'ios'){
-            return <KGHeaderIOS {...this.props}/>
-        }else {
-            return <KGHeaderAndroid {...this.props}/>
-        }
-    }
-}
+const KGHeader = Platform.OS === 'ios' ? KGHeaderIOS : KGHeaderAndroid;
 
 var STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
 var HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
@@ -149,7 +135,7 @@ var styles = React.StyleSheet.create({
         height: HEADER_HEIGHT - STATUS_BAR_HEIGHT,
     },
     titleText:{
-        color: '#000',
+        color: '#e7888c',
         fontWeight: 'bold',
         fontSize: 20,
     },

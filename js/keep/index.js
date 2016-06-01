@@ -27,6 +27,7 @@ import {
 } from '../action'
 
 import {Text} from 'KGText'
+import * as KGColor from 'KGColor'
 
 var BUTTONS = [
     '第一次',
@@ -55,21 +56,9 @@ class KeepPage extends React.Component{
 
         return(
             <View style={{flex:1}}>
-                <KGHeader title='成长日记'/>
+                <KGHeader title='小诺的成长日记' style={{backgroundColor:KGColor.primary}}/>
                 <KeepListView data={this.props.keep.data}/>
-                <View style={styles.plusBox}>
-                    <PlainFab>
-                        <Image pointerEvents="none" source={require('./img/plus_white.png')} />
-                    </PlainFab>
-                </View>
 
-                <KGActionSheet
-                    ref={(o) => this.ActionSheet = o}
-                    title="添加记录"
-                    options={BUTTONS}
-                    cancelButtonIndex={CANCEL_INDEX}
-                    onPress={(index) => this.actionClick(index)}
-                />
             </View>
         )
     }

@@ -20,7 +20,7 @@ export default class KeepListView extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            keeps:{}
+            keeps:[1,2,3,4,5,6,7,8]
         };
     }
 
@@ -45,7 +45,7 @@ export default class KeepListView extends React.Component{
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            keeps:this.keepsToDateSource(nextProps.data)
+            keeps:[1]
         })
     }
 
@@ -55,19 +55,11 @@ export default class KeepListView extends React.Component{
         )
     }
 
-    renderSectionHeader(sectionData,sectionID){
-        return(
-            <SelectHeader time={parseInt(sectionID)}/>
-        )
-    }
-
-
     render(){
         return(
             <ListView
-                dataSource={ds.cloneWithRowsAndSections(this.state.keeps)}
-                renderRow={this.renderRow}
-                renderSectionHeader={this.renderSectionHeader}/>
+                dataSource={ds.cloneWithRows(this.state.keeps)}
+                renderRow={this.renderRow}/>
         )
     }
 }
