@@ -33,7 +33,7 @@ export default class KeepListViewItem extends React.Component{
                     </Text>
 
                     <Text style={styles.subtitleText} numberOfLines={2}>
-                        开始时间: 12:09  结束时间: 12:40
+                        开始: 12:09  结束: 12:40
                     </Text>
                 </View>
             )
@@ -46,7 +46,7 @@ export default class KeepListViewItem extends React.Component{
 
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.subtitleText} numberOfLines={2}>
-                            开始时间: 12:09
+                            开始: 12:09
                         </Text>
 
                         <View style={styles.btnBox}>
@@ -65,7 +65,7 @@ export default class KeepListViewItem extends React.Component{
                     </Text>
 
                     <Text style={styles.subtitleText} numberOfLines={2}>
-                        开始时间: 12:09  结束时间: 12:40
+                        开始: 12:09  结束: 12:40
                     </Text>
                 </View>
             )
@@ -78,7 +78,7 @@ export default class KeepListViewItem extends React.Component{
 
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.subtitleText} numberOfLines={2}>
-                            开始时间: 12:09
+                            开始: 12:09
                         </Text>
 
                         <View style={styles.btnBox}>
@@ -123,15 +123,15 @@ export default class KeepListViewItem extends React.Component{
         return(
             <View style={[styles.itemBox,{backgroundColor:backgroundColor}]}>
                 <View style={styles.dateBox}>
-                    <Text style={[{fontWeight:'bold'},styles.dateText]}>
+                    <Text style={{fontWeight:'bold',fontSize:18,color:KGColor.primaryText}}>
                         5月31
                     </Text>
-                    <Text style={styles.dateText}>
+                    <Text style={{fontSize:16,color:KGColor.primaryText}}>
                         2016
                     </Text>
                 </View>
 
-                <View style={{alignItems:'center'}}>
+                <View style={{alignItems:'center',marginLeft:11}}>
                     <View style={{flex: 1,width: 1,backgroundColor:'#FFF'}}/>
                     <View style={styles.iconBox}/>
                     <View style={{flex: 2,width: 1,backgroundColor:'#FFF'}}/>
@@ -150,14 +150,9 @@ const styles = React.StyleSheet.create({
         backgroundColor:"#f7a7aa"
     },
     dateBox:{
-        flex:1,
-        paddingRight:11,
+        paddingLeft:11,
         paddingTop:23,
         alignItems:'flex-end'
-    },
-    dateText:{
-        fontSize:18,
-        color:KGColor.primaryText
     },
     iconBox:{
         width:32,
@@ -168,19 +163,20 @@ const styles = React.StyleSheet.create({
         backgroundColor:'#FFF'
     },
     contentBox:{
-        flex:4,
+        flex:1,
         paddingTop:23,
         paddingLeft:11,
         paddingRight:11
     },
     titleText:{
         fontSize:18,
-        color:'#FFF'
+        color:'#FFF',
+        fontWeight:'bold'
     },
     subtitleText:{
-        fontSize:14,
+        fontSize:16,
         color:'#FFF',
-        marginTop:10
+        marginTop:6
     },
     btnBox:{
         height:32,

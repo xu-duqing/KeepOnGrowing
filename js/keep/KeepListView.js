@@ -45,7 +45,7 @@ export default class KeepListView extends React.Component{
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            keeps:[1]
+            keeps:[1,2,3,4,5,6,7,8]
         })
     }
 
