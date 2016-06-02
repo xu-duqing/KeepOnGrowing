@@ -7,7 +7,7 @@ import React,{
 } from 'react-native'
 
 import ListItem from './KeepListView.Item';
-import SelectHeader from './KeepListView.Header';
+import Header from './KeepListView.Header';
 import {getDayTime} from '../utils/date_utils';
 
 
@@ -55,10 +55,17 @@ export default class KeepListView extends React.Component{
         )
     }
 
+    renderHeader(){
+        return(
+            <Header />
+        )
+    }
+
     render(){
         return(
             <ListView
                 dataSource={ds.cloneWithRows(this.state.keeps)}
+                renderHeader={this.renderHeader}
                 renderRow={this.renderRow}/>
         )
     }
