@@ -17,10 +17,8 @@ import HeightKeep from './HeightKeep'
 import WeightKeep from './WeightKeep'
 import {connect} from 'react-redux'
 import KGActionSheet from '../common/KGActionSheet';
-import {
-    MKButton,
-    MKColor,
-} from 'react-native-material-kit'
+import ActionButton from 'react-native-action-button';
+
 import {
     addFirst,
     keepClear
@@ -47,18 +45,17 @@ class KeepPage extends React.Component{
     }
 
     render(){
-        const PlainFab = MKButton.coloredFab()
-            .withBackgroundColor(MKColor.LightBlue)
-            .withOnPress(() => {
-                this.showActionSheet()
-            })
-            .build();
 
         return(
             <View style={{flex:1}}>
-                <KGHeader title='小诺的成长日记' style={{backgroundColor:KGColor.primary}}/>
+                <KGHeader title='小诺成长记' style={{backgroundColor:KGColor.primary}}/>
                 <KeepListView data={this.props.keep.data}/>
 
+                <View style={styles.plusBox}>
+                    <ActionButton
+                        buttonColor="#ffed44"
+                        onPress={() => { console.log("hi")}}/>
+                </View>
             </View>
         )
     }
@@ -110,8 +107,8 @@ class KeepPage extends React.Component{
 const styles = React.StyleSheet.create({
     plusBox:{
         position:'absolute',
-        bottom:10,
-        left:Dimensions.get('window').width/2 - 27
+        bottom:80,
+        right:100
     }
 });
 

@@ -3,8 +3,6 @@ PODS:
     - React
   - React (0.24.1):
     - React/Core (= 0.24.1)
-  - react-native-material-kit (0.3.1):
-    - React
   - React/Core (0.24.1)
   - React/RCTImage (0.24.1):
     - React/Core
@@ -18,7 +16,6 @@ PODS:
 
 DEPENDENCIES:
   - CodePush (from `../node_modules/react-native-code-push`)
-  - react-native-material-kit (from `../node_modules/react-native-material-kit`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
@@ -30,14 +27,11 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-code-push
   React:
     :path: ../node_modules/react-native
-  react-native-material-kit:
-    :path: ../node_modules/react-native-material-kit
 
 SPEC CHECKSUMS:
   CodePush: 735cea7534887142db6506c91bbfcc3be3219c7f
   React: 386bbe687faee56ab75bad6132813945d5857403
-  react-native-material-kit: 02c8903edd815151f87a39f69ab10bf13bd8cdd7
 
-PODFILE CHECKSUM: c7c385e8b0ff8ebe8518bdb164dccc42f0ae46f4
+PODFILE CHECKSUM: 704a1f4b06971f5ba7c94ee6fe8342dd9ed1a13c
 
 COCOAPODS: 1.0.0.rc.2

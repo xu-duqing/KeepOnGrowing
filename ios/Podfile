@@ -12,10 +12,9 @@ target 'KeepOnGrowing' do
       'RCTWebSocket',
     ]
     pod 'CodePush', :path => '../node_modules/react-native-code-push'
-    pod 'react-native-material-kit', :path => '../node_modules/react-native-material-kit'
-
+    
   # Pods for KeepOnGrowing
-
+ 
 #target 'KeepOnGrowingTests' do
 #inherit! :search_paths
     # Pods for testing
