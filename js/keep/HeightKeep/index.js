@@ -13,10 +13,7 @@ import React,{
 import KGHeader from 'KGHeader'
 import {Text} from 'KGText'
 import KGDatePicker from 'KGDatePicker'
-import {
-    MKTextField,
-    MKColor,
-} from 'react-native-material-kit'
+
 import {
     addHeight
 } from '../../action'
@@ -74,17 +71,6 @@ export default class HeighKeep extends React.Component{
                 </TouchableOpacity>
 
                 <View style={styles.titleField}>
-                    <MKTextField
-                        style={{flex:1,height:36,paddingRight:10}}
-                        tintColor={MKColor.Lime}
-                        textInputStyle={{color: MKColor.Orange}}
-                        placeholder='身高'
-                        keyboardType="numeric"
-                        onTextChange={(e) =>{
-                            this.setState({
-                                height:e
-                            })
-                        }}/>
 
                     <Text>
                         厘米

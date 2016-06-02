@@ -13,10 +13,7 @@ import React,{
 import KGHeader from 'KGHeader'
 import {Text} from 'KGText'
 import KGDatePicker from 'KGDatePicker'
-import {
-    MKTextField,
-    MKColor,
-} from 'react-native-material-kit'
+
 import {
     addFirst
 } from '../../action'
@@ -73,17 +70,6 @@ export default class FirstKeep extends React.Component{
 
                 </TouchableOpacity>
 
-                <View style={styles.titleField}>
-                    <MKTextField
-                        tintColor={MKColor.Lime}
-                        textInputStyle={{color: MKColor.Orange}}
-                        placeholder='标题'
-                        onTextChange={(e) =>{
-                            this.setState({
-                                title:e
-                            })
-                        }}/>
-                </View>
 
                 {this.renderDatePicker()}
             </View>

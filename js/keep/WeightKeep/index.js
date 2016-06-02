@@ -13,10 +13,7 @@ import React,{
 import KGHeader from 'KGHeader'
 import {Text} from 'KGText'
 import KGDatePicker from 'KGDatePicker'
-import {
-    MKTextField,
-    MKColor,
-} from 'react-native-material-kit'
+
 import {
     addWeight
 } from '../../action'
@@ -74,17 +71,7 @@ export default class WeightKeep extends React.Component{
                 </TouchableOpacity>
 
                 <View style={styles.titleField}>
-                    <MKTextField
-                        style={{flex:1,height:36,paddingRight:10}}
-                        tintColor={MKColor.Lime}
-                        textInputStyle={{color: MKColor.Orange}}
-                        placeholder='体重'
-                        keyboardType="number-pad"
-                        onTextChange={(e) =>{
-                            this.setState({
-                                weight:e
-                            })
-                        }}/>
+
 
                     <Text>
                         千克
