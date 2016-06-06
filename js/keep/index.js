@@ -48,7 +48,7 @@ class KeepPage extends React.Component{
 
         return(
             <View style={{flex:1}}>
-                <KGHeader title='小诺成长记' style={{backgroundColor:KGColor.primary}}/>
+                <KGHeader title='小诺成长记' style={{backgroundColor:'#e7888c'}}/>
                 <KeepListView data={this.props.keep.data}/>
 
                 <View style={styles.plusBox}>

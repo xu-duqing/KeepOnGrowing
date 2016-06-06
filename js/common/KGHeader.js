@@ -135,7 +135,7 @@ var styles = React.StyleSheet.create({
         height: HEADER_HEIGHT - STATUS_BAR_HEIGHT,
     },
     titleText:{
-        color: '#e7888c',
+        color: '#fff',
         fontWeight: 'bold',
         fontSize: 20,
     },

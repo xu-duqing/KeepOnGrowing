@@ -118,22 +118,25 @@ export default class KeepListViewItem extends React.Component{
 
     render(){
 
-        const backgroundColor = this.props.data%2 === 0?'#f7a7aa':'#e9808e';
+        const backgroundColor = this.props.data%2 === 0?KGColor.primary:'#f7a7aa';
+        const textColor = this.props.data%2 === 0?'#fff':KGColor.primaryText;
 
         return(
             <View style={[styles.itemBox,{backgroundColor:backgroundColor}]}>
                 <View style={styles.dateBox}>
-                    <Text style={{fontWeight:'bold',fontSize:18,color:KGColor.primaryText}}>
+                    <Text style={{fontWeight:'bold',fontSize:18,color:textColor}}>
                         5月31
                     </Text>
-                    <Text style={{fontSize:16,color:KGColor.primaryText}}>
+                    <Text style={{fontSize:16,color:textColor}}>
                         2016
                     </Text>
                 </View>
 
                 <View style={{alignItems:'center',marginLeft:11}}>
                     <View style={{flex: 1,width: 1,backgroundColor:'#FFF'}}/>
-                    <View style={styles.iconBox}/>
+                    <View style={styles.iconBox}>
+                        <Image style={styles.iconImg} source = {require('./img/ic_rili.png')}></Image>
+                    </View>
                     <View style={{flex: 2,width: 1,backgroundColor:'#FFF'}}/>
                 </View>
 
@@ -160,7 +163,13 @@ const styles = React.StyleSheet.create({
         borderRadius:16,
         borderWidth:2,
         borderColor:'#f8bfbe',
-        backgroundColor:'#FFF'
+        backgroundColor:'#FFF',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    iconImg:{
+        width:18,
+        height:18
     },
     contentBox:{
         flex:1,
