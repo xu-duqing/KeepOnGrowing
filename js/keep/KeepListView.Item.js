@@ -9,7 +9,6 @@ import React,{
 import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
 
-
 export default class KeepListViewItem extends React.Component{
 
     renderContent(data){
@@ -26,6 +25,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else if (data == 2){
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -38,6 +38,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else if(data == 3){
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -58,6 +59,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else if (data == 4){
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -70,6 +72,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else if(data == 5){
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -90,6 +93,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else if(data == 6){
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -102,6 +106,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
             )
         }else {
+
             return(
                 <View style={styles.contentBox}>
                     <Text style={styles.titleText} numberOfLines={1}>
@@ -120,6 +125,22 @@ export default class KeepListViewItem extends React.Component{
 
         const backgroundColor = this.props.data%2 === 0?KGColor.primary:'#f7a7aa';
         const textColor = this.props.data%2 === 0?'#fff':KGColor.primaryText;
+        let iconImg;
+        if(this.props.data == 1)
+        {
+            iconImg = require('./img/ic_naifen.png');
+        }else if (this.props.data == 2 || this.props.data == 3)
+        {
+            iconImg = require('./img/ic_muru.png');
+        }else if (this.props.data == 4 || this.props.data == 5)
+        {
+            iconImg = require('./img/ic_shuijiao.png');
+        }else if (this.props.data == 6)
+        {
+            iconImg = require('./img/ic_bianbian.png');
+        }else {
+            iconImg = require('./img/ic_diyici.png');
+        }
 
         return(
             <View style={[styles.itemBox,{backgroundColor:backgroundColor}]}>
@@ -135,7 +156,7 @@ export default class KeepListViewItem extends React.Component{
                 <View style={{alignItems:'center',marginLeft:11}}>
                     <View style={{flex: 1,width: 1,backgroundColor:'#FFF'}}/>
                     <View style={styles.iconBox}>
-                        <Image style={styles.iconImg} source = {require('./img/ic_rili.png')}></Image>
+                        <Image style={styles.iconImg} source = {iconImg}></Image>
                     </View>
                     <View style={{flex: 2,width: 1,backgroundColor:'#FFF'}}/>
                 </View>
