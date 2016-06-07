@@ -12,12 +12,10 @@ import React,{
 
 import KGHeader from '../common/KGHeader';
 import KeepListView from './KeepListView';
-import FirstKeep from './FirstKeep'
-import HeightKeep from './HeightKeep'
-import WeightKeep from './WeightKeep'
 import {connect} from 'react-redux'
 import KGActionSheet from '../common/KGActionSheet';
 import ActionButton from 'react-native-action-button';
+import AddPage from '../add'
 
 import {
     addFirst,
@@ -51,11 +49,14 @@ class KeepPage extends React.Component{
                 <KGHeader title='小诺成长记' style={{backgroundColor:'#e7888c'}}/>
                 <KeepListView data={this.props.keep.data}/>
 
-                <View style={styles.plusBox}>
-                    <ActionButton
-                        buttonColor="#ffed44"
-                        onPress={() => { console.log("hi")}}/>
-                </View>
+                <ActionButton
+                    buttonColor="#FF6666"
+                    onPress={() => {
+                            this.props.navigator.push({
+                                component:AddPage,
+                                name:'AddPage'
+                            })
+                        }}/>
             </View>
         )
     }

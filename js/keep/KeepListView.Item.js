@@ -4,7 +4,8 @@
 
 import React,{
     View,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native'
 import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
@@ -143,7 +144,8 @@ export default class KeepListViewItem extends React.Component{
         }
 
         return(
-            <View style={[styles.itemBox,{backgroundColor:backgroundColor}]}>
+            <TouchableOpacity style={[styles.itemBox,{backgroundColor:backgroundColor}]}
+                              onPress={this.props.onPress}>
                 <View style={styles.dateBox}>
                     <Text style={{fontWeight:'bold',fontSize:18,color:textColor}}>
                         5月31
@@ -162,7 +164,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
 
                 {this.renderContent(this.props.data)}
-            </View>
+            </TouchableOpacity>
         )
     }
 }
