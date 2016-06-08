@@ -16,6 +16,18 @@ import {Text} from 'KGText'
 import * as KGColor from 'KGColor'
 import ActionButton from 'react-native-action-button';
 
+class AddButton extends React.Component{
+
+    render(){
+        return(
+            <View style={styles.btnBox}>
+                <Text style={{fontSize:14,color:'#e8888c'}}>
+                    {this.props.name}
+                </Text>
+            </View>
+        )
+    }
+}
 
 
 export default class AddPage extends React.Component{
@@ -26,50 +38,13 @@ export default class AddPage extends React.Component{
             <View style={{flex:1}}>
                 <KGHeader title='新的记录' style={{backgroundColor:KGColor.primary}}/>
                 <View style={styles.actionBox}>
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            吃奶粉啦
-                        </Text>
-                    </View>
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            喂母乳
-                        </Text>
-                    </View>
-
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            睡觉觉
-                        </Text>
-                    </View>
-
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            拉臭臭
-                        </Text>
-                    </View>
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            第一次
-                        </Text>
-                    </View>
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            量身高
-                        </Text>
-                    </View>
-
-                    <View style={styles.btnBox}>
-                        <Text style={{fontSize:14,color:'#e8888c'}}>
-                            称体重
-                        </Text>
-                    </View>
-
+                    <AddButton name="吃奶粉啦"/>
+                    <AddButton name="喂母乳"/>
+                    <AddButton name="睡觉觉"/>
+                    <AddButton name="拉臭臭"/>
+                    <AddButton name="第一次"/>
+                    <AddButton name="量身高"/>
+                    <AddButton name="称体重"/>
                 </View>
 
 
