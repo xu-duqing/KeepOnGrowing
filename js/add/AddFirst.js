@@ -21,53 +21,45 @@ export default class AddFirst extends React.Component{
         return(
             <View style={styles.pageBox}>
 
-                <View style={styles.pageBox}>
+                <View style={styles.itemBox}>
 
-                    <View style={styles.pageBox}>
+                    <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}/>
 
-                        <View style={styles.itemBox}>
-
-                            <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}></Image>
-
-                            <Text style={styles.textContent}>
-                                2016-06-08
-                            </Text>
-
-                        </View>
-
-                        <View style={styles.line}></View>
-
-                        <View style={styles.itemBox}>
-
-                            <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}></Image>
-
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder = '请输入标题'
-                                placeholderTextColor = '#e1bdbe'>
-
-                            </TextInput>
-
-                        </View>
-                        <View style={styles.line}></View>
-
-                        <View style={styles.itemBox}>
-
-                            <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}></Image>
-
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder = '请输入描述信息'
-                                placeholderTextColor = '#e1bdbe'>
-
-                            </TextInput>
-
-                        </View>
-                        <View style={styles.line}></View>
-
-                    </View>
+                    <Text style={styles.textContent}>
+                        2016-06-08
+                    </Text>
 
                 </View>
+
+                <View style={styles.line}/>
+
+                <View style={styles.itemBox}>
+
+                    <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}/>
+
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder = '请输入标题'
+                        placeholderTextColor = '#e1bdbe'>
+
+                    </TextInput>
+
+                </View>
+                <View style={styles.line}/>
+
+                <View style={styles.itemBox}>
+
+                    <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}/>
+
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder = '请输入描述信息'
+                        placeholderTextColor = '#e1bdbe'>
+
+                    </TextInput>
+
+                </View>
+                <View style={styles.line} />
 
             </View>
         )
