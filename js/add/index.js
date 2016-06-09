@@ -124,7 +124,6 @@ export default class AddPage extends React.Component{
 const styles = StyleSheet.create({
     actionBox:{
         backgroundColor:KGColor.primary,
-        justifyContent:'center',
         flexDirection: 'row',
         padding:11,
         flexWrap:'wrap'
@@ -134,8 +133,8 @@ const styles = StyleSheet.create({
         backgroundColor:'#FFF',
         justifyContent:'center',
         borderRadius:16,
-        paddingLeft:10,
-        paddingRight:10,
+        paddingLeft:16,
+        paddingRight:16,
         marginTop:6,
         marginRight:10
     }
