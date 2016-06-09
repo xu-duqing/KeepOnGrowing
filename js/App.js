@@ -8,16 +8,12 @@ import React,{
     Platform
 } from 'react-native'
 
-import {
-    add,
-    reduce
-} from './action'
 import codePush from "react-native-code-push";
-
 import KeepPage from './keep'
+import {connect} from 'react-redux'
+import Login from './login'
 
-//fixme 实现nevigater
-export default class Root extends React.Component{
+class Root extends React.Component{
 
     componentDidMount() {
         codePush.sync({
@@ -27,6 +23,11 @@ export default class Root extends React.Component{
     }
 
     render(){
+        if (!this.props.login.isLogin){
+            return(
+                <Login />
+            )
+        }
         return(
             <View style={{flex:1}}>
                 <StatusBar
@@ -64,3 +65,10 @@ export default class Root extends React.Component{
     }
 }
 
+function select(store) {
+    return {
+        login:store.login
+    };
+}
+
+module.exports = connect(select)(Root);

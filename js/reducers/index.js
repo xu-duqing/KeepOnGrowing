@@ -5,8 +5,10 @@
 "use strict";
 
 import keep from './keep';
+import login from './login'
 import {combineReducers} from 'redux';
 
 module.exports = combineReducers({
-    keep
+    keep,
+    login
 });

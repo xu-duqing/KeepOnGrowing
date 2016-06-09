@@ -4,7 +4,9 @@
 
 import example from './example';
 import keep from './keep';
+import login from './login'
 
 module.exports = {
-  ...keep
+  ...keep,
+  ...login
 };

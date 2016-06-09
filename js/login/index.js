@@ -11,14 +11,16 @@ import {
     TouchableOpacity
 } from 'react-native'
 
+import {logIn} from '../action'
+
 import {Text} from 'KGText'
 import KGColor from 'KGColor'
 
-var Parse = require('parse/react-native');
 import KGLoading from 'KGLoading'
+import {connect} from 'react-redux'
 
 
-export default class Login extends React.Component{
+class Login extends React.Component{
 
     // 构造
       constructor(props) {
@@ -32,22 +34,21 @@ export default class Login extends React.Component{
 
     logIn(){
         //fixme 检测输入合法性
-
         this.loading.show("正在登录...");
+        this.props.dispatch(logIn(this.state.name,this.state.password));
+    }
 
-        Parse.User.logIn(this.state.name,this.state.password,{
-            success:  (user) => {
-                console.log(user);
-                this.loading.dismiss();
-                alert("登录成功");
+    componentWillReceiveProps(nexProps) {
 
-            },
-            error: (user,error) => {
-                console.log(error);
-                this.loading.dismiss();
-                alert("Error: " + error.code + " " + error.message);
-            }
-        })
+        if (nexProps.login.isLogin){
+            //登录成功
+            this.loading.dismiss();
+        }else if(nexProps.login.error){
+            //登录失败
+            const error = nexProps.login.error;
+            this.loading.dismiss();
+            alert("Error: " + error.code + " " + error.message);
+        }
     }
 
     render(){
@@ -88,3 +89,11 @@ export default class Login extends React.Component{
         )
     }
 }
+
+function select(store) {
+    return {
+        login:store.login
+    };
+}
+
+module.exports = connect(select)(Login);
