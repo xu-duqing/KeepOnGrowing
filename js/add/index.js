@@ -50,38 +50,28 @@ export default class AddPage extends React.Component{
         };
     }
 
-    renderContent()
-    {
-        if (this.state.tag == 1)
-        {
+    renderContent() {
+        if (this.state.tag == 1){
             return <AddPowderedMilk/>;
-        }else if (this.state.tag == 2)
-        {
+        }else if (this.state.tag == 2) {
             return <AddBreastMilk/>;
-        }else if (this.state.tag == 3)
-        {
+        }else if (this.state.tag == 3) {
             return <AddSleep/>;
-        }else if (this.state.tag == 4)
-        {
+        }else if (this.state.tag == 4) {
             return <AddShit/>;
-        }else if (this.state.tag == 5)
-        {
+        }else if (this.state.tag == 5) {
             return <AddFirst/>;
-        }else if (this.state.tag == 6)
-        {
+        }else if (this.state.tag == 6) {
             return <AddHeight/>;
-        }else if (this.state.tag == 7)
-        {
+        }else if (this.state.tag == 7) {
             return <AddWeight/>;
         }
     }
 
     onPress(id){
-        this.setState(
-            {
+        this.setState({
                 tag:id
-            }
-        )
+            })
 
     }
 
