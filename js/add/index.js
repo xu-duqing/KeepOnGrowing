@@ -25,6 +25,19 @@ import AddWeight from './AddWeight';
 import AddHeight from './AddHeight';
 
 
+class AddButton extends React.Component{
+
+    render(){
+        return(
+            <TouchableOpacity style={styles.btnBox} onPress={this.props.onPress}>
+                <Text style={{fontSize:14,color:'#e8888c'}}>
+                    {this.props.name}
+                </Text>
+            </TouchableOpacity>
+        )
+    }
+}
+
 
 export default class AddPage extends React.Component{
 
@@ -74,68 +87,31 @@ export default class AddPage extends React.Component{
 
 
     render(){
-
-
-
         return(
             <View style={{flex:1}}>
                 <KGHeader title='新的记录' style={{backgroundColor:KGColor.primary}}/>
                 <View style={styles.actionBox}>
-                    <TouchableOpacity onPress={() => this.onPress(1)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                吃奶粉
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(2)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                喂母乳
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(3)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                睡觉觉
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(4)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                拉臭臭
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(5)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                第一次
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(6)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                量身高
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.onPress(7)}>
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                称体重
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
+                    <AddButton name="吃奶粉啦" onPress={() =>{
+                        this.onPress(1)
+                    }}/>
+                    <AddButton name="喂母乳" onPress={() =>{
+                        this.onPress(2)
+                    }}/>
+                    <AddButton name="睡觉觉" onPress={() =>{
+                        this.onPress(3)
+                    }}/>
+                    <AddButton name="拉臭臭" onPress={() =>{
+                        this.onPress(4)
+                    }}/>
+                    <AddButton name="第一次" onPress={() =>{
+                        this.onPress(5)
+                    }}/>
+                    <AddButton name="量身高" onPress={() =>{
+                        this.onPress(6)
+                    }}/>
+                    <AddButton name="称体重" onPress={() =>{
+                        this.onPress(7)
+                    }}/>
 
                 </View>
 
