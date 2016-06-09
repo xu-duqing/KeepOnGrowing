@@ -15,6 +15,7 @@ import {Text} from 'KGText'
 import KGColor from 'KGColor'
 
 var Parse = require('parse/react-native');
+import KGLoading from 'KGLoading'
 
 
 export default class Login extends React.Component{
@@ -32,13 +33,19 @@ export default class Login extends React.Component{
     logIn(){
         //fixme 检测输入合法性
 
+        this.loading.show("正在登录...");
 
         Parse.User.logIn(this.state.name,this.state.password,{
-            success: function (user) {
-                console.log(user)
+            success:  (user) => {
+                console.log(user);
+                this.loading.dismiss();
+                alert("登录成功");
+
             },
-            error: function (user,error) {
-                console.log(error)
+            error: (user,error) => {
+                console.log(error);
+                this.loading.dismiss();
+                alert("Error: " + error.code + " " + error.message);
             }
         })
     }
@@ -75,6 +82,8 @@ export default class Login extends React.Component{
                         登录
                     </Text>
                 </TouchableOpacity>
+
+                <KGLoading ref={(loading) => this.loading = loading}/>
             </View>
         )
     }
