@@ -14,89 +14,40 @@ import {
 
 import * as KGColor from 'KGColor'
 
+import DateTimePicker from 'KGDatePicker'
+import EditDateTime from './EditDateTime'
+import EditText from './EditText'
+
 export default class AddFirst extends React.Component{
+
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            startTime:new Date()
+        };
+    }
 
     render(){
 
         return(
-            <View style={styles.pageBox}>
+            <View style={{flex:1}}>
+                <EditDateTime title="时间" onPress={() =>{
+                    this.picker.show()
+                }} date={this.state.startTime}/>
 
-                <View style={styles.itemBox}>
+                <EditText title="第  一  次:" />
 
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}/>
+                <EditText title="还想说点:" />
 
-                    <Text style={styles.textContent}>
-                        2016-06-08
-                    </Text>
-
-                </View>
-
-                <View style={styles.line}/>
-
-                <View style={styles.itemBox}>
-
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}/>
-
-                    <TextInput
-                        style={styles.textInput}
-                        placeholder = '请输入标题'
-                        placeholderTextColor = '#e1bdbe'>
-
-                    </TextInput>
-
-                </View>
-                <View style={styles.line}/>
-
-                <View style={styles.itemBox}>
-
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_diyici.png')}/>
-
-                    <TextInput
-                        style={styles.textInput}
-                        placeholder = '请输入描述信息'
-                        placeholderTextColor = '#e1bdbe'>
-
-                    </TextInput>
-
-                </View>
-                <View style={styles.line} />
-
+                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
+                        this.setState({
+                            startTime:date
+                        })
+                }} />
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    pageBox:{
-        flex:1,
-        backgroundColor:KGColor.icons,
-        flexWrap:'wrap'
-    },
-    itemBox:{
-        alignItems:'center',
-        flexDirection:'row',
-        height:48
-    },
-    textContent:{
-        paddingLeft:12,
-        paddingRight:12,
-        fontSize:14,
-        color:'#e8888c'
-    },
-    line:{
-        height:1,
-        backgroundColor:"#ffe1e2"
-    },
-    textInput: {
-        height: 48,
-        borderWidth: 0,
-        flex: 1,
-        fontSize: 14,
-        paddingLeft: 12
-    },
-    iconImg:{
-        width:18,
-        height:18,
-        marginLeft:12
-    }
-});

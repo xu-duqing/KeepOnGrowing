@@ -12,56 +12,35 @@ import {
 } from 'react-native'
 
 import * as KGColor from 'KGColor'
+import DateTimePicker from 'KGDatePicker'
+import EditDateTime from './EditDateTime'
 
 export default class AddShit extends React.Component{
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            startTime:new Date()
+        };
+    }
 
     render(){
 
         return(
-            <View style={styles.pageBox}>
-
-                <View style={styles.itemBox}>
-
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}></Image>
-
-                    <Text style={styles.textContent}>
-                        2016-06-08 17:34
-                    </Text>
+            <View style={{flex:1}}>
+                <EditDateTime title="上次大便时间" onPress={() =>{
+                    this.picker.show()
+                }} date={this.state.startTime}/>
 
 
-                </View>
-
-                <View style={styles.line}></View>
-
+                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
+                        this.setState({
+                            startTime:date
+                        })
+                }} />
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    pageBox:{
-        flex:1,
-        backgroundColor:KGColor.icons,
-        flexWrap:'wrap'
-    },
-    itemBox:{
-        alignItems:'center',
-        flexDirection:'row',
-        height:48
-    },
-    textContent:{
-        paddingLeft:12,
-        paddingRight:12,
-        fontSize:14,
-        color:'#e8888c'
-    },
-    line:{
-        height:1,
-        backgroundColor:"#f7a7aa"
-    },
-    iconImg:{
-        width:18,
-        height:18,
-        marginLeft:12
-    }
-});
