@@ -78,7 +78,7 @@ export default class AddPage extends React.Component{
 
     render(){
         return(
-            <View style={{flex:1}}>
+            <View style={{flex:1,backgroundColor:'#fcfcfc'}}>
                 <KGHeader title='新的记录' style={{backgroundColor:KGColor.primary}}/>
                 <View style={styles.actionBox}>
                     <AddButton name="吃奶粉啦" onPress={() =>{
@@ -105,7 +105,6 @@ export default class AddPage extends React.Component{
 
                 </View>
 
-                {this.renderContent()}
 
                 <ActionButton
                     offsetX = {Dimensions.get('window').width/2 - 30}
@@ -113,6 +112,9 @@ export default class AddPage extends React.Component{
                     onPress={() => {
 
                     }}/>
+
+                {this.renderContent()}
+
             </View>
         )
     }

@@ -60,8 +60,8 @@ class KeepPage extends React.Component{
                     buttonColor="#FF6666"
                     onPress={() => {
                             this.props.navigator.push({
-                                component:UserPage,
-                                name:'UserPage'
+                                component:AddPage,
+                                name:'AddPage'
                             })
                         }}/>
             </View>

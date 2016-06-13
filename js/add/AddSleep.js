@@ -12,78 +12,46 @@ import {
 } from 'react-native'
 
 import * as KGColor from 'KGColor'
+import DateTimePicker from 'KGDatePicker'
+import EditDateTime from './EditDateTime'
 
 export default class AddSleep extends React.Component{
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        const nowDate = new Date();
+        this.state = {
+            startTime:nowDate,
+            endTime:nowDate
+        };
+    }
 
     render(){
 
         return(
-            <View style={styles.pageBox}>
+            <View style={{flex:1}}>
+                <EditDateTime title="睡着了" onPress={() =>{
+                    this.picker.show(0)
+                }} date={this.state.startTime}/>
+                <EditDateTime title="醒来了" onPress={() =>{
+                    this.picker.show(1)
+                }} date={this.state.endTime}/>
 
-                <View style={styles.itemBox}>
 
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}></Image>
-
-                    <Text style={styles.textContent}>
-                        开始时间
-                    </Text>
-
-                    <View style = {{alignItems:'flex-end', flex:1}}>
-                        <Text style={styles.textContent}>
-                            2016-06-08 17:34
-                        </Text>
-                    </View>
-
-                </View>
-
-                <View style={styles.line}></View>
-
-                <View style={styles.itemBox}>
-
-                    <Image style={styles.iconImg} source = {require('../keep/img/ic_rili.png')}></Image>
-
-                    <Text style={styles.textContent}>
-                        结束时间
-                    </Text>
-
-                    <View style = {{alignItems:'flex-end', flex:1}}>
-                        <Text style={styles.textContent}>
-                            2016-06-08 17:34
-                        </Text>
-                    </View>
-
-                </View>
-                <View style={styles.line}></View>
-
+                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
+                    if (tag === 0){
+                        this.setState({
+                            startTime:date
+                        })
+                    }else {
+                         this.setState({
+                            endTime:date
+                        })
+                    }
+                }} />
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    pageBox:{
-        flex:1,
-        backgroundColor:KGColor.icons,
-        flexWrap:'wrap'
-    },
-    itemBox:{
-        alignItems:'center',
-        flexDirection:'row',
-        height:48
-    },
-    textContent:{
-        paddingLeft:12,
-        paddingRight:12,
-        fontSize:14,
-        color:'#e8888c'
-    },
-    line:{
-        height:1,
-        backgroundColor:"#f7a7aa"
-    },
-    iconImg:{
-        width:18,
-        height:18,
-        marginLeft:12
-    }
-});

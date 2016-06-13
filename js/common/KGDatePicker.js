@@ -25,6 +25,7 @@ class KGDatePicker extends React.Component {
         super(props);
 
         this.translateY = 220;
+        this.tag = 0;
 
         this.state = {
             visible: false,
@@ -37,7 +38,10 @@ class KGDatePicker extends React.Component {
         DatePickerIOS.propTypes.onDateChange = PropTypes.func
     }
 
-    show() {
+    show(tag) {
+        if(tag){
+            this.tag = tag
+        }
         this.setState({visible: true});
         this._showOverlay();
         this._showSheet();
@@ -46,7 +50,7 @@ class KGDatePicker extends React.Component {
     hide() {
         this._hideOverlay(() => this.setState({visible: false}));
         this._hideSheet();
-        this.props.onPress(this.state.date);
+        this.props.onPress(this.state.date,this.tag);
     }
 
     _showOverlay() {
@@ -80,19 +84,14 @@ class KGDatePicker extends React.Component {
     _renderDatePicker(){
         return(
             <View >
-                <View style={{flexDirection:'row',justifyContent:'space-between',padding:11}}>
-                    <TouchableOpacity onPress={this.hide.bind(this)}>
-                        <Text>取消</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() =>{
+                <TouchableOpacity style={{height:50,backgroundColor:'#FFF',flex:1,justifyContent:'center',alignItems:'center'}} onPress={() =>{
                         this.hide()
                     }}>
-                        <Text>确定</Text>
-                    </TouchableOpacity>
-                </View>
+                    <Text style={{fontSize:15,color:'#727480'}}>确定</Text>
+                </TouchableOpacity>
 
-                <DatePickerIOS date={this.state.date} mode="date" onDateChange={(date) =>{
+
+                <DatePickerIOS style={{backgroundColor:"#fcfcfc"}} date={this.state.date} mode="datetime" onDateChange={(date) =>{
                     this.setState({
                       date:date
                     })
