@@ -105,16 +105,14 @@ export default class AddPage extends React.Component{
 
                 </View>
 
+                {this.renderContent()}
 
                 <ActionButton
                     offsetX = {Dimensions.get('window').width/2 - 30}
                     buttonColor="#FF6666"
                     onPress={() => {
-
+                        console.log(123,"123")
                     }}/>
-
-                {this.renderContent()}
-
             </View>
         )
     }
