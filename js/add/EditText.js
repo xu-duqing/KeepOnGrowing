@@ -7,7 +7,6 @@
 import React from 'react'
 import {
     View,
-    TouchableOpacity,
     Text,
     StyleSheet,
     TextInput
@@ -36,7 +35,6 @@ export default class EditText extends React.Component{
                     style={styles.textInput}
                     onChangeText={(text) => this.setState({text})}
                     value={this.state.text}
-                    placeholder="请输入..."
                 />
             </View>
         )
