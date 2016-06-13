@@ -11,7 +11,10 @@ import {
     TouchableOpacity
 } from 'react-native'
 
-import {logIn} from '../action'
+import {
+    logIn,
+    logOut
+} from '../action'
 
 import {Text} from 'KGText'
 import KGColor from 'KGColor'
@@ -38,6 +41,11 @@ class Login extends React.Component{
         this.props.dispatch(logIn(this.state.name,this.state.password));
     }
 
+    logOut(){
+        this.loading.show("正在退出...");
+        this.props.dispatch(logOut());
+    }
+
     componentWillReceiveProps(nexProps) {
 
         if (nexProps.login.isLogin){
@@ -52,6 +60,26 @@ class Login extends React.Component{
     }
 
     render(){
+
+        if(this.props.login.isLogin){
+            return(
+                <View style={{flex:1,padding:22,justifyContent:'center'}}>
+                    <TouchableOpacity style={{marginTop:48,
+                                        backgroundColor:KGColor.primaryDark,
+                                        height:40,
+                                        justifyContent:'center',
+                                        alignItems:'center'}}
+                                      onPress={this.logOut.bind(this)}>
+                        <Text style={{fontSize:24,color:'#FFF'}}>
+                            退出登录
+                        </Text>
+                    </TouchableOpacity>
+
+                    <KGLoading ref={(loading) => this.loading = loading}/>
+
+                </View>
+            )
+        }
         return(
             <View style={{flex:1,padding:22,justifyContent:'center'}}>
 

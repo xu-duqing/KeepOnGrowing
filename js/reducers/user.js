@@ -8,7 +8,7 @@ const initializeState = {
     isLogin:false
 };
 
-export default function login(state = initializeState,action){
+export default function user(state = initializeState,action){
     switch (action.type){
         case LOGIN.LOGIN:
             return {

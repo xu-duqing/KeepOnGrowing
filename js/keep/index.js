@@ -16,6 +16,7 @@ import {connect} from 'react-redux'
 import KGActionSheet from '../common/KGActionSheet';
 import ActionButton from 'react-native-action-button';
 import AddPage from '../add'
+import Login from '../login'
 
 import {
     addFirst,
@@ -46,7 +47,12 @@ class KeepPage extends React.Component{
 
         return(
             <View style={{flex:1}}>
-                <KGHeader title='小诺成长记' style={{backgroundColor:'#e7888c'}}/>
+                <KGHeader title='小诺成长记' style={{backgroundColor:'#e7888c'}} leftItem={{title:'账户',onPress:() =>{
+                    this.props.navigator.push({
+                        component:Login,
+                        name:'login'
+                    })
+                }}}/>
                 <KeepListView data={this.props.keep.data}/>
 
                 <ActionButton

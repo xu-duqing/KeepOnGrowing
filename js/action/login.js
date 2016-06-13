@@ -27,9 +27,13 @@ function logIn(name,password){
 }
 
 function logOut(){
-    return{
-        type:LOGIN.LOGOUT,
-    }
+    return dispatch =>{
+        Parse.User.logOut().then(() => {
+            dispatch({
+                type:LOGIN.LOGOUT
+            })
+        });
+    };
 }
 
 module.exports = {

@@ -5,7 +5,7 @@
 "use strict";
 
 import keep from './keep';
-import login from './login'
+import login from './user'
 import {combineReducers} from 'redux';
 
 module.exports = combineReducers({

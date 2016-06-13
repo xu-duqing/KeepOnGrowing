@@ -50,6 +50,9 @@ export default class App extends React.Component{
     }
 
     render(){
+        if (this.state.isLoading) {
+            return null;
+        }
         return(
             <Provider store={this.state.store}>
                 <Root {...this.props}/>
