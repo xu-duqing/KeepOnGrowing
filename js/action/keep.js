@@ -3,6 +3,8 @@
  */
 
 import {KEEP} from './types';
+var Parse = require('parse/react-native');
+
 
 function addFirst(keep:{}){
     return (dispatch,getState) =>{
