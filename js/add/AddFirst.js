@@ -6,13 +6,7 @@
 import React from 'react'
 import {
     View,
-    StyleSheet,
-    TextInput,
-    Image,
-    Text
 } from 'react-native'
-
-import * as KGColor from 'KGColor'
 
 import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'

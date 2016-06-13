@@ -6,35 +6,41 @@
 import React from 'react'
 import {
     View,
-    StyleSheet,
-    Text
 } from 'react-native'
 
-import * as KGColor from 'KGColor'
+
+import DateTimePicker from 'KGDatePicker'
+import EditDateTime from './EditDateTime'
+import EditSlide from './EditSlide'
 
 export default class AddPowderedMilk extends React.Component{
+
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            startTime:new Date()
+        };
+    }
 
     render(){
 
         return(
-            <View style={styles.pageBox}>
+            <View style={{flex:1}}>
+                <EditDateTime title="时间" onPress={() =>{
+                    this.picker.show()
+                }} date={this.state.startTime}/>
 
-                <Text style={{fontSize:14,color:'#e8888c'}}>
-                    吃奶粉
-                </Text>
+                <EditSlide title="容量"/>
 
+                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
+                        this.setState({
+                            startTime:date
+                        })
+                }} />
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    pageBox:{
-        flex:1,
-        backgroundColor:KGColor.icons,
-        justifyContent:'center',
-        flexDirection: 'row',
-        padding:11,
-        flexWrap:'wrap'
-    }
-});
