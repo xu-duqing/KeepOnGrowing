@@ -17,10 +17,6 @@ export default class EditText extends React.Component{
     // 构造
     constructor(props) {
         super(props);
-        // 初始状态
-        this.state = {
-            text:''
-        };
     }
 
     render(){
@@ -33,8 +29,7 @@ export default class EditText extends React.Component{
                 </Text>
                 <TextInput
                     style={styles.textInput}
-                    onChangeText={(text) => this.setState({text})}
-                    value={this.state.text}
+                    onChangeText={this.props.onChangeText}
                 />
             </View>
         )

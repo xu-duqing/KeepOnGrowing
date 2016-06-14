@@ -24,9 +24,6 @@ import AddFirst from './AddFirst';
 import AddWeight from './AddWeight';
 import AddHeight from './AddHeight';
 import {connect} from 'react-redux'
-import {
-    addFirst
-} from '../action';
 
 class AddButton extends React.Component{
 
@@ -62,7 +59,7 @@ class AddPage extends React.Component{
         }else if (this.state.tag == 4) {
             return <AddShit/>;
         }else if (this.state.tag == 5) {
-            return <AddFirst/>;
+            return <AddFirst dispatch={this.props.dispatch}/>;
         }else if (this.state.tag == 6) {
             return <AddHeight/>;
         }else if (this.state.tag == 7) {
@@ -108,13 +105,6 @@ class AddPage extends React.Component{
                 </View>
 
                 {this.renderContent()}
-
-                <ActionButton
-                    offsetX = {Dimensions.get('window').width/2 - 30}
-                    buttonColor="#FF6666"
-                    onPress={() => {
-                        this.props.dispatch(addFirst());
-                    }}/>
 
             </View>
         )

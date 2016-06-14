@@ -2,58 +2,126 @@
  * Created by Guang on 16/5/19.
  */
 
-import {KEEP} from './types';
+import {KEEP,LOGIN} from './types';
 var Parse = require('parse/react-native');
 
 
-function addFirst(keep:{}){
+function addFirst(first:{}){
 
-    return (dispatch,getState) =>{
-
-        let KeepFirst = Parse.Object.extend("KeepFirst");
-        let keepFirst = new KeepFirst();
-
-        keepFirst.set("keynote","抬头");
-        keepFirst.set("description","你的每一点变化都那么让人欣喜");
-        keepFirst.set("startTime",new Date().getMilliseconds());
-        keepFirst.set("uid",getState().user.user.id);
-
-        keepFirst.save(null,{
-            success: function (keepFirst) {
-                console.log(keepFirst)
-            },
-            error: function (keepFirst, error) {
-                console.log(error)
-            }
+    return async (dispatch,getState) => {
+        dispatch({
+            type:KEEP.ADD_KEEP
         });
 
+        const user = await Parse.User.currentAsync();
+        if(user){
+            let KeepFirst = Parse.Object.extend("KeepFirst");
+            let keepFirst = new KeepFirst();
+
+            keepFirst.set("keynote",first.keynote);
+            keepFirst.set("description",first.description);
+            keepFirst.set("startTime",first.startTime);
+            keepFirst.setACL(new Parse.ACL(user));
+
+            keepFirst.save(null,{
+                success: function (keepFirst) {
+                    dispatch(addSuccess(keepFirst))
+                },
+                error: function (keepFirst, error) {
+                    console.log(error);
+                    dispatch(addError(error))
+                }
+            });
+        } else {
+            //没有登录跳转到登录页面
+            dispatch({
+                type:LOGIN.LOGOUT
+            })
+        }
     }
 }
 
-function addHeight(keep){
-    return (dispatch,getState) =>{
-        keep.typeName ='身高';
-        keep.type ='height';
-        let keeps = getState().keep.data;
-        keeps.push(keep);
-        dispatch(addKeep(keeps))
+function addHeight(height:{}){
+
+    return async (dispatch,getState) => {
+        dispatch({
+            type:KEEP.ADD_KEEP
+        });
+
+        const user = await Parse.User.currentAsync();
+        if(user){
+            let KeepHeight = Parse.Object.extend("KeepHeight");
+            let keepHeight = new KeepHeight();
+
+            keepHeight.set("height",height.height);
+            keepHeight.set("startTime",height.startTime);
+            keepHeight.setACL(new Parse.ACL(user));
+
+            keepHeight.save(null,{
+                success: function (keep) {
+                    dispatch(addSuccess(keep))
+                },
+                error: function (keepFirst, error) {
+                    console.log(error);
+                    dispatch(addError(error))
+                }
+            });
+        } else {
+            //没有登录跳转到登录页面
+            dispatch({
+                type:LOGIN.LOGOUT
+            })
+        }
     }
 }
 
-function addWeight(keep){
-    return (dispatch,getState) =>{
-        keep.typeName ='体重';
-        keep.type ='weight';
-        let keeps = getState().keep.data;
-        keeps.push(keep);
-        dispatch(addKeep(keeps))
+function addWeight(weight:{}){
+
+    return async (dispatch,getState) => {
+        dispatch({
+            type:KEEP.ADD_KEEP
+        });
+
+        const user = await Parse.User.currentAsync();
+        if(user){
+            let KeepWeight = Parse.Object.extend("KeepWeight");
+            let keepWeight = new KeepWeight();
+
+            keepWeight.set("weight",weight.weight);
+            keepWeight.set("startTime",weight.startTime);
+            keepWeight.setACL(new Parse.ACL(user));
+
+            keepWeight.save(null,{
+                success: function (keep) {
+                    dispatch(addSuccess(keep))
+                },
+                error: function (keepFirst, error) {
+                    console.log(error);
+                    dispatch(addError(error))
+                }
+            });
+        } else {
+            //没有登录跳转到登录页面
+            dispatch({
+                type:LOGIN.LOGOUT
+            })
+        }
     }
 }
 
-function addKeep(keeps){
+
+
+function addSuccess(keep){
     return{
-        type:KEEP.ADD_KEEP,
-        keeps
+        type:KEEP.ADD_SUCCESS,
+        keep
+    }
+}
+
+function addError(error){
+    return{
+        type:KEEP.ADD_ERROR,
+        error
     }
 }
 
