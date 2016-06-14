@@ -48,12 +48,12 @@ class Login extends React.Component{
 
     componentWillReceiveProps(nexProps) {
 
-        if (nexProps.login.isLogin){
+        if (nexProps.user.isLogin){
             //登录成功
             this.loading.dismiss();
-        }else if(nexProps.login.error){
+        }else if(nexProps.user.error){
             //登录失败
-            const error = nexProps.login.error;
+            const error = nexProps.user.error;
             this.loading.dismiss();
             alert("Error: " + error.code + " " + error.message);
         }
@@ -61,7 +61,7 @@ class Login extends React.Component{
 
     render(){
 
-        if(this.props.login.isLogin){
+        if(this.props.user.isLogin){
             return(
                 <View style={{flex:1,padding:22,justifyContent:'center'}}>
                     <TouchableOpacity style={{marginTop:48,
@@ -120,7 +120,7 @@ class Login extends React.Component{
 
 function select(store) {
     return {
-        login:store.login
+        user:store.user
     };
 }
 

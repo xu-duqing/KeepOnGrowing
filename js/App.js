@@ -23,7 +23,7 @@ class Root extends React.Component{
     }
 
     render(){
-        if (!this.props.login.isLogin){
+        if (!this.props.user.isLogin){
             return(
                 <Login />
             )
@@ -67,7 +67,7 @@ class Root extends React.Component{
 
 function select(store) {
     return {
-        login:store.login
+        user:store.user
     };
 }
 

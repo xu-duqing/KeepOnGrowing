@@ -12,6 +12,7 @@ function logIn(name,password){
             success:  (user) => {
                 console.log(user);
                 dispatch({
+                    user,
                     type:LOGIN.LOGIN
                 })
             },

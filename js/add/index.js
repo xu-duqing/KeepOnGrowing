@@ -23,7 +23,10 @@ import AddSleep from './AddSleep';
 import AddFirst from './AddFirst';
 import AddWeight from './AddWeight';
 import AddHeight from './AddHeight';
-
+import {connect} from 'react-redux'
+import {
+    addFirst
+} from '../action';
 
 class AddButton extends React.Component{
 
@@ -38,8 +41,7 @@ class AddButton extends React.Component{
     }
 }
 
-
-export default class AddPage extends React.Component{
+class AddPage extends React.Component{
 
     // 构造
     constructor(props) {
@@ -105,14 +107,14 @@ export default class AddPage extends React.Component{
 
                 </View>
 
+                {this.renderContent()}
+
                 <ActionButton
                     offsetX = {Dimensions.get('window').width/2 - 30}
                     buttonColor="#FF6666"
                     onPress={() => {
-                        console.log(123,"123")
+                        this.props.dispatch(addFirst());
                     }}/>
-
-                {this.renderContent()}
 
             </View>
         )
@@ -140,3 +142,11 @@ const styles = StyleSheet.create({
         marginRight:10
     }
 });
+
+function select(store) {
+    return {
+        keep:store.keep
+    };
+}
+
+module.exports = connect(select)(AddPage);

@@ -7,12 +7,26 @@ var Parse = require('parse/react-native');
 
 
 function addFirst(keep:{}){
+
     return (dispatch,getState) =>{
-        keep.typeName ='第一次';
-        keep.type ='first';
-        let keeps = getState().keep.data;
-        keeps.push(keep);
-        dispatch(addKeep(keeps))
+
+        let KeepFirst = Parse.Object.extend("KeepFirst");
+        let keepFirst = new KeepFirst();
+
+        keepFirst.set("keynote","抬头");
+        keepFirst.set("description","你的每一点变化都那么让人欣喜");
+        keepFirst.set("startTime",new Date().getMilliseconds());
+        keepFirst.set("uid",getState().user.user.id);
+
+        keepFirst.save(null,{
+            success: function (keepFirst) {
+                console.log(keepFirst)
+            },
+            error: function (keepFirst, error) {
+                console.log(error)
+            }
+        });
+
     }
 }
 
