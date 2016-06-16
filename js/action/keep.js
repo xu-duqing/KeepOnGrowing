@@ -60,7 +60,6 @@ function addHeight(height:{}){
         keep.set("startTime",height.startTime);
 
         dispatch(addKeep(keep));
-
     }
 }
 

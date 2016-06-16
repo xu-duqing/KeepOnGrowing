@@ -19,9 +19,12 @@ export default class EditSlide extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            text:'',
             value:10
         };
+    }
+
+    getValue(){
+        return this.state.value;
     }
 
     render(){

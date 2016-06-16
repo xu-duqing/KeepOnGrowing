@@ -20,7 +20,8 @@ export default class AddHeight extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            startTime:new Date()
+            startTime:new Date(),
+            height:0
         };
     }
 
@@ -32,13 +33,7 @@ export default class AddHeight extends React.Component{
                     this.picker.show()
                 }} date={this.state.startTime}/>
 
-                <EditText title="身 高:" />
-
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                        this.setState({
-                            startTime:date
-                        })
-                }} />
+                <EditText title="身 高:" onChangeText={(text) =>this.state.height=text} />
             </View>
         )
     }

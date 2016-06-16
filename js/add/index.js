@@ -24,6 +24,17 @@ import AddFirst from './AddFirst';
 import AddWeight from './AddWeight';
 import AddHeight from './AddHeight';
 import {connect} from 'react-redux'
+import DateTimePicker from 'KGDatePicker'
+import {
+    addFirst,
+    addHeight,
+    addWeight,
+    addShit,
+    addSleep,
+    addBreastMilk,
+    addPowderedMilk
+} from '../action';
+
 
 class AddButton extends React.Component{
 
@@ -45,35 +56,80 @@ class AddPage extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            tag:1
+            tag:"powderedMilk"
         };
     }
 
     renderContent() {
-        if (this.state.tag == 1){
-            return <AddPowderedMilk/>;
-        }else if (this.state.tag == 2) {
-            return <AddBreastMilk/>;
-        }else if (this.state.tag == 3) {
-            return <AddSleep/>;
-        }else if (this.state.tag == 4) {
-            return <AddShit/>;
-        }else if (this.state.tag == 5) {
-            return <AddFirst dispatch={this.props.dispatch}/>;
-        }else if (this.state.tag == 6) {
-            return <AddHeight/>;
-        }else if (this.state.tag == 7) {
-            return <AddWeight/>;
+
+        let Component;
+
+        switch (this.state.tag){
+            case "powderedMilk":
+                Component = AddPowderedMilk;
+                break;
+            case "breastMilk":
+                Component = AddBreastMilk;
+                break;
+            case "sleep":
+                Component = AddSleep;
+                break;
+            case "shit":
+                Component = AddShit;
+                break;
+            case "first":
+                Component = AddFirst;
+                break;
+            case "height":
+                Component = AddHeight;
+                break;
+            case "weight":
+                Component = AddWeight;
+                break;
+            default :
+                Component = AddPowderedMilk;
+                break
         }
+
+        return <Component ref = {(component) => this.KeepComponent = component } showPicker={(tag) =>{
+                this.picker.show(tag)
+            }}/>;
     }
 
-    onPress(id){
-        this.setState({
-                tag:id
-            })
+    addKeep(data){
+        if (!data){
+            return;
+        }
+        let add;
+        switch (this.state.tag){
+            case "powderedMilk":
+                add = addPowderedMilk;
+                break;
+            case "breastMilk":
+                add = addBreastMilk;
+                break;
+            case "sleep":
+                add = addSleep;
+                break;
+            case "shit":
+                add = addShit;
+                break;
+            case "first":
+                add = addFirst;
+                break;
+            case "height":
+                add = AddHeight;
+                break;
+            case "weight":
+                add = AddWeight;
+                break;
+            default :
+                return
+        }
+
+        this.props.dispatch(add(data));
 
     }
-
 
     render(){
         return(
@@ -81,36 +137,46 @@ class AddPage extends React.Component{
                 <KGHeader title='新的记录' style={{backgroundColor:KGColor.primary}}/>
                 <View style={styles.actionBox}>
                     <AddButton name="吃奶粉啦" onPress={() =>{
-                        this.onPress(1)
+                        this.setState({tag:"powderedMilk"})
                     }}/>
                     <AddButton name="喂母乳" onPress={() =>{
-                        this.onPress(2)
+                        this.setState({tag:"breastMilk"})
                     }}/>
                     <AddButton name="睡觉觉" onPress={() =>{
-                        this.onPress(3)
+                        this.setState({tag:"sleep"})
                     }}/>
                     <AddButton name="拉臭臭" onPress={() =>{
-                        this.onPress(4)
+                        this.setState({tag:"shit"})
                     }}/>
                     <AddButton name="第一次" onPress={() =>{
-                        this.onPress(5)
+                        this.setState({tag:"first"})
                     }}/>
                     <AddButton name="量身高" onPress={() =>{
-                        this.onPress(6)
+                        this.setState({tag:"height"})
                     }}/>
                     <AddButton name="称体重" onPress={() =>{
-                        this.onPress(7)
+                        this.setState({tag:"wight"})
                     }}/>
 
                 </View>
 
                 {this.renderContent()}
 
+                <ActionButton
+                    offsetX = {Dimensions.get('window').width/2 - 30}
+                    buttonColor="#FF6666"
+                    onPress={() => {
+                        this.addKeep(this.KeepComponent.getData());
+                    }}/>
+
+                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
+                        this.KeepComponent.setTime(date,tag);
+                }} />
+
             </View>
         )
     }
 }
-
 
 
 

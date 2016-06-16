@@ -21,8 +21,22 @@ export default class AddPowderedMilk extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            startTime:new Date()
+            startTime:new Date(),
+            volume:0
         };
+    }
+
+    setTime(date){
+        this.setState({
+            startTime:date
+        })
+    }
+
+    getData(){
+        return{
+            startTime:this.state.startTime,
+            volume:this.slide.getValue()
+        }
     }
 
     render(){
@@ -30,16 +44,11 @@ export default class AddPowderedMilk extends React.Component{
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="时间" onPress={() =>{
-                    this.picker.show()
+                    this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-                <EditSlide title="容量"/>
+                <EditSlide ref ={(slide) => this.slide = slide} title="容量"/>
 
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                        this.setState({
-                            startTime:date
-                        })
-                }} />
             </View>
         )
     }
