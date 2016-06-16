@@ -8,7 +8,6 @@ import {
     View,
 } from 'react-native'
 
-import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'
 import EditText from './EditText'
 
@@ -25,12 +24,26 @@ export default class AddHeight extends React.Component{
         };
     }
 
+    setTime(date){
+        this.setState({
+            startTime:date
+        })
+    }
+
+    getData(){
+        return{
+            startTime:this.state.startTime,
+            height:parseInt(this.state.height)
+        }
+    }
+
+
     render(){
 
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="时间" onPress={() =>{
-                    this.picker.show()
+                    this.props.showPicker()
                 }} date={this.state.startTime}/>
 
                 <EditText title="身 高:" onChangeText={(text) =>this.state.height=text} />

@@ -118,10 +118,10 @@ class AddPage extends React.Component{
                 add = addFirst;
                 break;
             case "height":
-                add = AddHeight;
+                add = addHeight;
                 break;
             case "weight":
-                add = AddWeight;
+                add = addWeight;
                 break;
             default :
                 return
