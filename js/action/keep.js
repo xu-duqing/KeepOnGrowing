@@ -6,24 +6,18 @@ import {KEEP,LOGIN} from './types';
 var Parse = require('parse/react-native');
 
 
-function addFirst(first:{}){
+function addKeep(object){
 
-    return async (dispatch,getState) => {
+    return async dispatch =>{
         dispatch({
             type:KEEP.ADD_KEEP
         });
 
         const user = await Parse.User.currentAsync();
-        if(user){
-            let KeepFirst = Parse.Object.extend("KeepFirst");
-            let keepFirst = new KeepFirst();
 
-            keepFirst.set("keynote",first.keynote);
-            keepFirst.set("description",first.description);
-            keepFirst.set("startTime",first.startTime);
-            keepFirst.setACL(new Parse.ACL(user));
-
-            keepFirst.save(null,{
+        if (user){
+            object.setACL(new Parse.ACL(user));
+            object.save(null,{
                 success: function (keepFirst) {
                     dispatch(addSuccess(keepFirst))
                 },
@@ -32,84 +26,114 @@ function addFirst(first:{}){
                     dispatch(addError(error))
                 }
             });
-        } else {
+        }else {
             //没有登录跳转到登录页面
             dispatch({
                 type:LOGIN.LOGOUT
             })
         }
+    }
+
+}
+
+function addFirst(first:{}){
+
+    return  (dispatch,getState) => {
+        let KeepFirst = Parse.Object.extend("KeepFirst");
+        let keepFirst = new KeepFirst();
+
+        keepFirst.set("keynote",first.keynote);
+        keepFirst.set("description",first.description);
+        keepFirst.set("startTime",first.startTime);
+
+        dispatch(addKeep(keepFirst));
     }
 }
 
 function addHeight(height:{}){
 
-    return async (dispatch,getState) => {
-        dispatch({
-            type:KEEP.ADD_KEEP
-        });
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepHeight");
+        let keep = new Keep();
 
-        const user = await Parse.User.currentAsync();
-        if(user){
-            let KeepHeight = Parse.Object.extend("KeepHeight");
-            let keepHeight = new KeepHeight();
+        keep.set("height",height.height);
+        keep.set("startTime",height.startTime);
 
-            keepHeight.set("height",height.height);
-            keepHeight.set("startTime",height.startTime);
-            keepHeight.setACL(new Parse.ACL(user));
+        dispatch(addKeep(keep));
 
-            keepHeight.save(null,{
-                success: function (keep) {
-                    dispatch(addSuccess(keep))
-                },
-                error: function (keepFirst, error) {
-                    console.log(error);
-                    dispatch(addError(error))
-                }
-            });
-        } else {
-            //没有登录跳转到登录页面
-            dispatch({
-                type:LOGIN.LOGOUT
-            })
-        }
     }
 }
 
 function addWeight(weight:{}){
 
-    return async (dispatch,getState) => {
-        dispatch({
-            type:KEEP.ADD_KEEP
-        });
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepWeight");
+        let keep = new Keep();
 
-        const user = await Parse.User.currentAsync();
-        if(user){
-            let KeepWeight = Parse.Object.extend("KeepWeight");
-            let keepWeight = new KeepWeight();
+        keep.set("weight",weight.weight);
+        keep.set("startTime",weight.startTime);
 
-            keepWeight.set("weight",weight.weight);
-            keepWeight.set("startTime",weight.startTime);
-            keepWeight.setACL(new Parse.ACL(user));
+        dispatch(addKeep(keep));
 
-            keepWeight.save(null,{
-                success: function (keep) {
-                    dispatch(addSuccess(keep))
-                },
-                error: function (keepFirst, error) {
-                    console.log(error);
-                    dispatch(addError(error))
-                }
-            });
-        } else {
-            //没有登录跳转到登录页面
-            dispatch({
-                type:LOGIN.LOGOUT
-            })
-        }
     }
 }
 
 
+function addPowderedMilk(milk:{}){
+
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepPowderedMilk");
+        let keep = new Keep();
+
+        keep.set("volume",milk.volume);
+        keep.set("startTime",milk.startTime);
+
+        dispatch(addKeep(keep));
+
+    }
+}
+
+
+function addBreastMilk(milk:{}){
+
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepBreastMilk");
+        let keep = new Keep();
+
+        keep.set("endTime",milk.endTime);
+        keep.set("startTime",milk.startTime);
+
+        dispatch(addKeep(keep));
+
+    }
+}
+
+function addSleep(sleep:{}){
+
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepSleep");
+        let keep = new Keep();
+
+        keep.set("endTime",sleep.endTime);
+        keep.set("startTime",sleep.startTime);
+
+        dispatch(addKeep(keep));
+
+    }
+}
+
+function addShit(shit:{}){
+
+    return dispatch =>{
+        let Keep = Parse.Object.extend("KeepShit");
+        let keep = new Keep();
+
+        keep.set("startTime",shit.startTime);
+
+        dispatch(addKeep(keep));
+
+    }
+}
 
 function addSuccess(keep){
     return{
@@ -135,5 +159,9 @@ module.exports = {
     addFirst,
     keepClear,
     addHeight,
-    addWeight
+    addWeight,
+    addShit,
+    addSleep,
+    addBreastMilk,
+    addPowderedMilk
 };
