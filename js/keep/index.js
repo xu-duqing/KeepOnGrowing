@@ -18,6 +18,7 @@ import ActionButton from 'react-native-action-button';
 import AddPage from '../add'
 import Login from '../login'
 import UserPage from '../user'
+import KGLoading from 'KGLoading'
 
 import {
     loadKeep
@@ -46,6 +47,14 @@ class KeepPage extends React.Component{
     componentDidMount() {
         this.props.dispatch(loadKeep())
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.keep.isLoading){
+            this.loading.show("正在加载中...")
+        }else {
+            this.loading.dismiss()
+        }
+    }
     render(){
 
         return(
@@ -66,6 +75,8 @@ class KeepPage extends React.Component{
                                 name:'AddPage'
                             })
                         }}/>
+
+                <KGLoading ref={(loading) => this.loading = loading}/>
             </View>
         )
     }
