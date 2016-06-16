@@ -6,17 +6,10 @@
 import React from 'react'
 import {
     View,
-    Dimensions
 } from 'react-native'
 
-import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'
 import EditText from './EditText'
-import ActionButton from 'react-native-action-button';
-
-import {
-    addFirst,
-} from '../action';
 
 export default class AddFirst extends React.Component{
 
@@ -32,34 +25,33 @@ export default class AddFirst extends React.Component{
         };
     }
 
+    setTime(date,tag){
+        this.setState({
+            startTime:date
+        })
+    }
+
+    getData(){
+        return{
+            keynote:this.state.keynote,
+            description:this.state.description,
+            startTime:this.state.startTime
+        }
+    }
+
+
     render(){
 
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="时间" onPress={() =>{
-                    this.picker.show()
+                    this.props.showPicker()
                 }} date={this.state.startTime}/>
 
                 <EditText title="第  一  次:" onChangeText={(text) =>this.state.keynote=text}/>
 
                 <EditText title="还想说点:" onChangeText={(text) =>this.state.description=text}/>
 
-                <ActionButton
-                    offsetX = {Dimensions.get('window').width/2 - 30}
-                    buttonColor="#FF6666"
-                    onPress={() => {
-                        this.props.dispatch(addFirst({
-                            keynote:this.state.keynote,
-                            description:this.state.description,
-                            startTime:this.state.startTime
-                        }));
-                    }}/>
-
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                        this.setState({
-                            startTime:date
-                        })
-                }} />
             </View>
         )
     }

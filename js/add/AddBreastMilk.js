@@ -12,7 +12,6 @@ import {
 } from 'react-native'
 
 import * as KGColor from 'KGColor'
-import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'
 
 export default class AddBreastMilk extends React.Component{
@@ -28,29 +27,37 @@ export default class AddBreastMilk extends React.Component{
         };
     }
 
+    setTime(date,tag){
+        if (tag == 0){
+            this.setState({
+                startTime:date
+            })
+        }else {
+            this.setState({
+                endTime:date
+            })
+        }
+    }
+
+    getData(){
+        return{
+            startTime:this.state.startTime,
+            endTime:this.state.endTime
+        }
+    }
+
+
     render(){
 
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="开始时间" onPress={() =>{
-                    this.picker.show(0)
+                    this.props.showPicker(0)
                 }} date={this.state.startTime}/>
                 <EditDateTime title="结束时间" onPress={() =>{
-                    this.picker.show(1)
+                    this.props.showPicker(1)
                 }} date={this.state.endTime}/>
 
-
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                    if (tag === 0){
-                        this.setState({
-                            startTime:date
-                        })
-                    }else {
-                         this.setState({
-                            endTime:date
-                        })
-                    }
-                }} />
             </View>
         )
     }

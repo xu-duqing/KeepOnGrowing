@@ -7,6 +7,7 @@ var Parse = require('parse/react-native');
 
 
 function addKeep(object){
+    console.log(object);
 
     return async dispatch =>{
         dispatch({
