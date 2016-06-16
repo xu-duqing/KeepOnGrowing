@@ -12,120 +12,138 @@ import * as KGColor from 'KGColor'
 
 export default class KeepListViewItem extends React.Component{
 
+    renderFirst(keep){
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    {`第一次:${keep.keynote}`}
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    {keep.description}
+                </Text>
+            </View>
+        )
+    }
+
+    renderPowderedMilk(keep){
+        const date = new Date(keep.startTime);
+
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    {`吃奶粉:${keep.volume}ML`}
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    {`${date.getHours()}:${date.getMinutes()}`}
+                </Text>
+            </View>
+        )
+    }
+
+    renderHeight(keep){
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    {`身高:${keep.height}厘米`}
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    哈哈哈 还有什么
+                </Text>
+            </View>
+        )
+    }
+
+    renderBreastMilk(keep){
+        const startDate = new Date(keep.startTime);
+        const endDate = new Date(keep.endTime);
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    吃母乳
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    {`开始: ${startDate.getHours()}:${startDate.getMinutes()}  结束: ${endDate.getHours()}:${endDate.getMinutes()}`}
+                </Text>
+            </View>
+        )
+    }
+
+    renderShit(keep){
+        const date = new Date(keep.startTime);
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    大便
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    {`${date.getHours()}:${date.getMinutes()}`}
+                </Text>
+            </View>
+        )
+    }
+
+    renderSleep(keep){
+        const startDate = new Date(keep.startTime);
+        const endDate = new Date(keep.endTime);
+
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    睡觉
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    {`开始: ${startDate.getHours()}:${startDate.getMinutes()}  结束: ${endDate.getHours()}:${endDate.getMinutes()}`}
+                </Text>
+            </View>
+        )
+    }
+
+    renderWeight(keep){
+        return(
+            <View style={styles.contentBox}>
+                <Text style={styles.titleText} numberOfLines={1}>
+                    {`体重:${keep.weight}千克`}
+                </Text>
+
+                <Text style={styles.subtitleText} numberOfLines={2}>
+                    哈哈哈 还有什么
+                </Text>
+            </View>
+        )
+    }
+
     renderContent(data){
-        if(data == 1){
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        吃奶粉:80ML
-                    </Text>
 
-                    <Text style={styles.subtitleText} numberOfLines={2}>
-                        12:09
-                    </Text>
-                </View>
-            )
-        }else if (data == 2){
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        吃母乳
-                    </Text>
-
-                    <Text style={styles.subtitleText} numberOfLines={2}>
-                        开始: 12:09  结束: 12:40
-                    </Text>
-                </View>
-            )
-        }else if(data == 3){
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        吃母乳
-                    </Text>
-
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.subtitleText} numberOfLines={2}>
-                            开始: 12:09
-                        </Text>
-
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                吃饱了
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            )
-        }else if (data == 4){
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        睡觉
-                    </Text>
-
-                    <Text style={styles.subtitleText} numberOfLines={2}>
-                        开始: 12:09  结束: 12:40
-                    </Text>
-                </View>
-            )
-        }else if(data == 5){
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        睡觉
-                    </Text>
-
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.subtitleText} numberOfLines={2}>
-                            开始: 12:09
-                        </Text>
-
-                        <View style={styles.btnBox}>
-                            <Text style={{fontSize:14,color:'#e8888c'}}>
-                                宝宝醒了
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            )
-        }else if(data == 6){
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        大便
-                    </Text>
-
-                    <Text style={styles.subtitleText} numberOfLines={2}>
-                        12:09
-                    </Text>
-                </View>
-            )
-        }else {
-
-            return(
-                <View style={styles.contentBox}>
-                    <Text style={styles.titleText} numberOfLines={1}>
-                        第一次:练习抬头
-                    </Text>
-
-                    <Text style={styles.subtitleText} numberOfLines={2}>
-                        竟然坚持了2分多种,宝宝你太厉害啦
-                    </Text>
-                </View>
-            )
+        switch (data.type){
+            case "first":
+                return this.renderFirst(data);
+            case "powderedMilk":
+                return this.renderPowderedMilk(data);
+            case "height":
+                return this.renderHeight(data);
+            case "breastMilk":
+                return this.renderBreastMilk(data);
+            case "shit":
+                return this.renderShit(data);
+            case "sleep":
+                return this.renderSleep(data);
+            case "weight":
+                return this.renderWeight(data);
+            default:
+                return null
         }
     }
 
     render(){
+        const {startTime} = this.props.data;
+        const date = new Date(startTime||0);
 
-        const backgroundColor = this.props.data%2 === 0?KGColor.primary:'#f7a7aa';
-        const textColor = this.props.data%2 === 0?'#fff':KGColor.primaryText;
         let iconImg;
         if(this.props.data == 1)
         {
@@ -144,21 +162,21 @@ export default class KeepListViewItem extends React.Component{
         }
 
         return(
-            <TouchableOpacity style={[styles.itemBox,{backgroundColor:backgroundColor}]}
+            <TouchableOpacity style={[styles.itemBox,{backgroundColor:this.props.backgroundColor}]}
                               onPress={this.props.onPress}>
                 <View style={styles.dateBox}>
-                    <Text style={{fontWeight:'bold',fontSize:18,color:textColor}}>
-                        5月31
+                    <Text style={{fontWeight:'bold',fontSize:18,color:this.props.textColor}}>
+                        {`${date.getMonth() + 1}月${date.getDate()}`}
                     </Text>
-                    <Text style={{fontSize:16,color:textColor}}>
-                        2016
+                    <Text style={{fontSize:16,color:this.props.textColor}}>
+                        {date.getFullYear()}
                     </Text>
                 </View>
 
                 <View style={{alignItems:'center',marginLeft:11}}>
                     <View style={{flex: 1,width: 1,backgroundColor:'#FFF'}}/>
                     <View style={styles.iconBox}>
-                        <Image style={styles.iconImg} source = {iconImg}></Image>
+                        <Image style={styles.iconImg} source = {iconImg}/>
                     </View>
                     <View style={{flex: 2,width: 1,backgroundColor:'#FFF'}}/>
                 </View>

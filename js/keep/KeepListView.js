@@ -9,7 +9,7 @@ import React,{
 import ListItem from './KeepListView.Item';
 import Header from './KeepListView.Header';
 import {getDayTime} from '../utils/date_utils';
-
+import * as KGColor from 'KGColor'
 
 var ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2, sectionHeaderHasChanged: (prev, next) => prev !== next});
 
@@ -20,7 +20,7 @@ export default class KeepListView extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            keeps:[1,2,3,4,5,6,7,8]
+            keeps:[]
         };
     }
 
@@ -45,13 +45,17 @@ export default class KeepListView extends React.Component{
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            keeps:[1,2,3,4,5,6,7,8]
+            keeps:nextProps.data
         })
     }
 
     renderRow(rowData,sectionID,rowID){
+
+        const backgroundColor = rowID%2 === 0?KGColor.primary:'#f7a7aa';
+        const textColor = rowID%2 === 0?'#fff':KGColor.primaryText;
+
         return(
-            <ListItem data={rowData}/>
+            <ListItem data={rowData} textColor={textColor} backgroundColor={backgroundColor} />
         )
     }
 
@@ -66,6 +70,7 @@ export default class KeepListView extends React.Component{
             <ListView
                 dataSource={ds.cloneWithRows(this.state.keeps)}
                 renderHeader={this.renderHeader}
+                enableEmptySections={true}
                 renderRow={this.renderRow}/>
         )
     }

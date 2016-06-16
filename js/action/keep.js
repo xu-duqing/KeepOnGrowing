@@ -20,7 +20,8 @@ function addKeep(object){
             object.setACL(new Parse.ACL(user));
             object.save(null,{
                 success: function (keepFirst) {
-                    dispatch(addSuccess(keepFirst))
+                    dispatch(addSuccess(keepFirst));
+                    dispatch(loadKeep())
                 },
                 error: function (keepFirst, error) {
                     console.log(error);
@@ -135,6 +136,140 @@ function addShit(shit:{}){
     }
 }
 
+function loadKeep(){
+    return dispatch =>{
+        dispatch({
+            type:KEEP.LEAD_KEEP
+        });
+
+        Promise.all([
+            queryKeep("KeepFirst"),
+            queryKeep("KeepPowderedMilk"),
+            queryKeep("KeepHeight"),
+            queryKeep("KeepBreastMilk"),
+            queryKeep("KeepShit"),
+            queryKeep("KeepSleep"),
+            queryKeep("KeepWeight")
+        ]).then(value =>{
+            dispatch({
+                type:KEEP.LEAD_SUCCESS,
+                keeps:mergeKeep(value)
+            })
+        })
+
+    }
+}
+
+/**
+ *
+ * @param objects
+ * @returns {Array}
+ */
+function mergeKeep(objects:Array){
+    let keeps = [];
+
+    objects.forEach(array =>{
+        array.forEach(keep =>{
+            switch (keep.className){
+                case "KeepFirst":
+                    keeps.push(parsingFirst(keep));
+                    break;
+                case "KeepPowderedMilk":
+                    keeps.push(parsingPowderedMilk(keep));
+                    break;
+                case "KeepHeight":
+                    keeps.push(parsingHeight(keep));
+                    break;
+                case "KeepBreastMilk":
+                    keeps.push(parsingBreastMilk(keep));
+                    break;
+                case "KeepShit":
+                    keeps.push(parsingShit(keep));
+                    break;
+                case "KeepSleep":
+                    keeps.push(parsingSleep(keep));
+                    break;
+                case "KeepWeight":
+                    keeps.push(parsingWeight(keep));
+                    break;
+                default:
+                    break;
+            }
+        })
+    });
+    return keeps
+}
+
+function parsingFirst(keep){
+    return {
+        type:'first',
+        startTime:keep.get('startTime'),
+        keynote:keep.get('keynote'),
+        description:keep.get('description'),
+    }
+}
+
+function parsingPowderedMilk(keep){
+    return {
+        type:'powderedMilk',
+        startTime:keep.get('startTime'),
+        volume:keep.get('volume'),
+    }
+}
+
+function parsingHeight(keep){
+    return {
+        type:'height',
+        startTime:keep.get('startTime'),
+        height:keep.get('height'),
+    }
+}
+
+function parsingBreastMilk(keep){
+    return {
+        type:'breastMilk',
+        startTime:keep.get('startTime'),
+        endTime:keep.get('endTime'),
+    }
+}
+
+function parsingShit(keep){
+    return {
+        type:'shit',
+        startTime:keep.get('startTime'),
+    }
+}
+
+function parsingSleep(keep){
+    return {
+        type:'sleep',
+        startTime:keep.get('startTime'),
+        endTime:keep.get('endTime'),
+    }
+}
+
+function parsingWeight(keep){
+    return {
+        type:'weight',
+        startTime:keep.get('startTime'),
+        weight:keep.get('weight'),
+    }
+}
+
+
+function queryKeep(className:String){
+    return new Promise((resolve, reject) =>{
+        let query = new Parse.Query(className);
+
+        query.find().then(function(results) {
+            resolve(results)
+        },function(error){
+            console.log(error);
+            reject(error)
+        });
+    })
+}
+
 function addSuccess(keep){
     return{
         type:KEEP.ADD_SUCCESS,
@@ -163,5 +298,6 @@ module.exports = {
     addShit,
     addSleep,
     addBreastMilk,
-    addPowderedMilk
+    addPowderedMilk,
+    loadKeep
 };

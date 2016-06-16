@@ -20,8 +20,7 @@ import Login from '../login'
 import UserPage from '../user'
 
 import {
-    addFirst,
-    keepClear
+    loadKeep
 } from '../action'
 
 import {Text} from 'KGText'
@@ -44,6 +43,9 @@ class KeepPage extends React.Component{
         this.state = {};
     }
 
+    componentDidMount() {
+        this.props.dispatch(loadKeep())
+    }
     render(){
 
         return(
@@ -66,19 +68,6 @@ class KeepPage extends React.Component{
                         }}/>
             </View>
         )
-    }
-
-    showActionSheet() {
-        if (Platform.OS == 'ios'){
-            ActionSheetIOS.showActionSheetWithOptions({
-                    options: BUTTONS,
-                    cancelButtonIndex: CANCEL_INDEX,
-                    title:'添加记录'
-                },(index) => this.actionClick(index));
-        }else {
-            //fixme Android选择弹框暂时没有实现, 寻找更好的方案 https://github.com/gowong/material-sheet-fab
-            this.ActionSheet.show();
-        }
     }
 
     actionClick(index){
