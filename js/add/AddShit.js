@@ -12,7 +12,6 @@ import {
 } from 'react-native'
 
 import * as KGColor from 'KGColor'
-import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'
 
 export default class AddShit extends React.Component{
@@ -26,20 +25,27 @@ export default class AddShit extends React.Component{
         };
     }
 
+    setTime(date){
+        this.setState({
+            startTime:date
+        })
+    }
+
+    getData(){
+        return{
+            startTime:this.state.startTime
+        }
+    }
+
+
     render(){
 
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="上次大便时间" onPress={() =>{
-                    this.picker.show()
+                    this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                        this.setState({
-                            startTime:date
-                        })
-                }} />
             </View>
         )
     }

@@ -155,7 +155,7 @@ class AddPage extends React.Component{
                         this.setState({tag:"height"})
                     }}/>
                     <AddButton name="称体重" onPress={() =>{
-                        this.setState({tag:"wight"})
+                        this.setState({tag:"weight"})
                     }}/>
 
                 </View>

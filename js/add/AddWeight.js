@@ -8,7 +8,6 @@ import {
     View,
 } from 'react-native'
 
-import DateTimePicker from 'KGDatePicker'
 import EditDateTime from './EditDateTime'
 import EditText from './EditText'
 
@@ -20,8 +19,23 @@ export default class AddWeight extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            startTime:new Date()
+            startTime:new Date(),
+            weight:0
         };
+    }
+
+
+    setTime(date){
+        this.setState({
+            startTime:date
+        })
+    }
+
+    getData(){
+        return{
+            startTime:this.state.startTime,
+            weight:parseInt(this.state.weight)
+        }
     }
 
     render(){
@@ -29,16 +43,10 @@ export default class AddWeight extends React.Component{
         return(
             <View style={{flex:1}}>
                 <EditDateTime title="时间" onPress={() =>{
-                    this.picker.show()
+                    this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-                <EditText title="体 重:" />
-
-                <DateTimePicker ref={(picker) => this.picker = picker} onPress={(date,tag) =>{
-                        this.setState({
-                            startTime:date
-                        })
-                }} />
+                <EditText title="体 重:" onChangeText={(text) =>this.state.weight=text}/>
             </View>
         )
     }
