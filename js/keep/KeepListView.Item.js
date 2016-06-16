@@ -194,9 +194,9 @@ const styles = React.StyleSheet.create({
         backgroundColor:"#f7a7aa"
     },
     dateBox:{
-        paddingLeft:11,
         paddingTop:23,
-        alignItems:'flex-end'
+        alignItems:'flex-end',
+        width:70
     },
     iconBox:{
         width:32,

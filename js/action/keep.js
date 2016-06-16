@@ -197,6 +197,12 @@ function mergeKeep(objects:Array){
             }
         })
     });
+
+    //排序
+    keeps.sort((a,b) =>{
+        return b.startTime - a.startTime;
+    });
+
     return keeps
 }
 
