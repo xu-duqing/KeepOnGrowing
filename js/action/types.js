@@ -8,7 +8,10 @@ export const KEEP = {
     ADD_KEEP : 'ADD_KEEP',
     ADD_SUCCESS : "ADD_SUCCESS",
     ADD_ERROR : "ADD_ERROR",
-    KEEP_CLEAR : 'KEEP_CLEAR'
+    KEEP_CLEAR : 'KEEP_CLEAR',
+    LEAD_KEEP : 'LEAD_KEEP',
+    LEAD_SUCCESS : 'LEAD_SUCCESS',
+    LEAD_ERROR : 'LEAD_ERROR',
 };
 
 export const LOGIN ={

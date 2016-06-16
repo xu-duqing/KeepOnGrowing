@@ -25,6 +25,8 @@ import AddWeight from './AddWeight';
 import AddHeight from './AddHeight';
 import {connect} from 'react-redux'
 import DateTimePicker from 'KGDatePicker'
+import KGLoading from 'KGLoading'
+
 import {
     addFirst,
     addHeight,
@@ -58,6 +60,18 @@ class AddPage extends React.Component{
         this.state = {
             tag:"powderedMilk"
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.keep.isAdding){
+            this.loading.show("数据提交中...")
+        }else {
+            this.loading.dismiss()
+        }
+
+        if (nextProps.keep.isFinish){
+            this.props.navigator.pop()
+        }
     }
 
     renderContent() {
@@ -134,7 +148,10 @@ class AddPage extends React.Component{
     render(){
         return(
             <View style={{flex:1,backgroundColor:'#fcfcfc'}}>
-                <KGHeader title='新的记录' style={{backgroundColor:KGColor.primary}}/>
+                <KGHeader title='新的记录' style={{backgroundColor:KGColor.primaryHeader}}
+                          leftItem={{icon:require('../common/img/back_white.png'),onPress:() =>{
+                            this.props.navigator.pop()
+                          }}}/>
                 <View style={styles.actionBox}>
                     <AddButton name="吃奶粉啦" onPress={() =>{
                         this.setState({tag:"powderedMilk"})
@@ -173,6 +190,8 @@ class AddPage extends React.Component{
                         this.KeepComponent.setTime(date,tag);
                 }} />
 
+                <KGLoading ref={(loading) => this.loading = loading}/>
+
             </View>
         )
     }
@@ -182,7 +201,7 @@ class AddPage extends React.Component{
 
 const styles = StyleSheet.create({
     actionBox:{
-        backgroundColor:KGColor.primary,
+        backgroundColor:KGColor.primaryHeader,
         flexDirection: 'row',
         padding:11,
         flexWrap:'wrap'
