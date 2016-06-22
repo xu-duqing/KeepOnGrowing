@@ -162,8 +162,7 @@ export default class KeepListViewItem extends React.Component{
         }
 
         return(
-            <TouchableOpacity style={[styles.itemBox,{backgroundColor:this.props.backgroundColor}]}
-                              onPress={this.props.onPress}>
+            <View style={[styles.itemBox,{backgroundColor:this.props.backgroundColor}]}>
                 <View style={styles.dateBox}>
                     <Text style={{fontWeight:'bold',fontSize:18,color:this.props.textColor}}>
                         {`${date.getMonth() + 1}月${date.getDate()}`}
@@ -182,7 +181,7 @@ export default class KeepListViewItem extends React.Component{
                 </View>
 
                 {this.renderContent(this.props.data)}
-            </TouchableOpacity>
+            </View>
         )
     }
 }
