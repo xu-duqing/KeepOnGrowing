@@ -12,6 +12,8 @@ import {
     StyleSheet
 } from 'react-native'
 
+import StringUtils from '../utils/string-utils'
+
 export default class EditDateTime extends React.Component{
 
     render(){
@@ -29,7 +31,7 @@ export default class EditDateTime extends React.Component{
 
 
                 <Text style={styles.text}>
-                    {`${date.getHours()}:${date.getMinutes()}`}
+                    {`${StringUtils.prefixInteger(date.getHours(),2)}:${StringUtils.prefixInteger(date.getMinutes(),2)}`}
                 </Text>
 
             </TouchableOpacity>
