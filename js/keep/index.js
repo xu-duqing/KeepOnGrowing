@@ -49,12 +49,13 @@ class KeepPage extends React.Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.keep.isLoading){
-            this.loading.show("正在加载中...")
-        }else {
-            this.loading.dismiss()
-        }
+
     }
+
+    _onRefresh(){
+        this.props.dispatch(loadKeep())
+    }
+
     render(){
 
         return(
@@ -65,7 +66,7 @@ class KeepPage extends React.Component{
                         name:'login'
                     })
                 }}}/>
-                <KeepListView data={this.props.keep.data}/>
+                <KeepListView data={this.props.keep.data} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>
 
                 <ActionButton
                     buttonColor="#FF6666"

@@ -3,7 +3,8 @@
  */
 
 import React,{
-    ListView
+    ListView,
+    RefreshControl
 } from 'react-native'
 
 import ListItem from './KeepListView.Item';
@@ -19,13 +20,15 @@ export default class KeepListView extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            keeps:[]
+            keeps:[],
+            refreshing:false
         };
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            keeps:nextProps.data
+            keeps:nextProps.data,
+            refreshing:nextProps.refreshing
         })
     }
 
@@ -45,13 +48,26 @@ export default class KeepListView extends React.Component{
         )
     }
 
+    _onRefresh(){
+        this.props.onRefresh && this.props.onRefresh()
+    }
+
     render(){
         return(
             <ListView
                 dataSource={ds.cloneWithRows(this.state.keeps)}
                 renderHeader={this.renderHeader}
                 enableEmptySections={true}
-                renderRow={this.renderRow}/>
+                renderRow={this.renderRow}
+                refreshControl={
+                      <RefreshControl
+                        refreshing={this.state.refreshing}
+                        tintColor="#000000"
+                        title="正在刷新数据..."
+                        colors={['#ff0000']}
+                        backgroundColor={KGColor.primaryText}
+                        onRefresh={this._onRefresh.bind(this)}/>
+                      }/>
         )
     }
 }
