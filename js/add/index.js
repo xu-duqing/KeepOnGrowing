@@ -41,9 +41,10 @@ import {
 class AddButton extends React.Component{
 
     render(){
+        const textColor = this.props.isSelect?'#CC0033':'#e8888c';
         return(
-            <TouchableOpacity style={styles.btnBox} onPress={this.props.onPress}>
-                <Text style={{fontSize:14,color:'#e8888c'}}>
+            <TouchableOpacity style={[styles.btnBox,this.props.isSelect?{borderColor:'#CC0033',borderWidth:1,backgroundColor:'#FFCCCC'}:{}]} onPress={this.props.onPress}>
+                <Text style={{fontSize:14,color:textColor}}>
                     {this.props.name}
                 </Text>
             </TouchableOpacity>
@@ -153,25 +154,25 @@ class AddPage extends React.Component{
                             this.props.navigator.pop()
                           }}}/>
                 <View style={styles.actionBox}>
-                    <AddButton name="吃奶粉啦" onPress={() =>{
+                    <AddButton name="吃奶粉啦" isSelect={this.state.tag === "powderedMilk"} onPress={() =>{
                         this.setState({tag:"powderedMilk"})
                     }}/>
-                    <AddButton name="喂母乳" onPress={() =>{
+                    <AddButton name="喂母乳" isSelect={this.state.tag === "breastMilk"} onPress={() =>{
                         this.setState({tag:"breastMilk"})
                     }}/>
-                    <AddButton name="睡觉觉" onPress={() =>{
+                    <AddButton name="睡觉觉" isSelect={this.state.tag === "sleep"} onPress={() =>{
                         this.setState({tag:"sleep"})
                     }}/>
-                    <AddButton name="拉臭臭" onPress={() =>{
+                    <AddButton name="拉臭臭" isSelect={this.state.tag === "shit"} onPress={() =>{
                         this.setState({tag:"shit"})
                     }}/>
-                    <AddButton name="第一次" onPress={() =>{
+                    <AddButton name="第一次" isSelect={this.state.tag === "first"} onPress={() =>{
                         this.setState({tag:"first"})
                     }}/>
-                    <AddButton name="量身高" onPress={() =>{
+                    <AddButton name="量身高" isSelect={this.state.tag === "height"} onPress={() =>{
                         this.setState({tag:"height"})
                     }}/>
-                    <AddButton name="称体重" onPress={() =>{
+                    <AddButton name="称体重" isSelect={this.state.tag === "weight"} onPress={() =>{
                         this.setState({tag:"weight"})
                     }}/>
 
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
         paddingLeft:16,
         paddingRight:16,
         marginTop:6,
-        marginRight:10
+        marginRight:10,
     }
 });
 
