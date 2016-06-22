@@ -46,7 +46,7 @@ export default class AddWeight extends React.Component{
                     this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-                <EditText title="体 重:" onChangeText={(text) =>this.state.weight=text}/>
+                <EditText title="体 重:" unit="千克" onChangeText={(text) =>this.state.weight=text}/>
             </View>
         )
     }

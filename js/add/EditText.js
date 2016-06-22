@@ -31,6 +31,13 @@ export default class EditText extends React.Component{
                     style={styles.textInput}
                     onChangeText={this.props.onChangeText}
                 />
+
+                {this.props.unit?
+                    <Text style={[styles.textTitle,{marginLeft: 6}]}>
+                        {this.props.unit}
+                    </Text>:null}
+
+
             </View>
         )
     }

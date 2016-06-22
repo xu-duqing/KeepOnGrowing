@@ -46,7 +46,8 @@ export default class AddHeight extends React.Component{
                     this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-                <EditText title="身 高:" onChangeText={(text) =>this.state.height=text} />
+                <EditText title="身 高:" unit="CM" onChangeText={(text) =>this.state.height=text} />
+
             </View>
         )
     }
