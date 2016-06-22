@@ -16,7 +16,7 @@ import {connect} from 'react-redux'
 import KGActionSheet from '../common/KGActionSheet';
 import ActionButton from 'react-native-action-button';
 import AddPage from '../add'
-import Login from '../login'
+import User from '../user'
 import UserPage from '../user'
 import KGLoading from 'KGLoading'
 
@@ -62,8 +62,8 @@ class KeepPage extends React.Component{
             <View style={{flex:1}}>
                 <KGHeader title='小诺成长记' style={{backgroundColor:KGColor.primaryHeader}} leftItem={{title:'账户',onPress:() =>{
                     this.props.navigator.push({
-                        component:Login,
-                        name:'login'
+                        component:User,
+                        name:'user'
                     })
                 }}}/>
                 <KeepListView data={this.props.keep.data} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>

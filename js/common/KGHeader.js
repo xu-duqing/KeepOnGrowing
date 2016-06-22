@@ -88,7 +88,7 @@ class ItemWrapperIOS extends React.Component{
         var center;
         if (title){
             center = (
-                <Text>
+                <Text style={styles.itemText}>
                     {title}
                 </Text>
             );
@@ -153,6 +153,11 @@ var styles = React.StyleSheet.create({
     rightItem:{
         flex: 1,
         alignItems: 'flex-end',
+    },
+    itemText: {
+        letterSpacing: 1,
+        fontSize: 12,
+        color: 'white'
     }
 });
 

@@ -16,9 +16,15 @@ import {
 import KGHeader from '../common/KGHeader';
 import {Text} from 'KGText'
 import * as KGColor from 'KGColor'
+import KGLoading from 'KGLoading'
+import {connect} from 'react-redux'
 
 
-export default class UserPage extends React.Component{
+import {
+    logOut
+} from '../action'
+
+class UserPage extends React.Component{
 
     // 构造
     constructor(props) {
@@ -29,112 +35,91 @@ export default class UserPage extends React.Component{
         };
     }
 
-
-
+    logOut(){
+        this.loading.show("正在退出...");
+        this.props.dispatch(logOut());
+    }
 
     render(){
         return(
             <View style={{flex:1}}>
-                <KGHeader title='用户信息' style={{backgroundColor:KGColor.primaryHeader}}/>
+                <KGHeader title='用户信息' style={{backgroundColor:KGColor.primaryHeader}}
+                          leftItem={{icon:require('../common/img/back_white.png'),onPress:() =>{
+                            this.props.navigator.pop()
+                          }}}/>
                 <View style={styles.headerBox}>
 
                     <View style={styles.headPortraitBox}>
-                        <Image style={styles.headerImg} source = {require('./img/ic_header.png')}></Image>
+                        <Image style={styles.headerImg} source = {require('./img/ic_header.png')}/>
                     </View>
                     <Text style={styles.nameText}>许书筠</Text>
-                    <Text style={styles.xiaoNameText}>小诺</Text>
-
                 </View>
 
-                <View style={styles.contentItemBox}>
+                <View style={{backgroundColor:'#fffed2',height:30,justifyContent:'center',paddingLeft:11}}>
+                    <Text style={{fontSize:12,color:'#877e61'}}>
+                        点击可以编辑相关信息
+                    </Text>
+                </View>
 
-                    <Image style={styles.iconImg} source={require('../keep/img/ic_rili.png')}></Image>
-
-                    <View style={styles.textItemBox}>
-                        <Text style={styles.keyText}>
+                <View style={styles.itemBox}>
+                    <View style={{flex:1,alignItems:'center',}}>
+                        <Text style={styles.textBold}>
                             出生日期
                         </Text>
 
-                        <Text style={styles.valText}>
+                        <Text style={styles.text}>
                             2016年5月16日
                         </Text>
 
                     </View>
 
-                </View>
-                <View style={styles.line} />
+                    <View style={{backgroundColor:'#f0f0f0',width:1,height:65}}/>
 
-                <View style={styles.contentItemBox}>
-
-                    <Image style={styles.iconImg} source={require('../keep/img/ic_rili.png')}></Image>
-
-                    <View style={styles.textItemBox}>
-                        <Text style={styles.keyText}>
+                    <View style={{flex:1,alignItems:'center',}}>
+                        <Text style={styles.textBold}>
                             性别
                         </Text>
 
-                        <Text style={styles.valText}>
+                        <Text style={styles.text}>
                             女
                         </Text>
-
                     </View>
-
                 </View>
-                <View style={styles.line} />
 
-                <View style={styles.contentItemBox}>
-
-                    <Image style={styles.iconImg} source={require('../keep/img/ic_rili.png')}></Image>
-
-                    <View style={styles.textItemBox}>
-                        <Text style={styles.keyText}>
-                            血型
+                <View style={styles.itemBox}>
+                    <View style={{flex:1,alignItems:'center',}}>
+                        <Text style={styles.textBold}>
+                            身长
                         </Text>
 
-                        <Text style={styles.valText}>
-                            AB
+                        <Text style={styles.text}>
+                            60 CM
                         </Text>
 
                     </View>
 
-                </View>
-                <View style={styles.line} />
+                    <View style={{backgroundColor:'#f0f0f0',width:1,height:65}}/>
 
-                <View style={styles.contentItemBox}>
-
-                    <Image style={styles.iconImg} source={require('../keep/img/ic_rili.png')}></Image>
-
-                    <View style={styles.textItemBox}>
-                        <Text style={styles.keyText}>
+                    <View style={{flex:1,alignItems:'center',}}>
+                        <Text style={styles.textBold}>
                             体重
                         </Text>
 
-                        <Text style={styles.valText}>
-                            3.2KG
+                        <Text style={styles.text}>
+                            4.5 千克
                         </Text>
-
                     </View>
-
                 </View>
-                <View style={styles.line} />
 
-                <View style={styles.contentItemBox}>
 
-                    <Image style={styles.iconImg} source={require('../keep/img/ic_rili.png')}></Image>
+                <TouchableOpacity style={styles.outBottom}
+                                  onPress={this.logOut.bind(this)}>
+                    <Text style={{fontSize:16,color:'#e8888c',alignItems:'center'}}>
+                        退出登录
+                    </Text>
+                </TouchableOpacity>
 
-                    <View style={styles.textItemBox}>
-                        <Text style={styles.keyText}>
-                            身高
-                        </Text>
-
-                        <Text style={styles.valText}>
-                            38CM
-                        </Text>
-
-                    </View>
-
-                </View>
-                <View style={styles.line} />
+                <KGLoading ref={(loading) => this.loading = loading}/>
                 
             </View>
         )
@@ -145,72 +130,17 @@ export default class UserPage extends React.Component{
 
 
 const styles = StyleSheet.create({
-    actionBox:{
-        backgroundColor:KGColor.primaryHeader,
-        justifyContent:'center',
-        flexDirection: 'row',
-        padding:11,
-        flexWrap:'wrap'
-    },
-
     headerBox:{
         backgroundColor:KGColor.primaryHeader,
         justifyContent:'center',
         alignItems:'center',
-        height:200
-    },
-
-    contentItemBox:{
-        padding:16,
-        alignItems:'center',
-        flexDirection: 'row'
-    },
-
-    line:{
-        height:1,
-        backgroundColor:"#ffe1e2"
-    },
-
-    textItemBox:{
-        marginLeft:16
+        height:130
     },
     headerImg:{
         width:70,
         height:70,
         borderRadius:35
     },
-
-    iconImg:{
-        width:24,
-        height:24
-    },
-
-    nameText:{
-        fontSize:18,
-        color:'#FFF',
-        marginTop:5,
-        fontWeight:'bold'
-    },
-
-    keyText:{
-        fontSize:14,
-        color:KGColor.primaryHeader,
-        fontWeight:'bold'
-    },
-
-    valText:{
-        fontSize:16,
-        color:KGColor.primary,
-        marginTop:5,
-        fontWeight:'bold'
-    },
-
-    xiaoNameText:{
-        fontSize:14,
-        color:'#FFF',
-        marginTop:5
-    },
-
     headPortraitBox:{
         width:76,
         height:76,
@@ -219,15 +149,44 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderRadius:38
     },
-
-    btnBox:{
-        height:32,
-        backgroundColor:'#FFF',
+    nameText:{
+        fontSize:18,
+        color:'#FFF',
+        marginTop:5,
+        fontWeight:'bold'
+    },
+    text:{
+        fontSize:12,
+        color:"#727480",
+        marginTop:6
+    },
+    textBold:{
+        fontSize:15,
+        color:"#727480",
+        fontWeight:'bold'
+    },
+    itemBox:{
+        flexDirection:'row',
+        alignItems:'center',
+        height:65,
+        borderBottomWidth:1,
+        borderBottomColor:'#f0f0f0'
+    },
+    outBottom:{
+        height:45,
+        borderRadius:8,
+        borderWidth:1,
+        borderColor:'#e8888c',
         justifyContent:'center',
-        borderRadius:16,
-        paddingLeft:10,
-        paddingRight:10,
-        marginTop:6,
-        marginRight:10
+        alignItems:'center',
+        margin:36
     }
 });
+
+function select(store) {
+    return {
+        user:store.user
+    };
+}
+
+module.exports = connect(select)(UserPage);
