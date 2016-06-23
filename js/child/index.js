@@ -52,7 +52,6 @@ class ChildPage extends React.Component{
         switch (this.state.page){
             case 0:
                 return <EditName onChangeText={(text) =>{
-                    console.log(text);
                     this.state.name = text
                 }}/>;
             case 1:
