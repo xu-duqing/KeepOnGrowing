@@ -41,10 +41,9 @@ import {
 class AddButton extends React.Component{
 
     render(){
-        const textColor = this.props.isSelect?'#CC0033':'#e8888c';
         return(
-            <TouchableOpacity style={[styles.btnBox,this.props.isSelect?{borderColor:'#CC0033',borderWidth:1,backgroundColor:'#FFCCCC'}:{}]} onPress={this.props.onPress}>
-                <Text style={{fontSize:14,color:textColor}}>
+            <TouchableOpacity style={[styles.btnBox,this.props.isSelect?{borderColor:'#f8bfbe',borderWidth:1}:{}]} onPress={this.props.onPress}>
+                <Text style={{fontSize:14,color:"#FFF"}}>
                     {this.props.name}
                 </Text>
             </TouchableOpacity>
@@ -209,7 +208,6 @@ const styles = StyleSheet.create({
     },
     btnBox:{
         height:32,
-        backgroundColor:'#FFF',
         justifyContent:'center',
         borderRadius:16,
         paddingLeft:16,
