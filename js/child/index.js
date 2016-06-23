@@ -28,29 +28,52 @@ class ChildPage extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            page:0
+            page:0,
+            name:'',
+            height:60,
+            wight:3.3,
+            birthday:new Date()
         };
+    }
+
+    pushInfo(){
+        let childInfo = {
+            name:this.state.name,
+            birthday:this.state.birthday,
+            wight:this.state.wight,
+            height:this.state.height
+        }
+        
+        
+        console.log(childInfo)
     }
 
     renderCenter(){
         switch (this.state.page){
             case 0:
-                return <EditName />
+                return <EditName onChangeText={(text) =>{
+                    console.log(text);
+                    this.state.name = text
+                }}/>;
             case 1:
-                return <EditBirthday />
+                return <EditBirthday onPress={(date) =>{
+                    this.state.birthday = date
+                }}/>;
             case 2:
-                return <EditHeight />
+                return <EditHeight onChangeText={(text) =>{
+                    this.state.height = text
+                }}/>;
             case 3:
-                return <EditWight />
-            default:
-                return <EditName />
+                return <EditWight onChangeText={(text) =>{
+                    this.state.wight = text
+                }}/>;
         }
     }
 
     render(){
         return(
             <View style={{flex: 1}}>
-                <KGHeader title="编辑宝贝信息" style={{backgroundColor:KGColor.primaryHeader}}
+                <KGHeader title="添加宝贝信息" style={{backgroundColor:KGColor.primaryHeader}}
                           leftItem={{icon:require('../common/img/back_white.png'),onPress:() =>{
                             this.props.navigator.pop()
                           }}}/>
@@ -59,11 +82,12 @@ class ChildPage extends React.Component{
 
                 <TouchableOpacity style={styles.nextBottom}
                                   onPress={() =>{
+
+                                    if (this.state.page == 0 && !this.state.name){
+                                        return alert("名字不能为空哦!!")
+                                    }
                                     if (this.state.page === 3){
-                                        this.props.navigator.replace({
-                                            component:AddPage
-                                        });
-                                        return
+                                        return this.pushInfo()
                                     }
                                     this.setState({
                                         page:this.state.page + 1

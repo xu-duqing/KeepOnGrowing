@@ -4,7 +4,7 @@
 
 "use strict";
 
-import {KEEP,LOGIN} from './types';
+import {CHILD} from './types';
 var Parse = require('parse/react-native');
 
 function loadChild(){
