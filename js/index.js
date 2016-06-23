@@ -25,24 +25,6 @@ export default class App extends React.Component{
         Parse.initialize(parseAppID);
         Parse.serverURL = `${serverURL}/parse`;
 
-        //用户注册
-        //let user = new Parse.User();
-        //user.set("username","SamXu");
-        //user.set("password","111111");
-        //user.set("email","xu.duqing@gmail.com");
-        //user.set("phone","18268839400");
-        //
-        //user.signUp(null,{
-        //    success:function(user){
-        //        console.log(user)
-        //    },
-        //    error:function(user,error){
-        //        console.log(error);
-        //        console.log(user);
-        //        alert("Error: " + error.code + " " + error.message);
-        //    }}
-        //)
-
         this.state = {
           isLoading: true,
           store: configureStore(() => this.setState({isLoading: false})),
