@@ -48,9 +48,6 @@ class ChildPage extends React.Component{
             this.loading.show("请稍后...");
         }else {
             this.loading.dismiss();
-            this.props.navigator.replace({
-                component:AddPage
-            })
         }
     }
 
@@ -72,7 +69,12 @@ class ChildPage extends React.Component{
             startTime:this.state.birthday
         }));
 
-        this.props.dispatch(addChild(this.state.name,this.state.birthday));
+        this.props.dispatch(addChild(this.state.name,this.state.birthday,() =>{
+
+            this.props.navigator.replace({
+                component:AddPage
+            })
+        }));
     }
 
     renderCenter(){

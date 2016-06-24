@@ -52,19 +52,31 @@ class KeepPage extends React.Component{
         return(
             <View style={{flex:1}}>
                 <KGHeader title={title} style={{backgroundColor:KGColor.primaryHeader}} leftItem={{title:'账户',onPress:() =>{
-                    this.props.navigator.push({
-                        component:UserPage,
-                        name:'user'
-                    })
+                        if(child){
+                            this.props.navigator.push({
+                                component:UserPage
+                            })
+                        }else {
+                            this.props.navigator.push({
+                                component:ChildPage
+                            })
+                        }
                 }}}/>
                 <KeepListView data={this.props.keep.data} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>
 
                 <ActionButton
                     buttonColor="#FF6666"
                     onPress={() => {
-                            this.props.navigator.push({
-                                component:ChildPage
-                            })
+                            if(child){
+                                this.props.navigator.push({
+                                    component:AddPage
+                                })
+                            }else {
+                                this.props.navigator.push({
+                                    component:ChildPage
+                                })
+                            }
+
                         }}/>
 
                 <KGLoading ref={(loading) => this.loading = loading}/>

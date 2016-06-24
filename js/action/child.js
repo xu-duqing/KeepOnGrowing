@@ -40,7 +40,7 @@ function loadChild(){
     }
 }
 
-function addChild(name,birthday){
+function addChild(name,birthday,onSuccess){
 
     return async dispatch =>  {
         dispatch({
@@ -65,7 +65,8 @@ function addChild(name,birthday){
                     dispatch({
                         type:CHILD.CHILD_ADD_SUCCESS,
                         child
-                    })
+                    });
+                    onSuccess && onSuccess()
                 },
                 error: function (childInfo, error) {
                     console.log(error);

@@ -41,8 +41,8 @@ class UserPage extends React.Component{
     }
 
     render(){
-        const child = this.props.child[0];
-        const date = new Date(child.birthday);
+        const child = this.props.child[0] || {};
+        const date = new Date(child.birthday || 0);
 
         return(
             <View style={{flex:1}}>
@@ -55,7 +55,7 @@ class UserPage extends React.Component{
                     <View style={styles.headPortraitBox}>
                         <Image style={styles.headerImg} source = {require('./img/ic_header.png')}/>
                     </View>
-                    <Text style={styles.nameText}>{child.name}</Text>
+                    <Text style={styles.nameText}>{child.name || "我的宝贝"}</Text>
                 </View>
 
                 <View style={{backgroundColor:'#fffed2',height:30,justifyContent:'center',paddingLeft:11}}>

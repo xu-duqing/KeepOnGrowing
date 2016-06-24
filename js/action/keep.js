@@ -6,7 +6,7 @@ import {KEEP,LOGIN} from './types';
 var Parse = require('parse/react-native');
 
 
-function addKeep(object){
+function addKeep(object,onFinish){
     console.log(object);
 
     return async dispatch =>{
@@ -22,6 +22,7 @@ function addKeep(object){
                 success: function (keepFirst) {
                     dispatch(addSuccess(keepFirst));
                     dispatch(loadKeep())
+                    onFinish && onFinish()
                 },
                 error: function (keepFirst, error) {
                     console.log(error);
@@ -38,7 +39,7 @@ function addKeep(object){
 
 }
 
-function addFirst(first:{}){
+function addFirst(first:{},onFinish){
 
     return  (dispatch,getState) => {
         let KeepFirst = Parse.Object.extend("KeepFirst");
@@ -48,11 +49,11 @@ function addFirst(first:{}){
         keepFirst.set("description",first.description);
         keepFirst.set("startTime",first.startTime);
 
-        dispatch(addKeep(keepFirst));
+        dispatch(addKeep(keepFirst,onFinish));
     }
 }
 
-function addHeight(height:{}){
+function addHeight(height:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepHeight");
@@ -61,11 +62,11 @@ function addHeight(height:{}){
         keep.set("height",height.height);
         keep.set("startTime",height.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
     }
 }
 
-function addWeight(weight:{}){
+function addWeight(weight:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepWeight");
@@ -74,13 +75,13 @@ function addWeight(weight:{}){
         keep.set("weight",weight.weight);
         keep.set("startTime",weight.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
 
     }
 }
 
 
-function addPowderedMilk(milk:{}){
+function addPowderedMilk(milk:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepPowderedMilk");
@@ -89,13 +90,13 @@ function addPowderedMilk(milk:{}){
         keep.set("volume",milk.volume);
         keep.set("startTime",milk.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
 
     }
 }
 
 
-function addBreastMilk(milk:{}){
+function addBreastMilk(milk:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepBreastMilk");
@@ -104,12 +105,12 @@ function addBreastMilk(milk:{}){
         keep.set("endTime",milk.endTime);
         keep.set("startTime",milk.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
 
     }
 }
 
-function addSleep(sleep:{}){
+function addSleep(sleep:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepSleep");
@@ -118,12 +119,12 @@ function addSleep(sleep:{}){
         keep.set("endTime",sleep.endTime);
         keep.set("startTime",sleep.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
 
     }
 }
 
-function addShit(shit:{}){
+function addShit(shit:{},onFinish){
 
     return dispatch =>{
         let Keep = Parse.Object.extend("KeepShit");
@@ -131,7 +132,7 @@ function addShit(shit:{}){
 
         keep.set("startTime",shit.startTime);
 
-        dispatch(addKeep(keep));
+        dispatch(addKeep(keep,onFinish));
 
     }
 }

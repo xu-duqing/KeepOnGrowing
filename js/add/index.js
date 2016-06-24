@@ -68,10 +68,6 @@ class AddPage extends React.Component{
         }else {
             this.loading.dismiss()
         }
-
-        if (nextProps.keep.isFinish){
-            this.props.navigator.pop()
-        }
     }
 
     renderContent() {
@@ -141,7 +137,9 @@ class AddPage extends React.Component{
                 return
         }
 
-        this.props.dispatch(add(data));
+        this.props.dispatch(add(data,()=>{
+            this.props.navigator.pop()
+        }));
 
     }
 
