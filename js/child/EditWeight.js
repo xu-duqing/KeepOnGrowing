@@ -10,7 +10,7 @@ import React,{
 import {Text} from 'KGText'
 import EditText from '../add/EditText'
 
-export default class EditWight extends React.Component{
+export default class EditWeight extends React.Component{
 
     render(){
         return(

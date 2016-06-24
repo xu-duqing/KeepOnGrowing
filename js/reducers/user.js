@@ -16,9 +16,7 @@ export default function user(state = initializeState,action){
                 isLogin:true
             };
         case LOGIN.LOGOUT:{
-            return{
-                isLogin:false
-            }
+            return initializeState;
         }
         case LOGIN.LOGIN_ERROR:{
             return{

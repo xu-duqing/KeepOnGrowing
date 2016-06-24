@@ -6,9 +6,11 @@
 
 import keep from './keep';
 import user from './user'
+import child from './child'
 import {combineReducers} from 'redux';
 
 module.exports = combineReducers({
     keep,
-    user
+    user,
+    child
 });

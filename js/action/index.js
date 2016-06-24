@@ -4,8 +4,10 @@
 
 import keep from './keep';
 import login from './login'
+import child from './child'
 
 module.exports = {
   ...keep,
-  ...login
+  ...login,
+  ...child
 };

@@ -14,11 +14,18 @@ import KGHeader from '../common/KGHeader';
 import KGColor from 'KGColor'
 import {Text} from 'KGText'
 import AddPage from '../add'
+import KGLoading from '../common/KGLoading'
+import {
+    addFirst,
+    addHeight,
+    addWeight,
+    addChild
+} from '../action'
 
 import EditBirthday from './EditBirthday'
 import EditHeight from './EditHeight'
 import EditName from './EditName'
-import EditWight from './EditWight'
+import EditWeight from './EditWeight'
 
 
 class ChildPage extends React.Component{
@@ -31,21 +38,41 @@ class ChildPage extends React.Component{
             page:0,
             name:'',
             height:60,
-            wight:3.3,
+            weight:3.3,
             birthday:new Date()
         };
     }
 
-    pushInfo(){
-        let childInfo = {
-            name:this.state.name,
-            birthday:this.state.birthday,
-            wight:this.state.wight,
-            height:this.state.height
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.child.isAdding){
+            this.loading.show("请稍后...");
+        }else {
+            this.loading.dismiss();
+            this.props.navigator.replace({
+                component:AddPage
+            })
         }
-        
-        
-        console.log(childInfo)
+    }
+
+    pushInfo(){
+
+        this.props.dispatch(addFirst({
+            keynote:'来到这个世界',
+            description:'Hello World!',
+            startTime:this.state.birthday
+        }));
+
+        this.props.dispatch(addHeight({
+            height:this.state.height,
+            startTime:this.state.birthday
+        }));
+
+        this.props.dispatch(addWeight({
+            weight:this.state.weight,
+            startTime:this.state.birthday
+        }));
+
+        this.props.dispatch(addChild(this.state.name,this.state.birthday));
     }
 
     renderCenter(){
@@ -60,11 +87,11 @@ class ChildPage extends React.Component{
                 }}/>;
             case 2:
                 return <EditHeight onChangeText={(text) =>{
-                    this.state.height = text
+                    this.state.height = parseInt(text)
                 }}/>;
             case 3:
-                return <EditWight onChangeText={(text) =>{
-                    this.state.wight = text
+                return <EditWeight onChangeText={(text) =>{
+                    this.state.weight = parseInt(text)
                 }}/>;
         }
     }
@@ -96,6 +123,7 @@ class ChildPage extends React.Component{
                     </Text>
                 </TouchableOpacity>
 
+                <KGLoading ref={(loading) => this.loading = loading}/>
             </View>
         )
     }

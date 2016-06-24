@@ -2,7 +2,7 @@
  * Created by Guang on 16/5/19.
  */
 
-import {KEEP} from '../action/types';
+import {KEEP,LOGIN} from '../action/types';
 
 const initializeState = {
     data:[],
@@ -41,6 +41,9 @@ export default function keep(state = initializeState,action){
             return Object.assign({},state,{
                 isLoading:false
             });
+        case LOGIN.LOGOUT:{
+            return initializeState;
+        }
         default:
             return state
     }
