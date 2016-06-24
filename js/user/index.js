@@ -41,6 +41,9 @@ class UserPage extends React.Component{
     }
 
     render(){
+        const child = this.props.child[0];
+        const date = new Date(child.birthday);
+
         return(
             <View style={{flex:1}}>
                 <KGHeader title='用户信息' style={{backgroundColor:KGColor.primaryHeader}}
@@ -52,7 +55,7 @@ class UserPage extends React.Component{
                     <View style={styles.headPortraitBox}>
                         <Image style={styles.headerImg} source = {require('./img/ic_header.png')}/>
                     </View>
-                    <Text style={styles.nameText}>许书筠</Text>
+                    <Text style={styles.nameText}>{child.name}</Text>
                 </View>
 
                 <View style={{backgroundColor:'#fffed2',height:30,justifyContent:'center',paddingLeft:11}}>
@@ -68,7 +71,7 @@ class UserPage extends React.Component{
                         </Text>
 
                         <Text style={styles.text}>
-                            2016年5月16日
+                            {`${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`}
                         </Text>
 
                     </View>
@@ -185,7 +188,7 @@ const styles = StyleSheet.create({
 
 function select(store) {
     return {
-        user:store.user
+        child:store.child.childs
     };
 }
 

@@ -21,7 +21,8 @@ import KGLoading from 'KGLoading'
 import ChildPage from '../child'
 
 import {
-    loadKeep
+    loadKeep,
+    loadChild
 } from '../action'
 
 import {Text} from 'KGText'
@@ -37,7 +38,8 @@ class KeepPage extends React.Component{
     }
 
     componentDidMount() {
-        this.props.dispatch(loadKeep())
+        this.props.dispatch(loadKeep());
+        this.props.dispatch(loadChild());
     }
 
     _onRefresh(){
@@ -45,10 +47,11 @@ class KeepPage extends React.Component{
     }
 
     render(){
-
+        const child = this.props.child.childs[0];
+        const title = `${child && child.name?child.name:"宝贝"}成长记`;
         return(
             <View style={{flex:1}}>
-                <KGHeader title='小诺成长记' style={{backgroundColor:KGColor.primaryHeader}} leftItem={{title:'账户',onPress:() =>{
+                <KGHeader title={title} style={{backgroundColor:KGColor.primaryHeader}} leftItem={{title:'账户',onPress:() =>{
                     this.props.navigator.push({
                         component:UserPage,
                         name:'user'
@@ -72,7 +75,8 @@ class KeepPage extends React.Component{
 
 function select(store) {
     return {
-        keep:store.keep
+        keep:store.keep,
+        child:store.child
     };
 }
 

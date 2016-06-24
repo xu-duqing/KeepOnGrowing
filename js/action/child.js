@@ -8,7 +8,36 @@ import {CHILD,LOGIN} from './types';
 var Parse = require('parse/react-native');
 
 function loadChild(){
+    return dispatch =>{
+        dispatch({
+            type:CHILD.CHILD_LOAD
+        });
 
+        let query = new Parse.Query('ChildInfo');
+
+        query.find().then(function(results) {
+
+            let childs = [];
+            results.forEach(item =>{
+
+                childs.push({
+                    birthday:item.get('birthday'),
+                    name:item.get('name')
+                });
+            });
+
+            console.log(childs);
+            dispatch({
+                type:CHILD.CHILD_LOAD_SUCCESS,
+                childs
+            });
+        },function(error){
+            console.log(error);
+            dispatch({
+                type:CHILD.CHILD_LOAD_ERROR
+            });
+        });
+    }
 }
 
 function addChild(name,birthday){
@@ -25,6 +54,7 @@ function addChild(name,birthday){
 
             childInfo.set('birthday',birthday);
             childInfo.set('name',name);
+            childInfo.setACL(new Parse.ACL(user));
 
             childInfo.save(null,{
                 success: function (childInfo) {
