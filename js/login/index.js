@@ -9,7 +9,8 @@ import {
     View,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native'
 
 import {
@@ -35,7 +36,7 @@ class Login extends React.Component{
             name:'',
             password:'',
             checkPassword:'',
-            isRegister:true
+            isRegister:false
         };
       }
 
@@ -84,20 +85,9 @@ class Login extends React.Component{
         return(
             <View style={{flex:1}}>
 
-                <KGHeader style={{backgroundColor:KGColor.primaryHeader}} leftItem={{icon:require('../common/img/back_white.png'),onPress:() =>{
-                            //this.props.navigator.pop()
-                          }}}/>
+                <KGHeader style={{backgroundColor:KGColor.primaryHeader}} title="记忆面包"/>
 
                 <View style={styles.headerBox}>
-                    <TouchableOpacity style={[styles.btnBox,{borderColor:this.state.isRegister?'#f8bfbe' : KGColor.primaryHeader}]} onPress={() =>{
-                        this.setState({
-                            isRegister:true
-                        })
-                    }}>
-                        <Text style={{fontSize:14,color:"#FFF"}}>
-                            注册
-                        </Text>
-                    </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.btnBox,{borderColor:!this.state.isRegister?'#f8bfbe' : KGColor.primaryHeader}]} onPress={() =>{
                         this.setState({
@@ -108,13 +98,24 @@ class Login extends React.Component{
                             登录
                         </Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={[styles.btnBox,{borderColor:this.state.isRegister?'#f8bfbe' : KGColor.primaryHeader}]} onPress={() =>{
+                        this.setState({
+                            isRegister:true
+                        })
+                    }}>
+                        <Text style={{fontSize:14,color:"#FFF"}}>
+                            注册
+                        </Text>
+                    </TouchableOpacity>
+
+
                 </View>
 
                 <View style={styles.box} >
 
-                    <Text style={styles.textTitle}>
-                        用户名 :
-                    </Text>
+                    <Image style={styles.icon} source={require('./img/ic_login_user.png')}/>
+
                     <TextInput
                         style={styles.textInput}
                         placeholder="请输入用户名"
@@ -125,9 +126,7 @@ class Login extends React.Component{
 
                 <View style={styles.box} >
 
-                    <Text style={styles.textTitle}>
-                        密码 :
-                    </Text>
+                    <Image style={styles.icon} source={require('./img/ic_login_psd.png')}/>
                     <TextInput
                         style={styles.textInput}
                         placeholder="请输入密码"
@@ -140,9 +139,8 @@ class Login extends React.Component{
                 {this.state.isRegister?
                     <View style={styles.box} >
 
-                        <Text style={styles.textTitle}>
-                            密码 :
-                        </Text>
+                        <Image style={styles.icon} source={require('./img/ic_login_psd.png')}/>
+
                         <TextInput
                             style={styles.textInput}
                             placeholder="请确认密码"
@@ -176,7 +174,7 @@ const styles = StyleSheet.create({
     headerBox:{
         backgroundColor:KGColor.primaryHeader,
         flexDirection: 'row',
-        padding:11,
+        padding:28,
         justifyContent:'center'
     },
     btnBox:{
@@ -191,8 +189,6 @@ const styles = StyleSheet.create({
     },
     box:{
         height:44,
-        marginLeft:19,
-        marginRight:19,
         borderBottomWidth:1,
         borderBottomColor:'#f0f0f0',
         alignItems:'center',
@@ -200,6 +196,12 @@ const styles = StyleSheet.create({
         borderTopWidth:1,
         borderTopColor:'#f0f0f0',
         marginTop:20
+    },
+
+    icon:{
+        width:18,
+        height:18,
+        marginLeft:16
     },
     textTitle:{
         fontSize:15,
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignSelf:'center',
         paddingLeft:10,
-        marginLeft:4,
+        marginLeft:12,
         alignItems:'flex-end',
         fontSize:15
     },
