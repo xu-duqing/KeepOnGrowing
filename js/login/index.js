@@ -85,7 +85,7 @@ class Login extends React.Component{
         return(
             <View style={{flex:1}}>
 
-                <KGHeader style={{backgroundColor:KGColor.primaryHeader}} title="记忆面包"/>
+                <KGHeader style={{backgroundColor:KGColor.primaryHeader}} title="面包记忆"/>
 
                 <View style={styles.headerBox}>
 

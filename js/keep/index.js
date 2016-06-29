@@ -7,7 +7,8 @@ import React,{
     Image,
     Dimensions,
     ActionSheetIOS,
-    Platform
+    Platform,
+    StyleSheet
 } from 'react-native';
 
 import KGHeader from '../common/KGHeader';
@@ -25,8 +26,12 @@ import {
     loadChild
 } from '../action'
 
+
+
 import {Text} from 'KGText'
 import * as KGColor from 'KGColor'
+
+
 
 class KeepPage extends React.Component{
 
@@ -34,7 +39,9 @@ class KeepPage extends React.Component{
     constructor(props) {
         super(props);
         // 初始状态
-        this.state = {};
+        this.state = {
+        };
+
     }
 
     componentDidMount() {
@@ -45,6 +52,8 @@ class KeepPage extends React.Component{
     _onRefresh(){
         this.props.dispatch(loadKeep())
     }
+
+
 
     render(){
         const child = this.props.child.childs[0];
@@ -62,6 +71,8 @@ class KeepPage extends React.Component{
                             })
                         }
                 }}}/>
+
+
                 <KeepListView data={this.props.keep.data} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>
 
                 <ActionButton
@@ -91,5 +102,10 @@ function select(store) {
         child:store.child
     };
 }
+
+const styles = React.StyleSheet.create({
+
+
+});
 
 module.exports = connect(select)(KeepPage);
