@@ -3,6 +3,8 @@ PODS:
     - React
   - React (0.24.1):
     - React/Core (= 0.24.1)
+  - React/ART (0.24.1):
+    - React/Core
   - React/Core (0.24.1)
   - React/RCTImage (0.24.1):
     - React/Core
@@ -16,6 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - CodePush (from `../node_modules/react-native-code-push`)
+  - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
@@ -32,6 +35,6 @@ SPEC CHECKSUMS:
   CodePush: 735cea7534887142db6506c91bbfcc3be3219c7f
   React: 386bbe687faee56ab75bad6132813945d5857403
 
-PODFILE CHECKSUM: 704a1f4b06971f5ba7c94ee6fe8342dd9ed1a13c
+PODFILE CHECKSUM: 4b682b2e29017c179b86b6d95da9c859ab6bef83
 
 COCOAPODS: 1.0.0.rc.2
