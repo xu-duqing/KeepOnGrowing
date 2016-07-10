@@ -10,6 +10,7 @@ import {
 
 import EditDateTime from './EditDateTime'
 import EditText from './EditText'
+import WeightSlide from './EditWeightSlide'
 
 export default class AddWeight extends React.Component{
 
@@ -34,7 +35,7 @@ export default class AddWeight extends React.Component{
     getData(){
         return{
             startTime:this.state.startTime,
-            weight:parseInt(this.state.weight)
+            weight:parseFloat(this.slide.getValue())
         }
     }
 
@@ -46,7 +47,7 @@ export default class AddWeight extends React.Component{
                     this.props.showPicker()
                 }} date={this.state.startTime}/>
 
-                <EditText title="体 重:" unit="千克" onChangeText={(text) =>this.state.weight=text}/>
+                <WeightSlide ref ={(slide) => this.slide = slide} title="体重"/>
             </View>
         )
     }
