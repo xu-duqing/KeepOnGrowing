@@ -23,11 +23,11 @@ import {
     addChild
 } from '../action'
 
-import EditBirthday from './EditBirthday'
-import EditHeight from './EditHeight'
 import EditName from './EditName'
-import EditWeight from './EditWeight'
+import EditBirthday from './EditBirthday'
 import EditSex from './EditSex'
+import EditHeight from './EditHeight'
+import EditWeight from './EditWeight'
 
 
 class ChildPage extends React.Component{

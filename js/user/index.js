@@ -18,6 +18,7 @@ import {Text} from 'KGText'
 import * as KGColor from 'KGColor'
 import KGLoading from 'KGLoading'
 import {connect} from 'react-redux'
+import EditInfo from '../EditInfo'
 
 
 import {
@@ -52,10 +53,17 @@ class UserPage extends React.Component{
                           }}}/>
                 <View style={styles.headerBox}>
 
-                    <View style={styles.headPortraitBox}>
+                    <View style={styles.headPortraitBox} >
                         <Image style={styles.headerImg} source = {require('./img/ic_header.png')}/>
                     </View>
-                    <Text style={styles.nameText}>{child.name || "我的宝贝"}</Text>
+                    <TouchableOpacity onPress={() =>{
+                        this.props.navigator.push({
+                            component:EditInfo,
+                            params:{type:'name',name:child.name}
+                        })
+                    }}>
+                        <Text style={styles.nameText}>{child.name || "我的宝贝"}</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{backgroundColor:'#fffed2',height:30,justifyContent:'center',paddingLeft:11}}>
@@ -65,7 +73,12 @@ class UserPage extends React.Component{
                 </View>
 
                 <View style={styles.itemBox}>
-                    <View style={{flex:1,alignItems:'center',}}>
+                    <TouchableOpacity style={{flex:1,alignItems:'center'}} onPress={() =>{
+                        this.props.navigator.push({
+                            component:EditInfo,
+                            params:{type:'birthday',data:date}
+                        })
+                    }}>
                         <Text style={styles.textBold}>
                             出生日期
                         </Text>
@@ -74,11 +87,16 @@ class UserPage extends React.Component{
                             {`${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`}
                         </Text>
 
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={{backgroundColor:'#f0f0f0',width:1,height:65}}/>
 
-                    <View style={{flex:1,alignItems:'center',}}>
+                    <TouchableOpacity style={{flex:1,alignItems:'center',}} onPress={() =>{
+                        this.props.navigator.push({
+                            component:EditInfo,
+                            params:{type:'sex',sex:child.sex}
+                        })
+                    }}>
                         <Text style={styles.textBold}>
                             性别
                         </Text>
@@ -86,7 +104,7 @@ class UserPage extends React.Component{
                         <Text style={styles.text}>
                             {child.sex||'女'}
                         </Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.itemBox}>
