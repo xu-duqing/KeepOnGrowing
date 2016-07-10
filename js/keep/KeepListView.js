@@ -23,15 +23,22 @@ export default class KeepListView extends React.Component{
         // 初始状态
         this.state = {
             keeps:[],
+            dataHeights:[],
+            dataWeights:[],
             refreshing:false
         };
     }
 
     componentWillReceiveProps(nextProps) {
+
         this.setState({
             keeps:nextProps.data,
+            dataHeights:nextProps.dataHeights,
+            dataWeights:nextProps.dataWeights,
             refreshing:nextProps.refreshing
-        })
+
+        });
+
     }
 
     renderRow(rowData,sectionID,rowID){
@@ -39,14 +46,18 @@ export default class KeepListView extends React.Component{
         const backgroundColor = rowID%2 === 0?KGColor.primary:'#f7a7aa';
         const textColor = rowID%2 === 0?'#fff':KGColor.primaryText;
 
+
+
         return(
             <ListItem data={rowData} textColor={textColor} backgroundColor={backgroundColor} />
         )
     }
 
     renderHeader(){
+        console.log(this);
+
         return(
-            <Header />
+            <Header dataHeight={this.state.dataHeights} dataWeight={this.state.dataWeights}/>
         )
     }
 
@@ -58,7 +69,7 @@ export default class KeepListView extends React.Component{
         return(
             <ListView
                 dataSource={ds.cloneWithRows(this.state.keeps)}
-                renderHeader={this.renderHeader}
+                renderHeader={() => this.renderHeader()}
                 enableEmptySections={true}
                 renderRow={this.renderRow}
                 refreshControl={

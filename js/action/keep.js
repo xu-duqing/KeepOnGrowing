@@ -155,8 +155,8 @@ function loadKeep(){
             queryKeep("KeepWeight")
         ]).then(value =>{
             let keeps = mergeKeep(value);
-            let heights = buildHeights(keeps);
-            let weights = buildWeights(keeps);
+            let heights = buildHeights(keeps).reverse();
+            let weights = buildWeights(keeps).reverse();
             dispatch({
                 type:KEEP.LEAD_SUCCESS,
                 keeps,
@@ -178,6 +178,7 @@ function buildHeights(keeps){
             heights.push([`${date.getMonth() + 1}/${date.getDate()}`,keep.height])
         }
     });
+    heights.push(['   ',0]);
     return heights;
 }
 
@@ -192,6 +193,7 @@ function buildWeights(keeps){
         }
     });
 
+    weights.push(['   ',0]);
     return weights;
 }
 

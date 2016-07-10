@@ -75,7 +75,7 @@ class KeepPage extends React.Component{
                 }}}/>
 
 
-                <KeepListView data={this.props.keep.data} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>
+                <KeepListView data={this.props.keep.data} dataHeights={this.props.keep.heights} dataWeights={this.props.keep.weights} refreshing={this.props.keep.isLoading} onRefresh={this._onRefresh.bind(this)}/>
 
                 <ActionButton
                     buttonColor="#FF6666"

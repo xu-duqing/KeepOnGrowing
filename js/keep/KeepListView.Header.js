@@ -17,42 +17,22 @@ import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
 import HeightLineChart from './HeightLineChart';
 
-const data1 = [
-    ["6/23", 1],
-    ["6/28", 3],
-    ["7/8", 7],
-    ["7/21", 9]
-];
 
-const data2 = [
-    ["6/23", 2],
-    ["6/28", 8],
-    ["7/8", 4],
-    ["7/21", 6]
-];
 
-const BANNER_DATA = [
-    {data:data1, title:"宝宝体重"},
-    {data:data2, title:"宝宝身高"}
-];
-
+const  dataSource = new ViewPager.DataSource({
+    pageHasChanged: (p1, p2) => p1 !== p2
+});
 
 export default class KeepListViewHeader extends React.Component{
 
     // 构造
     constructor(props) {
         super(props);
-        var dataSource = new ViewPager.DataSource({
-            pageHasChanged: (p1, p2) => p1 !== p2
-        });
-        // 初始状态
-        this.state = {
-            dataSource: dataSource.cloneWithPages(BANNER_DATA)
-        };
 
     }
 
     _renderPage(data, pageID) {
+
         return (
             <View style={{backgroundColor:KGColor.primaryHeader}}>
                 <HeightLineChart
@@ -66,6 +46,12 @@ export default class KeepListViewHeader extends React.Component{
 
     render(){
 
+        let banner = [
+            {data:this.props.dataHeight, title:"宝宝身高"},
+            {data:this.props.dataWeight, title:"宝宝体重"}
+        ];
+
+        let ds = dataSource.cloneWithPages(banner);
 
         const card1 = {
             date:"第一次",
@@ -89,7 +75,7 @@ export default class KeepListViewHeader extends React.Component{
 
                 <ViewPager
                     style={{flex:1,height:120}}
-                    dataSource={this.state.dataSource}
+                    dataSource={ds}
                     renderPage={this._renderPage}
                     isLoop={true}
                     autoPlay={true}/>

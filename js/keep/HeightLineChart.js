@@ -25,9 +25,10 @@ class HeightChart extends Component{
                     dataPointFillColor="#FFCDD2"
                     dataPointColor="#FFCDD2"
                     showDataPoint={true}
-
                     axisLabelColor="white"
                     axisColor="white"
+                    yAxisWidth={20}
+                    xAxisHeight={15}
                     color="#FFCDD2"
                     hideHorizontalGridLines={true}
                     hideVerticalGridLines={true}
