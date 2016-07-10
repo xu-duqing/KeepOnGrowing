@@ -160,13 +160,13 @@ export default class KeepListViewItem extends React.Component{
             case "sleep":
                 iconImg = require('./img/ic_shuijiao.png');
                 break;
-            case "powderedMilk":
+            case "breastMilk":
                 iconImg = require('./img/ic_muru.png');
                 break;
             case "first":
                 iconImg = require('./img/ic_diyici.png');
                 break;
-            case "breastMilk":
+            case "powderedMilk":
                 iconImg = require('./img/ic_naifen.png');
                 break;
             case "shit":
