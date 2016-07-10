@@ -27,6 +27,7 @@ import EditBirthday from './EditBirthday'
 import EditHeight from './EditHeight'
 import EditName from './EditName'
 import EditWeight from './EditWeight'
+import EditSex from './EditSex'
 
 
 class ChildPage extends React.Component{
@@ -40,7 +41,8 @@ class ChildPage extends React.Component{
             name:'',
             height:60,
             weight:3.3,
-            birthday:new Date()
+            birthday:new Date(),
+            sex:'女'
         };
     }
 
@@ -70,7 +72,7 @@ class ChildPage extends React.Component{
             startTime:this.state.birthday
         }));
 
-        this.props.dispatch(addChild(this.state.name,this.state.birthday,() =>{
+        this.props.dispatch(addChild(this.state.name,this.state.birthday,this.state.sex,() =>{
 
             this.props.navigator.replace({
                 component:AddPage
@@ -89,10 +91,15 @@ class ChildPage extends React.Component{
                     this.state.birthday = date
                 }}/>;
             case 2:
+                return <EditSex onChangeText={(text) =>{
+                    this.state.sex = text
+                }}/>;
+
+            case 3:
                 return <EditHeight onChangeText={(text) =>{
                     this.state.height = parseInt(text)
                 }}/>;
-            case 3:
+            case 4:
                 return <EditWeight onChangeText={(text) =>{
                     this.state.weight = parseInt(text)
                 }}/>;
@@ -115,7 +122,7 @@ class ChildPage extends React.Component{
                                     if (this.state.page == 0 && !this.state.name){
                                         return alert("名字不能为空哦!!")
                                     }
-                                    if (this.state.page === 3){
+                                    if (this.state.page === 4){
                                         return this.pushInfo()
                                     }
                                     this.setState({

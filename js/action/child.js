@@ -40,7 +40,7 @@ function loadChild(){
     }
 }
 
-function addChild(name,birthday,onSuccess){
+function addChild(name,birthday,sex,onSuccess){
 
     return async dispatch =>  {
         dispatch({
@@ -54,6 +54,7 @@ function addChild(name,birthday,onSuccess){
 
             childInfo.set('birthday',birthday);
             childInfo.set('name',name);
+            childInfo.set('sex',sex);
             childInfo.setACL(new Parse.ACL(user));
 
             childInfo.save(null,{
