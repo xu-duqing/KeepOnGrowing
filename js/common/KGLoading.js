@@ -8,7 +8,7 @@ import React from 'react'
 
 import {
     StyleSheet,
-    ActivityIndicatorIOS,
+    ActivityIndicator,
     View,
     Platform,
     ProgressBarAndroid,
@@ -106,7 +106,7 @@ export default class KGLoading extends React.Component{
 
                     <View style={[styles.overlay,{backgroundColor:overlayColor,width:overlayWidth,height:overlayHeight}]}>
                         {(Platform.OS === 'ios') ?
-                            <ActivityIndicatorIOS color={progressColor} size="large" /> :
+                            <ActivityIndicator color={progressColor} size="large" /> :
                             <ProgressBarAndroid  color={progressColor}/>}
                         {this.state.text ?<Text style={[styles.text,{color:textColor,fontSize:textFontSize}]}>{this.state.text}</Text>:null}
                     </View>
