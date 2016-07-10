@@ -36,7 +36,7 @@ export default class EditSex extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            select:'女'
+            select:this.props.sex || '女'
         };
       }
 

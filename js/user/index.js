@@ -76,7 +76,7 @@ class UserPage extends React.Component{
                     <TouchableOpacity style={{flex:1,alignItems:'center'}} onPress={() =>{
                         this.props.navigator.push({
                             component:EditInfo,
-                            params:{type:'birthday',data:date}
+                            params:{type:'birthday',date:date}
                         })
                     }}>
                         <Text style={styles.textBold}>
@@ -84,7 +84,7 @@ class UserPage extends React.Component{
                         </Text>
 
                         <Text style={styles.text}>
-                            {`${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`}
+                            {`${date.getFullYear()}年${date.getMonth() +1}月${date.getDate()}日`}
                         </Text>
 
                     </TouchableOpacity>

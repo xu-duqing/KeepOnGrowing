@@ -42,6 +42,82 @@ function loadChild(){
     }
 }
 
+function editBirthday(birthday){
+
+    return (dispatch,getState) =>{
+        let ChildInfo = Parse.Object.extend('ChildInfo');
+        var childInfo = new Parse.Query(ChildInfo);
+
+        childInfo.get(getState().child.childs[0].id,{
+            success: function(childInfo) {
+                childInfo.set('birthday',birthday)
+                childInfo.save(null,{
+                    success: function(childInfo){
+                        dispatch(loadChild());
+                    },
+                    error: function(object, error) {
+                        console.log(error);
+                    }
+                })
+            },
+            error: function(object, error) {
+                console.log(error);
+            }
+        })
+
+    }
+}
+
+function editName(name){
+    return (dispatch,getState) =>{
+        let ChildInfo = Parse.Object.extend('ChildInfo');
+        var childInfo = new Parse.Query(ChildInfo);
+
+        childInfo.get(getState().child.childs[0].id,{
+            success: function(childInfo) {
+                childInfo.set('name',name);
+                childInfo.save(null,{
+                    success: function(childInfo){
+                        dispatch(loadChild());
+                    },
+                    error: function(object, error) {
+                        console.log(error);
+                    }
+                })
+            },
+            error: function(object, error) {
+                console.log(error);
+            }
+        })
+
+    }
+}
+
+function editSex(sex){
+    return (dispatch,getState) =>{
+        let ChildInfo = Parse.Object.extend('ChildInfo');
+        var childInfo = new Parse.Query(ChildInfo);
+
+        childInfo.get(getState().child.childs[0].id,{
+            success: function(childInfo) {
+                childInfo.set('sex',sex);
+                childInfo.save(null,{
+                    success: function(childInfo){
+                        dispatch(loadChild());
+                    },
+                    error: function(object, error) {
+                        console.log(error);
+                    }
+                })
+            },
+            error: function(object, error) {
+                console.log(error);
+            }
+        })
+
+    }
+}
+
 function addChild(name,birthday,sex,onSuccess){
 
     return async dispatch =>  {
@@ -61,14 +137,7 @@ function addChild(name,birthday,sex,onSuccess){
 
             childInfo.save(null,{
                 success: function (childInfo) {
-                    let child = {
-                        birthday:childInfo.get('birthday'),
-                        name:childInfo.get('name'),
-                    };
-                    dispatch({
-                        type:CHILD.CHILD_ADD_SUCCESS,
-                        child
-                    });
+                    dispatch(loadChild());
                     onSuccess && onSuccess()
                 },
                 error: function (childInfo, error) {
@@ -90,5 +159,8 @@ function addChild(name,birthday,sex,onSuccess){
 
 module.exports = {
     addChild,
-    loadChild
+    loadChild,
+    editBirthday,
+    editName,
+    editSex
 };

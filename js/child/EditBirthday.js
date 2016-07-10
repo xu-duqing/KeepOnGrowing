@@ -20,14 +20,13 @@ export default class EditBirthday extends React.Component{
         super(props);
         // 初始状态
         this.state = {
-            date:new Date()
+            date:new Date(props.date || 0)
         };
       }
 
     render(){
         return(
             <View style={{flex:1,marginTop:20}}>
-
 
                 <EditDateTime title="生日" onPress={() =>{
                     this.picker.show()
