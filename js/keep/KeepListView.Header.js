@@ -15,12 +15,25 @@ import {
 import ViewPager from 'react-native-viewpager';
 import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
+import HeightLineChart from './HeightLineChart';
 
-const BANNER_IMGS = [
-    {icon:require('./img/ic_henainai.png'), title:"3小时前喝的奶", msg:"想饿死宝宝啊"},
-    {icon:require('./img/ic_weishi.png'), title:"5小时前吃的米汤", msg:"宝宝现在还要吃"},
-    {icon:require('./img/ic_lachouchou.png'), title:"2小时前拉臭臭", msg:"宝宝现在感觉来了"},
-    {icon:require('./img/ic_xuxu.png'), title:"3小时前嘘嘘", msg:"喂我那么多水,想逼死宝宝啊"}
+const data1 = [
+    ["6/23", 1],
+    ["6/28", 3],
+    ["7/8", 7],
+    ["7/21", 9]
+];
+
+const data2 = [
+    ["6/23", 2],
+    ["6/28", 8],
+    ["7/8", 4],
+    ["7/21", 6]
+];
+
+const BANNER_DATA = [
+    {data:data1, title:"宝宝体重"},
+    {data:data2, title:"宝宝身高"}
 ];
 
 
@@ -34,23 +47,18 @@ export default class KeepListViewHeader extends React.Component{
         });
         // 初始状态
         this.state = {
-            dataSource: dataSource.cloneWithPages(BANNER_IMGS)
+            dataSource: dataSource.cloneWithPages(BANNER_DATA)
         };
 
     }
 
     _renderPage(data, pageID) {
         return (
-            <View style={{backgroundColor:"#fff"}}>
-                <Text style={styles.pageTopText}>
-                    {data.title}
-                </Text>
-                <Image
-                    source={data.icon}
-                    style={styles.page}>
-                </Image>
+            <View style={{backgroundColor:KGColor.primaryHeader}}>
+                <HeightLineChart
+                         lineData={data.data}/>
                 <Text style={styles.pageBottomText}>
-                    {data.msg}
+                    {data.title}
                 </Text>
             </View>
         );
@@ -190,7 +198,7 @@ const styles = StyleSheet.create({
     page: {
         flex: 1,
         width:(Dimensions.get('window').width),
-        height: 120
+        height: 150
     },
 
     pageTopText: {
@@ -202,10 +210,10 @@ const styles = StyleSheet.create({
     },
     pageBottomText: {
         fontSize:14,
-        paddingBottom:5,
-        paddingRight:16,
         fontWeight:'bold',
-        alignSelf:"flex-end",
-        color:'#e7888c'
+        alignSelf:"center",
+        marginBottom:20,
+        marginTop:8,
+        color:'#fff'
     }
 });
