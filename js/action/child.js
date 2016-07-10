@@ -23,7 +23,8 @@ function loadChild(){
                 childs.push({
                     birthday:item.get('birthday'),
                     name:item.get('name'),
-                    sex:item.get('sex')
+                    sex:item.get('sex'),
+                    id:item.id
                 });
             });
 
