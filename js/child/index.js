@@ -55,24 +55,23 @@ class ChildPage extends React.Component{
     }
 
     pushInfo(){
-
-        this.props.dispatch(addFirst({
-            keynote:'来到这个世界',
-            description:'Hello World!',
-            startTime:this.state.birthday
-        }));
-
-        this.props.dispatch(addHeight({
-            height:this.state.height,
-            startTime:this.state.birthday
-        }));
-
-        this.props.dispatch(addWeight({
-            weight:this.state.weight,
-            startTime:this.state.birthday
-        }));
-
         this.props.dispatch(addChild(this.state.name,this.state.birthday,this.state.sex,() =>{
+
+            this.props.dispatch(addFirst({
+                keynote:'来到这个世界',
+                description:'Hello World!',
+                startTime:this.state.birthday
+            }));
+
+            this.props.dispatch(addHeight({
+                height:this.state.height,
+                startTime:this.state.birthday
+            }));
+
+            this.props.dispatch(addWeight({
+                weight:this.state.weight,
+                startTime:this.state.birthday
+            }));
 
             this.props.navigator.replace({
                 component:AddPage

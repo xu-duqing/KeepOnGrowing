@@ -7,7 +7,7 @@
 import {CHILD,LOGIN} from './types';
 var Parse = require('parse/react-native');
 
-function loadChild(){
+function loadChild(onSuccess){
     return dispatch =>{
         dispatch({
             type:CHILD.CHILD_LOAD
@@ -33,6 +33,8 @@ function loadChild(){
                 type:CHILD.CHILD_LOAD_SUCCESS,
                 childs
             });
+
+            onSuccess && onSuccess()
         },function(error){
             console.log(error);
             dispatch({
@@ -48,6 +50,7 @@ function editBirthday(birthday){
         let ChildInfo = Parse.Object.extend('ChildInfo');
         var childInfo = new Parse.Query(ChildInfo);
 
+        //fixme 这里临时处理,多孩子业务实现后在设计
         childInfo.get(getState().child.childs[0].id,{
             success: function(childInfo) {
                 childInfo.set('birthday',birthday)
@@ -137,8 +140,7 @@ function addChild(name,birthday,sex,onSuccess){
 
             childInfo.save(null,{
                 success: function (childInfo) {
-                    dispatch(loadChild());
-                    onSuccess && onSuccess()
+                    dispatch(loadChild(onSuccess));
                 },
                 error: function (childInfo, error) {
                     console.log(error);
