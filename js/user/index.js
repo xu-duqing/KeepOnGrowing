@@ -84,7 +84,7 @@ class UserPage extends React.Component{
                         </Text>
 
                         <Text style={styles.text}>
-                            女
+                            {child.sex||'女'}
                         </Text>
                     </View>
                 </View>
