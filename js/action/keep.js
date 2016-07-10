@@ -154,13 +154,43 @@ function loadKeep(){
             queryKeep("KeepSleep"),
             queryKeep("KeepWeight")
         ]).then(value =>{
+            let keeps = mergeKeep(value);
+            let heights = buildHeights(keeps);
+            let weights = buildWeights(keeps);
             dispatch({
                 type:KEEP.LEAD_SUCCESS,
-                keeps:mergeKeep(value)
+                keeps,
+                heights,
+                weights
             })
         })
 
     }
+}
+
+function buildHeights(keeps){
+    let heights = [];
+    keeps.forEach(keep =>{
+        if(keep.type === 'height'){
+            let date = new Date(keep.startTime);
+            heights.push([`${date.getMonth() + 1}/${date.getDate()}`,keep.height])
+        }
+    })
+    return heights;
+}
+
+
+
+function buildWeights(keeps){
+    let weights = [];
+    keeps.forEach(keep =>{
+        if(keep.type === 'weight'){
+            let date = new Date(keep.startTime);
+            weights.push([`${date.getMonth() + 1}/${date.getDate()}`,keep.weight])
+        }
+    });
+
+    return weights;
 }
 
 /**
