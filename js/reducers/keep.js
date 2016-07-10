@@ -39,7 +39,9 @@ export default function keep(state = initializeState,action){
                 isLoading:false,
                 data:action.keeps,
                 heights:action.heights,
-                weights:action.weights
+                weights:action.weights,
+                lastHeight:action.lastHeight,
+                lastWeight:action.lastWeight
             });
         case KEEP.LEAD_ERROR:
             return Object.assign({},state,{

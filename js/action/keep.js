@@ -161,7 +161,9 @@ function loadKeep(){
                 type:KEEP.LEAD_SUCCESS,
                 keeps,
                 heights,
-                weights
+                weights,
+                lastHeight:heights[0][1],
+                lastWeight:weights[0][1]
             })
         })
 
@@ -175,7 +177,7 @@ function buildHeights(keeps){
             let date = new Date(keep.startTime);
             heights.push([`${date.getMonth() + 1}/${date.getDate()}`,keep.height])
         }
-    })
+    });
     return heights;
 }
 
