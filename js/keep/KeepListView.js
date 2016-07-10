@@ -2,7 +2,9 @@
  * Created by Guang on 16/5/19.
  */
 
-import React,{
+import React from 'react'
+
+import {
     ListView,
     RefreshControl
 } from 'react-native'

@@ -2,10 +2,13 @@
  * Created by Guang on 16/5/19.
  */
 
-import React,{
+import React from 'react'
+
+import {
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    StyleSheet
 } from 'react-native'
 import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
@@ -186,7 +189,7 @@ export default class KeepListViewItem extends React.Component{
     }
 }
 
-const styles = React.StyleSheet.create({
+const styles = StyleSheet.create({
     itemBox:{
         flexDirection:'row',
         height:100,

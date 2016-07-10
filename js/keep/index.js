@@ -2,7 +2,10 @@
  * Created by Guang on 16/5/17.
  */
 
-import React,{
+import React from 'react'
+
+
+import {
     View,
     Image,
     Dimensions,
@@ -14,7 +17,6 @@ import React,{
 import KGHeader from '../common/KGHeader';
 import KeepListView from './KeepListView';
 import {connect} from 'react-redux'
-import KGActionSheet from '../common/KGActionSheet';
 import ActionButton from 'react-native-action-button';
 import AddPage from '../add'
 import UserPage from '../user'
@@ -102,10 +104,5 @@ function select(store) {
         child:store.child
     };
 }
-
-const styles = React.StyleSheet.create({
-
-
-});
 
 module.exports = connect(select)(KeepPage);

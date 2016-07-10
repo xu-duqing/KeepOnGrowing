@@ -3,8 +3,10 @@
  * @providesModule KGText
  */
 
-import React from 'react-native'
+import React from 'react'
+
+import ReactNative from 'react-native'
 
 export function Text({style,...props}:Object){
-    return <React.Text style={style} {...props}/>
+    return <ReactNative.Text style={style} {...props}/>
 }

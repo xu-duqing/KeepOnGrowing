@@ -4,10 +4,13 @@
  */
 'use strict';
 
-import React, {
+import React,{
+    PropTypes
+} from 'react'
+
+import {
     View,
     Text,
-    PropTypes,
     Dimensions,
     Animated,
     TouchableHighlight,

@@ -2,8 +2,9 @@
  * Created by Guang on 16/6/23.
  */
 "use strict";
+import React from 'react'
 
-import React,{
+import {
     View
 } from 'react-native'
 

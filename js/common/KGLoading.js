@@ -4,7 +4,9 @@
  * @providesModule KGLoading
  */
 
-import React,{
+import React from 'react'
+
+import {
     StyleSheet,
     ActivityIndicatorIOS,
     View,

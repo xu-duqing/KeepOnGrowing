@@ -2,10 +2,13 @@
  * Created by Guang on 16/5/19.
  */
 
-import React,{
+import React from 'react'
+
+import {
     View,
     Image,
-    Dimensions
+    Dimensions,
+    StyleSheet
 } from 'react-native'
 
 
@@ -116,7 +119,7 @@ class Card extends React.Component{
     }
 }
 
-const styles = React.StyleSheet.create({
+const styles = StyleSheet.create({
 
     box:{
         backgroundColor:'#e7888c'

@@ -2,13 +2,17 @@
  * Created by Guang on 16/5/17.
  * @providesModule KGHeader
  */
-import React,{
+
+import React from 'react'
+
+import {
     Platform,
     View,
     ToolbarAndroid,
     TouchableOpacity,
     PropTypes,
-    Image
+    Image,
+    StyleSheet
 } from 'react-native'
 
 import {Text} from 'KGText';
@@ -118,7 +122,7 @@ const KGHeader = Platform.OS === 'ios' ? KGHeaderIOS : KGHeaderAndroid;
 var STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 25;
 var HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS_BAR_HEIGHT;
 
-var styles = React.StyleSheet.create({
+var styles = StyleSheet.create({
 
     header: {
         backgroundColor: 'transparent',

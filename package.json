@@ -6,16 +6,17 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "parse": "^1.8.5",
-    "react": "^0.14.8",
-    "react-native": "^0.24.1",
-    "react-native-action-button": "^1.1.5",
-    "react-native-code-push": "^1.10.6-beta",
+    "parse": "^1.9.0",
+    "react": "^15.2.1",
+    "react-native": "^0.29.0",
+    "react-native-action-button": "^1.1.11",
+    "react-native-chart": "^1.0.6-bate",
+    "react-native-code-push": "^1.13.2-beta",
     "react-native-viewpager": "^0.2.11",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
-    "redux-persist": "^2.0.1",
+    "redux-persist": "^3.2.2",
     "redux-thunk": "^2.0.1"
   }
 }
