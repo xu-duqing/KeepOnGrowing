@@ -96,7 +96,7 @@ class UserPage extends React.Component{
                         </Text>
 
                         <Text style={styles.text}>
-                            60 CM
+                            {this.props.lastHeight} CM
                         </Text>
 
                     </View>
@@ -109,7 +109,7 @@ class UserPage extends React.Component{
                         </Text>
 
                         <Text style={styles.text}>
-                            4.5 千克
+                            {this.props.lastWeight} 千克
                         </Text>
                     </View>
                 </View>
@@ -188,7 +188,9 @@ const styles = StyleSheet.create({
 
 function select(store) {
     return {
-        child:store.child.childs
+        child:store.child.childs,
+        lastHeight:store.keep.lastHeight,
+        lastWeight:store.keep.lastWeight
     };
 }
 
