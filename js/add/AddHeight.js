@@ -10,6 +10,7 @@ import {
 
 import EditDateTime from './EditDateTime'
 import EditText from './EditText'
+import HeightSlide from './EditHeightSlide'
 
 export default class AddHeight extends React.Component{
 
@@ -33,7 +34,7 @@ export default class AddHeight extends React.Component{
     getData(){
         return{
             startTime:this.state.startTime,
-            height:parseInt(this.state.height)
+            height:parseFloat(this.state.height)
         }
     }
 
@@ -48,6 +49,7 @@ export default class AddHeight extends React.Component{
 
                 <EditText title="身 高:" unit="CM" onChangeText={(text) =>this.state.height=text} />
 
+                <HeightSlide ref ={(slide) => this.slide = slide} title="身高"/>
             </View>
         )
     }
