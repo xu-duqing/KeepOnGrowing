@@ -8,7 +8,9 @@ const initializeState = {
     data:[],
     isAdding:false,
     isLoading:false,
-    isFinish:false
+    isFinish:false,
+    heights:[],
+    weights:[]
 };
 
 export default function keep(state = initializeState,action){
@@ -35,7 +37,11 @@ export default function keep(state = initializeState,action){
         case KEEP.LEAD_SUCCESS:
             return Object.assign({},state,{
                 isLoading:false,
-                data:action.keeps
+                data:action.keeps,
+                heights:action.heights,
+                weights:action.weights,
+                lastHeight:action.lastHeight,
+                lastWeight:action.lastWeight
             });
         case KEEP.LEAD_ERROR:
             return Object.assign({},state,{
