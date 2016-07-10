@@ -148,20 +148,30 @@ export default class KeepListViewItem extends React.Component{
         const date = new Date(startTime||0);
 
         let iconImg;
-        if(this.props.data == 1)
+
+        switch (this.props.data.type)
         {
-            iconImg = require('./img/ic_naifen.png');
-        }else if (this.props.data == 2 || this.props.data == 3)
-        {
-            iconImg = require('./img/ic_muru.png');
-        }else if (this.props.data == 4 || this.props.data == 5)
-        {
-            iconImg = require('./img/ic_shuijiao.png');
-        }else if (this.props.data == 6)
-        {
-            iconImg = require('./img/ic_bianbian.png');
-        }else {
-            iconImg = require('./img/ic_diyici.png');
+            case "height":
+                iconImg = require('./img/ic_shengao.png');
+                break;
+            case "weight":
+                iconImg = require('./img/ic_tizhong.png');
+                break;
+            case "sleep":
+                iconImg = require('./img/ic_shuijiao.png');
+                break;
+            case "powderedMilk":
+                iconImg = require('./img/ic_muru.png');
+                break;
+            case "first":
+                iconImg = require('./img/ic_diyici.png');
+                break;
+            case "breastMilk":
+                iconImg = require('./img/ic_naifen.png');
+                break;
+            case "shit":
+                iconImg = require('./img/ic_bianbian.png');
+                break;
         }
 
         return(
