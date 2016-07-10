@@ -9,7 +9,7 @@ var Parse = require('parse/react-native');
 function addKeep(object,onFinish){
     console.log(object);
 
-    return async dispatch =>{
+    return async (dispatch,getState) =>{
         dispatch({
             type:KEEP.ADD_KEEP
         });
@@ -17,6 +17,8 @@ function addKeep(object,onFinish){
         const user = await Parse.User.currentAsync();
 
         if (user){
+            //fixme 暂时不做孩子切换所以选择第一个
+            object.set('child',getState().child.childs[0].id);
             object.setACL(new Parse.ACL(user));
             object.save(null,{
                 success: function (keepFirst) {
