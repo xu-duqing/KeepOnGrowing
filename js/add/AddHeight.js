@@ -34,7 +34,7 @@ export default class AddHeight extends React.Component{
     getData(){
         return{
             startTime:this.state.startTime,
-            height:parseFloat(this.state.height)
+            height:parseFloat(this.slide.getValue())
         }
     }
 
@@ -46,8 +46,6 @@ export default class AddHeight extends React.Component{
                 <EditDateTime title="时间" onPress={() =>{
                     this.props.showPicker()
                 }} date={this.state.startTime}/>
-
-                <EditText title="身 高:" unit="CM" onChangeText={(text) =>this.state.height=text} />
 
                 <HeightSlide ref ={(slide) => this.slide = slide} title="身高"/>
             </View>

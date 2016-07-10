@@ -33,14 +33,18 @@ export default class EditHeightSlide extends React.Component{
         return(
             <View style={styles.box} >
 
-                <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:10}}>
+                <View style={{flexDirection:'row',flex:1,marginTop:10}}>
                     <Text style={styles.textTitle}>
                         {title}
                     </Text>
 
-                    <Text style={styles.textTitle}>
-                        {`${this.state.value}CM`}
-                    </Text>
+                    <View style={{flexDirection:'row',flex:1,justifyContent:'flex-end'}}>
+                        <Text style={styles.valueTitle}>
+                            {this.state.value}
+                        </Text>
+                        <Text style={[styles.textTitle,{marginTop:5}]}>CM</Text>
+                    </View>
+
                 </View>
 
                 <View style={{
@@ -51,8 +55,8 @@ export default class EditHeightSlide extends React.Component{
                         value={this.state.value}
                         minimumValue={10}
                         maximumValue={150}
-                        step={0.1}
-                        onValueChange={(value) => this.setState({value:Math.round(value)})} />
+                        step={0.5}
+                        onValueChange={(value) => this.setState({value:value})} />
                 </View>
 
             </View>
@@ -65,7 +69,12 @@ const styles = StyleSheet.create({
         marginLeft:19,
         marginRight:19,
         borderBottomWidth:1,
-        borderBottomColor:'#f0f0f0',
+        borderBottomColor:'#f0f0f0'
+    },
+    valueTitle:{
+        alignSelf:"flex-end",
+        fontSize:18,
+        color:"#e7888c"
     },
     textTitle:{
         fontSize:15,
