@@ -16,6 +16,7 @@ import ViewPager from 'react-native-viewpager';
 import {Text} from 'KGText';
 import * as KGColor from 'KGColor'
 import HeightLineChart from './HeightLineChart';
+import KGPieChart from '../common/KGPieChart';
 
 
 
@@ -101,12 +102,7 @@ class Card extends React.Component{
         return(
             <View style={styles.cardBox}>
 
-                <Image style={styles.iconImg} source = {path}></Image>
-                <View style={styles.dateBox}>
-                    <Text style={styles.titleText}>
-                        {date}
-                    </Text>
-                </View>
+                <KGPieChart />
 
             </View>
         )
