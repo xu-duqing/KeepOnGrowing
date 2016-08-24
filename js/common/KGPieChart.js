@@ -54,6 +54,9 @@ export default class KGPie extends React.Component{
 
                     </Group>
                 </Surface>
+                {
+                    this.props.children
+                }
             </View>
         )
     }

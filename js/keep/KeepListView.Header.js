@@ -97,13 +97,28 @@ class Card extends React.Component{
     render(){
         return(
             <View style={styles.cardBox}>
-                <KGPieChart rate={this.props.rate}/>
+                <KGPieChart rate={this.props.rate}>
+                    <Text style={styles.points}>
+                        上次运动
+                    </Text>
+                </KGPieChart>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    points: {
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        top: 40,
+        left: 10,
+        width: 80,
+        textAlign: 'center',
+        color: '#000',
+        fontSize: 17,
+        fontWeight: "100"
+    },
 
     box:{
         backgroundColor:'#e7888c'
