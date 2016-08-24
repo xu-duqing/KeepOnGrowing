@@ -28,6 +28,9 @@ export default class KGPie extends React.Component{
             .arc(0,-80,1)
             .close();
 
+        let rate = this.props.rate | 0;
+        let endAngle = (270/100 * rate) + 225;
+
         return(
             <View style={[this.props.style,styles.container]}>
                 <Surface width={100} height={100}>
@@ -42,7 +45,7 @@ export default class KGPie extends React.Component{
                         <Wedge
                             outerRadius={50}
                             startAngle={225}
-                            endAngle={49}
+                            endAngle={endAngle}
                             originX={50}
                             originY={50}
                             fill="#000"/>

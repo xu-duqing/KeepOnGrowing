@@ -82,9 +82,9 @@ export default class KeepListViewHeader extends React.Component{
                     autoPlay={true}/>
 
                 <View style={styles.header}>
-                    <Card data = {card1} style={{ backgroundColor:'#4aa5dc'}}/>
-                    <Card data = {card2} style={{marginLeft:6,marginRight:6, backgroundColor:'#fddb00'}}/>
-                    <Card data = {card3} style={{ backgroundColor:'#66b8a1'}}/>
+                    <Card rate={19}/>
+                    <Card rate={56}/>
+                    <Card rate={89}/>
                 </View>
 
             </View>
@@ -95,15 +95,9 @@ export default class KeepListViewHeader extends React.Component{
 class Card extends React.Component{
 
     render(){
-
-        const {path,date} = this.props.data;
-
-        //fixme 上次时间的计算未实现
         return(
             <View style={styles.cardBox}>
-
-                <KGPieChart />
-
+                <KGPieChart rate={this.props.rate}/>
             </View>
         )
     }
