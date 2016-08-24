@@ -52,39 +52,13 @@ export default class KeepListViewHeader extends React.Component{
             {data:this.props.dataWeight, title:"宝宝体重"}
         ];
 
-        let ds = dataSource.cloneWithPages(banner);
-
-        const card1 = {
-            date:"第一次",
-            path:require('./img/ic_baba.png')
-        };
-
-        const card2 = {
-            date:"宝宝发育",
-            path:require('./img/ic_shuibei.png')
-        };
-
-        const card3 = {
-            date:"宝宝喂养",
-            path:require('./img/ic_naiping.png')
-
-        };
-
-
         return(
             <View style={styles.box}>
 
-                <ViewPager
-                    style={{flex:1,height:120}}
-                    dataSource={ds}
-                    renderPage={this._renderPage}
-                    isLoop={true}
-                    autoPlay={true}/>
-
                 <View style={styles.header}>
-                    <Card rate={19}/>
-                    <Card rate={56}/>
-                    <Card rate={89}/>
+                    <Card  color="#f36424" title="今日睡眠" time={12}/>
+                    <Card  color="#b02090" title="今日母乳" time={2}/>
+                    <Card  color="#00b3d3" title="上次大便" time={2}/>
                 </View>
 
             </View>
@@ -97,10 +71,16 @@ class Card extends React.Component{
     render(){
         return(
             <View style={styles.cardBox}>
-                <KGPieChart rate={this.props.rate}>
-                    <Text style={styles.points}>
-                        上次运动
-                    </Text>
+                <KGPieChart rate={this.props.rate} color={this.props.color}>
+                    <View style={styles.chartTextBox}>
+                        <Text style={styles.chartNum}>
+                            {this.props.time}小时
+                        </Text>
+
+                        <Text style={styles.chartTitle}>
+                            {this.props.title}
+                        </Text>
+                    </View>
                 </KGPieChart>
             </View>
         )
@@ -108,16 +88,25 @@ class Card extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    points: {
+    chartTextBox: {
         backgroundColor: 'transparent',
         position: 'absolute',
-        top: 40,
-        left: 10,
-        width: 80,
+        width: 100,
+        height:100,
+        top:0
+    },
+    chartTitle:{
         textAlign: 'center',
-        color: '#000',
-        fontSize: 17,
-        fontWeight: "100"
+        color: '#FFF',
+        fontSize: 15,
+        marginTop:19
+    },
+
+    chartNum:{
+        textAlign: 'center',
+        color: '#FFF',
+        fontSize: 20,
+        marginTop:40
     },
 
     box:{

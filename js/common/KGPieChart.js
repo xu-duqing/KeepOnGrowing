@@ -41,7 +41,7 @@ export default class KGPie extends React.Component{
                             endAngle={135}
                             originX={50}
                             originY={50}
-                            fill="blue"/>
+                            fill={this.props.color}/>
                         <Wedge
                             outerRadius={50}
                             startAngle={225}
